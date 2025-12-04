@@ -1,0 +1,87 @@
+[
+  {
+    "name": "transaction_id",
+    "type": "UUID",
+    "nullable": false
+  },
+  {
+    "name": "date",
+    "type": "Date",
+    "min": "2023-01-01",
+    "max": "2025-12-31",
+    "format": "yyyy-MM-dd",
+    "nullable": false
+  },
+  {
+    "name": "description",
+    "type": "Custom",
+    "values": [
+      "STARBUCKS - Coffee & Snacks",
+      "Carrefour - Grocery Shopping",
+      "TotalEnergies Fuel Purchase",
+      "Uber Trip to Downtown",
+      "Alfa Telecom Monthly Bill",
+      "Ogero Internet Payment",
+      "Pharmacy One - Medication Purchase",
+      "Restaurant Dinner with Family",
+      "Salary Monthly Deposit",
+      "ATM Cash Withdrawal",
+      "Shein Online Store Shopping",
+      "Spotify Music Subscription",
+      "Gym Monthly Membership",
+      "Hospital Visit & Consultation",
+      "QuickTransfer to Friend",
+      "Bank Fees Payment",
+      "Electricity Bill Payment",
+      "Water Bill Payment",
+      "Amazon Online Purchase",
+      "Zara Online Shopping",
+      "McDonald's Meal with Drinks",
+      "Bakery Purchase - Bread & Pastry",
+      "Vehicle Maintenance & Repair",
+      "Cinema Movie Ticket",
+      "School Tuition Payment",
+      "Insurance Premium Payment",
+      "Car Rental - Weekend Trip",
+      "Office Supplies Purchase",
+      "Consulting Fee Payment",
+      "Petrol Station Fuel",
+      "Mobile Topup Recharge",
+      "Gift Purchase for Birthday",
+      "Charity Donation Contribution"
+    ],
+    "nullable": false
+  },
+  {
+    "name": "amount",
+    "type": "Number",
+    "min": 5,
+    "max": 5000,
+    "decimals": 2,
+    "nullable": false
+  },
+  {
+    "name": "category",
+    "type": "Custom",
+    "values": [
+      "Food & Dining",
+      "Shopping",
+      "Transportation",
+      "Bills & Utilities",
+      "Health & Medical",
+      "Entertainment",
+      "Income & Transfers",
+      "Education",
+      "Other"
+    ],
+    "nullable": false
+  },
+  {
+    "name": "created_at",
+    "type": "Date",
+    "min": "2023-01-01",
+    "max": "2025-12-31",
+    "format": "yyyy-MM-dd",
+    "nullable": false
+  }
+]
