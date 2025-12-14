@@ -32,7 +32,7 @@ def prepare_data():
     )
     df["category"] = df["category"].astype(str).str.strip()
 
-    # شيل الوصف الفارغ
+    
     df = df[df["description"] != ""]
 
     # ===== GROUP SPLIT (NO OVERLAP BY DESCRIPTION) =====
@@ -52,7 +52,7 @@ def prepare_data():
     overlap = set(df_train_clean["description"]) & set(df_test_clean["description"])
     print("Overlap after split:", len(overlap))  # لازم 0
 
-    # ===== SAVE FILES (نفس الأسماء اللي مشروعك يستخدمها) =====
+    # ===== SAVE FILES =====
     df_train_clean["description"].to_csv(
         os.path.join(OUTPUT_DIR, "X_train.csv"),
         index=False
@@ -70,7 +70,7 @@ def prepare_data():
         index=False
     )
 
-    # نسخ كاملة clean (للتدقيق والتقرير)
+    
     df_train_clean.to_csv(
         os.path.join(OUTPUT_DIR, "train_clean.csv"),
         index=False
