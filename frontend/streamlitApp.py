@@ -1,63 +1,95 @@
-
 import streamlit as st
 import pandas as pd
 import requests
 
 st.title("Welcome To Expense AI!🏦💰")
 
-
 API_PORT = 5000 
 API_URL = f"http://localhost:{API_PORT}/upload"
 
-uploaded_files = st.file_uploader(
+uploaded_file = st.file_uploader(
     "Upload your csv file here👇🏻", accept_multiple_files=False, type="csv"
 )
 
-if uploaded_files is not None:
+if uploaded_file is not None:
     # Reset file pointer to beginning
-    uploaded_files.seek(0)
+    uploaded_file.seek(0)
     
-    # Send file to Flask API for validation
-    with st.spinner("Validating file..."):
+    # Send file to Flask API for validation & processing
+    with st.spinner("Processing & categorizing expenses..."):
         try:
             # Prepare file for upload
-            files = {'file': (uploaded_files.name, uploaded_files, 'text/csv')}
+            files = {'file': (uploaded_file.name, uploaded_file, 'text/csv')}
             
             # Send POST request to Flask API
             response = requests.post(API_URL, files=files)
             
-            # Parse response
-            try:
-                result = response.json()
-            except ValueError:
-                # If response is not valid JSON
-                st.error(f"❌ Error: Invalid response from API. Status code: {response.status_code}")
-                st.error(f"Response: {response.text[:200]}")
-                st.stop()
-            
-            if response.status_code == 200 and result.get('status') == 'success':
-                # Validation successful
-                st.success(result.get('message', 'File validated successfully!'))
+            # Handle Success (200 OK)
+            if response.status_code == 200:
+                data = response.json()
                 
-                # Reset file pointer to read CSV for display
-                uploaded_files.seek(0)
+                if data.get("ok"):
+                    st.success("✅ Categorization completed successfully")
+                    
+                    # Process results
+                    preview_data = data.get("preview", [])
+                    df_result = pd.DataFrame(preview_data)
+                    
+                    # Display metrics
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        st.metric("Rows Processed", data.get("rows", 0))
+                    with col2:
+                        st.metric("Columns", len(df_result.columns))
+                    
+                    # Display Data
+                    st.subheader("Categorized Expenses")
+                    st.dataframe(df_result)
+                    
+                    download_url = f"http://localhost:{API_PORT}" + data["download_url"]
+
+                    dl_resp = requests.get(download_url)
+                    if dl_resp.status_code != 200:
+                        st.error(f"❌ Download failed: {dl_resp.status_code} - {dl_resp.text}")
+                        st.stop()
+                    csv_bytes = dl_resp.content
+
+                    base = uploaded_file.name.rsplit(".", 1)[0]
+
+                    st.download_button(
+                        "Download FULL categorized CSV",
+                        data=csv_bytes,
+                        file_name=f"{base}_categorized.csv",
+                        mime="text/csv"
+                    )
+
+                    
+                else:
+                    # API returned 200 but ok=False (shouldn't happen with current API design but good safety)
+                    st.error(f"❌ Error: {data.get('error')} - {data.get('details')}")
+            
+            # Handle Validation Error (400)
+            elif response.status_code == 400:
                 try:
-                    df = pd.read_csv(uploaded_files)
-                    
-                    st.write("📄 File Preview:")
-                    st.dataframe(df)
-                    
-                    st.info("✅ File is valid and ready for processing!")
-                except Exception as csv_error:
-                    st.warning("⚠️ File validated by API but could not be displayed. Error: " + str(csv_error))
+                    data = response.json()
+                    st.error(f"❌ Validation Error: {data.get('details', 'Invalid request')}")
+                except ValueError:
+                    st.error(f"❌ Error: {response.text}")
+                
+            # Handle Server Error (500)
+            elif response.status_code == 500:
+                try:
+                    data = response.json()
+                    st.error(f"❌ Server Error: {data.get('details', 'Internal server error')}")
+                except ValueError:
+                    st.error(f"❌ Server Error: {response.text}")
+                
             else:
-                # Validation failed
-                error_message = result.get('message', 'Validation failed')
-                st.error(f"❌ {error_message}")
+                st.error(f"❌ Unexpected Error: Status {response.status_code}")
                 
         except requests.exceptions.ConnectionError:
-            st.error("❌ Error: Could not connect to the Flask API. Please make sure the API is running on http://localhost:5000")
-            st.info("💡 Tip: Run 'python api_prd.py' in your terminal to start the Flask API server.")
+            st.error("❌ Backend API is not reachable. Please make sure the API is running on http://localhost:5000")
+            st.info("💡 Tip: Run 'python Flask_API.py' in the backend directory.")
         except Exception as e:
             st.error(f"❌ Error: An unexpected error occurred. {str(e)}")
 

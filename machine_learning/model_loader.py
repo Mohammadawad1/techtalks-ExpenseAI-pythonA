@@ -2,8 +2,8 @@ import os
 import pickle
 import pandas as pd
 
-MODEL_PATH = "machine_learning/artifacts/expense_model.pkl"
-TFIDF_PATH = "machine_learning/artifacts/tfidf.pkl"
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "artifacts", "expense_model.pkl")
+TFIDF_PATH = os.path.join(os.path.dirname(__file__), "artifacts", "tfidf.pkl")
 
 _model = None
 _tfidf = None
