@@ -1,0 +1,111 @@
+from __future__ import annotations
+import json
+from pathlib import Path
+import pandas as pd
+import joblib
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, accuracy_score
+
+from .constants import DATASET_PROCESSED, ARTIFACTS_DIR
+from .features import normalize_text
+
+
+def _detect_columns(df: pd.DataFrame) -> tuple[str, str]:
+    # Expect: description + category
+    cand_desc = ["description", "desc", "merchant"]
+    cand_cat = ["category", "label", "type"]
+
+    def find(cands):
+        cols = {c.lower(): c for c in df.columns}
+        for c in cands:
+            if c.lower() in cols:
+                return cols[c.lower()]
+        return None
+
+    dcol = find(cand_desc)
+    ccol = find(cand_cat)
+
+    if dcol is None or ccol is None:
+        raise ValueError(
+            f"Processed dataset must include description + category. Found: {list(df.columns)}"
+        )
+    return dcol, ccol
+
+
+def main():
+    ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    
+    base_path = Path(DATASET_PROCESSED).parent  
+    train_path = base_path / "dataset_train.csv"
+    test_path = base_path / "dataset_test.csv"
+
+    train_df = pd.read_csv(train_path)
+    test_df = pd.read_csv(test_path)
+
+    
+    dcol, ccol = _detect_columns(train_df)
+
+  
+    train_df = train_df[[dcol, ccol]].dropna()
+    test_df = test_df[[dcol, ccol]].dropna()
+
+    train_df[dcol] = train_df[dcol].astype(str).map(normalize_text)
+    test_df[dcol] = test_df[dcol].astype(str).map(normalize_text)
+
+    train_df[ccol] = train_df[ccol].astype(str).str.strip()
+    test_df[ccol] = test_df[ccol].astype(str).str.strip()
+
+    
+    X_train = train_df[dcol].values
+    y_train = train_df[ccol].values
+
+    X_test = test_df[dcol].values
+    y_test = test_df[ccol].values
+
+    print("X_train:", len(X_train), "X_test:", len(X_test))
+
+    vectorizer = TfidfVectorizer(
+        ngram_range=(1, 2),
+        min_df=2,
+        max_features=20000,
+    )
+    Xtr = vectorizer.fit_transform(X_train)
+    Xte = vectorizer.transform(X_test)
+
+    le = LabelEncoder()
+    ytr = le.fit_transform(y_train)
+    yte = le.transform(y_test)
+
+    model = LogisticRegression(max_iter=2000, n_jobs=None)
+    model.fit(Xtr, ytr)
+
+    pred = model.predict(Xte)
+    acc = float(accuracy_score(yte, pred))
+    report = classification_report(
+        yte, pred, target_names=list(le.classes_), output_dict=True
+    )
+
+    joblib.dump(vectorizer, ARTIFACTS_DIR / "vectorizer.joblib")
+    joblib.dump(model, ARTIFACTS_DIR / "model.joblib")
+    joblib.dump(le, ARTIFACTS_DIR / "label_encoder.joblib")
+
+    metrics = {"accuracy": acc, "report": report, "classes": list(le.classes_)}
+    (ARTIFACTS_DIR / "metrics.json").write_text(
+        json.dumps(metrics, indent=2), encoding="utf-8"
+    )
+
+    print(f"Saved artifacts to: {ARTIFACTS_DIR}")
+    print(f"Accuracy: {acc:.4f}")
+    print(
+        classification_report(
+            yte, pred, target_names=list(le.classes_)
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()

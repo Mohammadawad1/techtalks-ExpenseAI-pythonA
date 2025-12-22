@@ -1,0 +1,76 @@
+{
+  "accuracy": 0.9745,
+  "report": {
+    "bills_&_utilities": {
+      "precision": 0.9380952380952381,
+      "recall": 0.9932773109243698,
+      "f1-score": 0.9648979591836735,
+      "support": 595.0
+    },
+    "entertainment": {
+      "precision": 0.9822335025380711,
+      "recall": 0.9723618090452262,
+      "f1-score": 0.9772727272727273,
+      "support": 398.0
+    },
+    "food_&_dining": {
+      "precision": 0.9832775919732442,
+      "recall": 0.9767441860465116,
+      "f1-score": 0.98,
+      "support": 301.0
+    },
+    "health_&medical": {
+      "precision": 1.0,
+      "recall": 0.9854368932038835,
+      "f1-score": 0.9926650366748166,
+      "support": 206.0
+    },
+    "income_&_transfers": {
+      "precision": 1.0,
+      "recall": 0.9554140127388535,
+      "f1-score": 0.9771986970684039,
+      "support": 157.0
+    },
+    "other": {
+      "precision": 1.0,
+      "recall": 0.9391891891891891,
+      "f1-score": 0.9686411149825784,
+      "support": 148.0
+    },
+    "shopping": {
+      "precision": 1.0,
+      "recall": 0.9361702127659575,
+      "f1-score": 0.967032967032967,
+      "support": 94.0
+    },
+    "transportation": {
+      "precision": 1.0,
+      "recall": 0.9603960396039604,
+      "f1-score": 0.9797979797979798,
+      "support": 101.0
+    },
+    "accuracy": 0.9745,
+    "macro avg": {
+      "precision": 0.9879507915758192,
+      "recall": 0.9648737066897439,
+      "f1-score": 0.9759383102516432,
+      "support": 2000.0
+    },
+    "weighted avg": {
+      "precision": 0.9755310779303827,
+      "recall": 0.9745,
+      "f1-score": 0.9745888020208497,
+      "support": 2000.0
+    }
+  },
+  "classes": [
+    "bills_&_utilities",
+    "entertainment",
+    "food_&_dining",
+    "health_&medical",
+    "income_&_transfers",
+    "other",
+    "shopping",
+    "transportation"
+  ]
+}
