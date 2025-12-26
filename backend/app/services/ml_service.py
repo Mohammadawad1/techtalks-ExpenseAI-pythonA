@@ -12,11 +12,20 @@ class MLService:
       - model.joblib (sklearn classifier)
       - label_encoder.joblib (LabelEncoder)
     """
-    def __init__(self, artifacts_dir: str):
+    def __init__(self, artifacts_dir: str, user_id: int | None = None):
         d = Path(artifacts_dir)
-        self.vectorizer_path = d / "vectorizer.joblib"
-        self.model_path = d / "model.joblib"
-        self.le_path = d / "label_encoder.joblib"
+        suffix = f"_{user_id}" if user_id is not None else ""
+        
+        # Check if personalized model exists, otherwise use global baseline
+        self.vectorizer_path = d / f"vectorizer{suffix}.joblib"
+        self.model_path = d / f"model{suffix}.joblib"
+        self.le_path = d / f"label_encoder{suffix}.joblib"
+
+        # Fallback to global if user model isn't trained yet
+        if user_id and not self.model_path.exists():
+            self.vectorizer_path = d / "vectorizer.joblib"
+            self.model_path = d / "model.joblib"
+            self.le_path = d / "label_encoder.joblib"
 
         self._vectorizer = None
         self._model = None

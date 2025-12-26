@@ -4,7 +4,7 @@ description,category
 219.99 at Water Bill today,bills_&_utilities
 1007.91 spent at Reimbursement - this morning,income_&_transfers
 contactlass 46.51 at Kabajji (a while ago),food_&_dining
-332.45 at Dental Clinic this morning,health_&medical
+332.45 at Dental Clinic this morning,health_&_medical
 Ogero Internet: 371.44$ paid in cash Friday night,bills_&_utilities
 mobile wallet 48.87 at Local Bakery (earlier),food_&_dining
 mobile wallet → Misc Purchase 15.81$ [Friday night],other
@@ -15,8 +15,8 @@ Bowling Beirut / 135.1 / mobile wallet / last night,entertainment
 contactless → Ogero Internet 360.37$ [last night],bills_&_utilities
 "Municipality Tax 50.44, paid by card earlier",bills_&_utilities
 Alfa Plan: 336.33 paid in cash today,bills_&_utilities
-159.22$ at Eye Doctor Friday night,health_&medical
-"Dental Clinic 322.1, contactless last night",health_&medical
+159.22$ at Eye Doctor Friday night,health_&_medical
+"Dental Clinic 322.1, contactless last night",health_&_medical
 "Gas Subscription 319.27$, apple pay earlier",bills_&_utilities
 "Alfa Plan 126.86, contactless Friday night",bills_&_utilities
 102.87$ at Water Bill yesterday,bills_&_utilities
@@ -33,13 +33,13 @@ OGERO: 348.14 onleene payment a while ago,bills_&_utilities
 Unknown Entry: 13.5$ POS payment today,other
 POS payment → Freelance Payment 1141.18 [on the weekend],income_&_transfers
 Service Fee: 96.0 paid in cash Friday night,other
-130.12 at Clinic Visit today,health_&medical
+130.12 at Clinic Visit today,health_&_medical
 49.03$ at Bank Charge on the weekend,other
 CinemaCity: 136.56$ apple pay today,entertainment
 mobile wallet 122.76 at Gas Subscription (last night),bills_&_utilities
 295.71 spent at Municipality Tax - Friday night,bills_&_utilities
 ATM Fee / 144.58$ / POS payment / yesterday,other
-337.14$ at Health Insurance a while ago,health_&medical
+337.14$ at Health Insurance a while ago,health_&_medical
 "Escape Room 100.45$, contactless earlier",entertainment
 CashDeposit:322.0$paidincashthismorning,income_&_transfers
 online payment 25.61$ at McDonald's (on the weekend),food_&_dining
@@ -80,17 +80,17 @@ Municipality Tax / 347.97$ / mobile wallet / today,bills_&_utilities
 76.98 at Zaatar W Zeit this morning,food_&_dining
 mobile wallet → Freelance Payment 1687.65$ [Friday night],income_&_transfers
 online payment 77.13 at Mcdonalds (yesterday),food_&_dining
-335.85$ spent at Medical Center - earlier,health_&medical
+335.85$ spent at Medical Center - earlier,health_&_medical
 EDL Electricity / 46.45 / paid by card / this afternoon,bills_&_utilities
 68.41 at Ogero Internet on the weekend,bills_&_utilities
 "Natflix 65.31, POS payment Friday night",entertainment
 Escape Room: 22.33$ apple pay earlier,entertainment
-Pharmacy / 104.93$ / paid by card / yesterday,health_&medical
+Pharmacy / 104.93$ / paid by card / yesterday,health_&_medical
 OGERO: 294.25$ apple pay Friday night,bills_&_utilities
 apple pay 158.99$ at Gas Subscreeption (today),bills_&_utilities
 Misc Purchase: 48.15 paid in cash yesterday,other
 paid in cash → Freelance Payment 1972.88$ [this afternoon],income_&_transfers
-Health Insurance: 388.74$ paid by card earlier,health_&medical
+Health Insurance: 388.74$ paid by card earlier,health_&_medical
 OGERO / 145.64$ / contactless / Friday night,bills_&_utilities
 "Gaming Store 121.33$, online payment yesterday",entertainment
 14.97 spent at Amazon - on the weekend,shopping
@@ -106,32 +106,32 @@ contactless → Zaatar W Zeit 66.82$ [last night],food_&_dining
 "Pizza Hut 38.66, online payment on the weekend",food_&_dining
 122.31 spent at Municipality Tax - this afternoon,bills_&_utilities
 paid by card → Uber 25.07 [Friday night],transportation
-POS payment 247.67$ at Lab Test (this morning),health_&medical
+POS payment 247.67$ at Lab Test (this morning),health_&_medical
 390.01$ spent at OGERO - a while ago,bills_&_utilities
 "Vox Cinema 53.69$, paid in cash on the weekend",entertainment
 Vox Cinema: 94.44$ paid in cash a while ago,entertainment
 75.58 at Roadster earlier,food_&_dining
 Municipality Tax: 168.53 contactless earlier,bills_&_utilities
-paid in cash 304.97$ at Eye Doctor (today),health_&medical
+paid in cash 304.97$ at Eye Doctor (today),health_&_medical
 46.67$ at Municipality Tax this morning,bills_&_utilities
 Bank Transfer IN / 213.23$ / POS payment / thees afternoon,income_&_transfers
-contactless 463.2 at Clinic Visit (yesterday),health_&medical
+contactless 463.2 at Clinic Visit (yesterday),health_&_medical
 Municipality Tax / 229.4$ / online payment / earlier,bills_&_utilities
 apple pay 289.55$ at Water Bill (this afternoon),bills_&_utilities
 570.77 at Cash Deposeet Friday night,income_&_transfers
 paid by card → Vox Cinema 137.8 [today],entertainment
 "Touch Mobile 375.97, apple pay today",bills_&_utilities
-Health Insurance / 441.19 / apple pay / Friday night,health_&medical
+Health Insurance / 441.19 / apple pay / Friday night,health_&_medical
 KFC / 63.05$ / paid by card / yesterday,food_&_dining
 134.67spentatGasSubscription-ontheweekend,bills_&_utilities
 online payment → Concert Ticket 79.84$ [this afternoon],entertainment
 Ogero Internet: 373.21 onleene payment today,bills_&_utilities
 Uber:39.58$paidbycardthisafternoon,transportation
-Pharmacy: 97.06$ appla pay on the weekend,health_&medical
+Pharmacy: 97.06$ appla pay on the weekend,health_&_medical
 Classic Burger Joint / 15.83 / paid by card / a while ago,food_&_dining
 paid in cash 32.97 at Uber (a while ago),transportation
-Pharmcy / 373.53$ / paid by card / today,health_&medical
-489.61$ spent at Health Insurance - a while ago,health_&medical
+Pharmcy / 373.53$ / paid by card / today,health_&_medical
+489.61$ spent at Health Insurance - a while ago,health_&_medical
 Beirut Falafel / 66.66$ / apple pay / last night,food_&_dining
 mobile wallet 978.11 at Freelance Payment (today),income_&_transfers
 Vox Cinema / 111.47 / paid in cash / Friday night,entertainment
@@ -143,7 +143,7 @@ Vox Cinema: 136.0$ contactless on the weekend,entertainment
 167.69$ spent at Municipality Tax - this afternoon,bills_&_utilities
 Service Fee / 26.61 / mobile wallet / on the weekend,other
 contactless → Cash Deposit 1544.97$ [this afternoon],income_&_transfers
-contactless → Dental Clinic 231.72$ [last night],health_&medical
+contactless → Dental Clinic 231.72$ [last night],health_&_medical
 1023.3$ spent at Cash Deposit - on the weekend,income_&_transfers
 POS payment → Netflix 18.12$ [on the weekend],entertainment
 37.14$ at Gas Station a while ago,transportation
@@ -151,18 +151,18 @@ POS payment → Netflix 18.12$ [on the weekend],entertainment
 paid in cash → OGERO 89.14 [yesterday],bills_&_utilities
 "Spotify 66.66$, POS payment earlier",entertainment
 EDL Electricity: 340.51 apple pay earlier,bills_&_utilities
-contactless → Pharmcy 471.76$ [yesterday],health_&medical
+contactless → Pharmcy 471.76$ [yesterday],health_&_medical
 contactless → Bolt 37.53$ [on the weekend],transportation
 mobile wallet → Roadster 21.18 [on the weekend],food_&_dining
 WaterBill/121.34$/onlinepayment/thismorning,bills_&_utilities
 Mobile Shop: 128.45$ paid by card this afternoon,shopping
 Home Furniture / 163.85$ / mobile wallet / this afternoon,shopping
 1024.16$ spent at Reimbursement - earlier,income_&_transfers
-online payment → Clinic Visit 37.42 [this morning],health_&medical
+online payment → Clinic Visit 37.42 [this morning],health_&_medical
 "Vox Cinema 24.32, mobile wallet this morning",entertainment
 Mcdonalds / 58.92$ / online payment / a while ago,food_&_dining
 paid by card 100.63$ at Bowling Beirut (Friday night),entertainment
-274.92 at Medical Center yesterday,health_&medical
+274.92 at Medical Center yesterday,health_&_medical
 93.78 at Bank Charge Friday night,other
 146.3$ at Netflix yesterday,entertainment
 apple pay 228.08 at Laptop Store (last night),shopping
@@ -179,13 +179,13 @@ Touch Mobile: 248.28$ paid by card today,bills_&_utilities
 POS payment 273.86$ at Home Furniture (today),shopping
 189.51 spent at OGERO - this morning,bills_&_utilities
 1433.43$ at Freelance Payment last night,income_&_transfers
-232.97 at Pharmacy a while ago,health_&medical
-255.17 at Health Insurance today,health_&medical
+232.97 at Pharmacy a while ago,health_&_medical
+255.17 at Health Insurance today,health_&_medical
 Zara / 86.39$ / paid by card / earlier,shopping
 168.56$ spent at Ogero Internet - yesterday,bills_&_utilities
 74.4$ at Escapa Room this morning,entertainment
 "Vox Cinema 64.58, mobile wallet this morning",entertainment
-POS payment 469.21$ at Medical Center (this afternoon),health_&medical
+POS payment 469.21$ at Medical Center (this afternoon),health_&_medical
 Decathlon / 295.03$ / mobile wallet / a while ago,shopping
 Fraelance Payment / 201.56 / POS payment / earlier,income_&_transfers
 279.61 at Laptop Store today,shopping
@@ -210,16 +210,16 @@ Spotify / 19.7 / POS payment / a while ago,entertainment
 paid by card 26.3 at Concert Ticket (last night),entertainment
 Spinneys Deli: 31.48$ paid by card a while ago,food_&_dining
 Gas Subscriptioon: 143.32 online payment this morning,bills_&_utilities
-apple pay 87.67$ at Dental Clinic (last night),health_&medical
+apple pay 87.67$ at Dental Clinic (last night),health_&_medical
 mobile wallet 358.67 at Water Bill (this morning),bills_&_utilities
-apple pay 125.95$ at Clinic Visit (on the weekend),health_&medical
+apple pay 125.95$ at Clinic Visit (on the weekend),health_&_medical
 Touch Mobile / 393.32 / paid in cash / this afternoon,bills_&_utilities
 mobile wallet → Reimbursement 1137.81 [on the weekend],income_&_transfers
 POS paymant 33.72$ at Bank Charge (last night),other
-Medical Center / 61.12 / mobile wallet / this afternoon,health_&medical
-Eye Doctor / 411.1$ / apple pay / a while ago,health_&medical
+Medical Center / 61.12 / mobile wallet / this afternoon,health_&_medical
+Eye Doctor / 411.1$ / apple pay / a while ago,health_&_medical
 Gaming Store: 110.82 mobile wallet a while ago,entertainment
-Eye Doctor / 255.2$ / online payment / on the weekend,health_&medical
+Eye Doctor / 255.2$ / online payment / on the weekend,health_&_medical
 "Beirut Falafel 77.61, contactless yesterday",food_&_dining
 "Taxi Beirut 43.17, mobile wallet Friday night",transportation
 "Sportswear Store 147.89, contactless today",shopping
@@ -254,7 +254,7 @@ OGERO / 310.98 / paid in cash / on the weekend,bills_&_utilities
 mobile wallet 495.55 at Refund (Friday night),income_&_transfers
 Alfa Plan: 225.66 mobile wallet today,bills_&_utilities
 POS payment 57.32$ at Escape Room (last night),entertainment
-Dental Clinic: 258.82 mobile wallet last night,health_&medical
+Dental Clinic: 258.82 mobile wallet last night,health_&_medical
 Ogero Internet / 173.43 / paid by card / yesterday,bills_&_utilities
 "MunicipalityTax30.87,paidbycardthisafternoon",bills_&_utilities
 46.55 spent at Pizza Hut - yesterday,food_&_dining
@@ -270,9 +270,9 @@ apple pay → OGERO 243.74$ [today],bills_&_utilities
 Alfa Plan: 345.16$ apple pay earlier,bills_&_utilities
 "ATM Fee 132.92$, paid by card on the weekend",other
 contactless → Barbar 17.64 [on the weekend],food_&_dining
-313.39 spent at Dental Clinic - Friday night,health_&medical
+313.39 spent at Dental Clinic - Friday night,health_&_medical
 Spotify: 72.66 apple pay this morning,entertainment
-31.33$ spant at Pharmcy - this morning,health_&medical
+31.33$ spant at Pharmcy - this morning,health_&_medical
 58.81$ at Gaming Store this morning,entertainment
 352.68 at Alfa Plan this morning,bills_&_utilities
 135.82 spent at Municipality Tax - Friday night,bills_&_utilities
@@ -280,7 +280,7 @@ Spotify: 72.66 apple pay this morning,entertainment
 CinemaCity: 51.52$ contactless this morning,entertainment
 "OGERO 324.32, paid by card this morning",bills_&_utilities
 59.69$ at Spinneys Deli this morning,food_&_dining
-260.88 at Pharmacy yesterday,health_&medical
+260.88 at Pharmacy yesterday,health_&_medical
 Salary Bank / 134.64$ / paid in cash / Friday night,income_&_transfers
 online payment → Adjustment Entry 122.74 [a while ago],other
 74.63$ spent at Beirut Falafel - last night,food_&_dining
@@ -292,7 +292,7 @@ mobile wallet 216.11$ at Gas Subscription (today),bills_&_utilities
 apple pay 46.04$ at Airport Taxi (today),transportation
 Service Fee: 16.4$ paid by card earlier,other
 mobile wallet → Ogero Internet 331.87 [this morning],bills_&_utilities
-370.27$ spent at Lab Test - a while ago,health_&medical
+370.27$ spent at Lab Test - a while ago,health_&_medical
 46.93$ spent at Spotify - on the weekend,entertainment
 paid by card → Reimbursement 1162.53$ [earlier],income_&_transfers
 "Escape Room 79.38, apple pay earlier",entertainment
@@ -307,7 +307,7 @@ paid by card → Home Furniture 144.37$ [Friday night],shopping
 859.02 at Refund this afternoon,income_&_transfers
 apple pay → Mobile Shop 265.0 [on the weekend],shopping
 Gas Subscription / 302.56$ / POS payment / Friday night,bills_&_utilities
-Pharmcy: 352.51$ online payment yesterday,health_&medical
+Pharmcy: 352.51$ online payment yesterday,health_&_medical
 online payment → Municipality Tax 304.64$ [yesterday],bills_&_utilities
 "Gaming Store 7.26$, POS payment on the weekend",entertainment
 296.19$ at Alfa Plan on tha weekend,bills_&_utilities
@@ -320,11 +320,11 @@ paidincash56.27atBowlingBeirut(ontheweekend),entertainment
 Kabajji / 35.27 / paid in cash / Friday night,food_&_dining
 129.26 spent at EDL Electricity - this morning,bills_&_utilities
 online payment 289.79$ at Gas Subscription (this afternoon),bills_&_utilities
-Eye Doctor: 375.24 paid in cash today,health_&medical
+Eye Doctor: 375.24 paid in cash today,health_&_medical
 paid by card → KFC 55.3 [this afternoon],food_&_dining
 paid in cash → ABC Mall 219.98$ [this afternoon],shopping
 Shawarma House / 79.03$ / online payment / this morning,food_&_dining
-Clinic Visit: 416.76 online payment last night,health_&medical
+Clinic Visit: 416.76 online payment last night,health_&_medical
 47.75 spent at Burger King - on the weekend,food_&_dining
 contactless1228.09atBankTransferIN(today),income_&_transfers
 272.81$ spent at Mobile Shop - today,shopping
@@ -333,7 +333,7 @@ Zaatar W Zeit / 12.93 / paid by card / a while ago,food_&_dining
 31.78 at Bolt yesterday,transportation
 139.72 spent at Touch Mobile - today,bills_&_utilities
 contactless 20.3$ at Gaming Store (yesterday),entertainment
-Pharmcy / 290.08$ / paid by card / Friday night,health_&medical
+Pharmcy / 290.08$ / paid by card / Friday night,health_&_medical
 paid by card 397.9$ at Gas Subscription (this morning),bills_&_utilities
 paid by card → Classic Burger Joint 46.27 [this afternoon],food_&_dining
 231.3 at Water Bill Friday night,bills_&_utilities
@@ -353,9 +353,9 @@ Watar Bill: 84.5 contactless today,bills_&_utilities
 Gas Station / 27.35$ / POS payment / earlier,transportation
 Escape Room: 119.69$ mobile wallet this afternoon,entertainment
 mobile wallet → Escape Room 107.22 [on the weekend],entertainment
-paid by card 262.59 at Dental Clinic (on the weekend),health_&medical
+paid by card 262.59 at Dental Clinic (on the weekend),health_&_medical
 Ogero Internet: 86.0$ contactless earlier,bills_&_utilities
-"Lab Test 431.73$, paid in cash a while ago",health_&medical
+"Lab Test 431.73$, paid in cash a while ago",health_&_medical
 contactless 42.4 at Gas Subscreeption (on the weekend),bills_&_utilities
 EDL Electricity: 352.95$ paid in cash Friday night,bills_&_utilities
 49.83$ spent at Concert Ticket - last night,entertainment
@@ -367,7 +367,7 @@ apple pay 1454.5$ at Freelance Payment (today),income_&_transfers
 Home Furniture / 221.88$ / paid in cash / today,shopping
 apple pay 298.88$ at Decathlon (on the weekend),shopping
 39.68$ at Gas Station Friday night,transportation
-488.8$ spent at Medical Center - on the weekend,health_&medical
+488.8$ spent at Medical Center - on the weekend,health_&_medical
 Crepaway / 38.0 / paid in cash / today,food_&_dining
 158.38 spent at EDL Electricity - Friday night,bills_&_utilities
 McDonald's: 40.25$ POS payment a while ago,food_&_dining
@@ -375,7 +375,7 @@ Concert Ticket: 43.06$ apple pay this afternoon,entertainment
 27.0$ spent at Rooadster - this morning,food_&_dining
 1899.2$ spent at Cash Deposit - earlier,income_&_transfers
 Ogero Internet: 199.52 POS payment this afternoon,bills_&_utilities
-"Dental Clinic 416.3$, mobile wallet Friday night",health_&medical
+"Dental Clinic 416.3$, mobile wallet Friday night",health_&_medical
 Freelance Payment: 867.32$ contactless yesterday,income_&_transfers
 45.92$ spent at Uberr - this morning,transportation
 379.76 spent at Municipality Tax - this afternoon,bills_&_utilities
@@ -385,8 +385,8 @@ POS payment → Gas Subscription 397.68 [today],bills_&_utilities
 apple pay → Adjustment Entry 34.0$ [today],other
 mobile wallet → Airport Taxi 45.11 [Friday night],transportation
 "Escape Room 122.82, paid in cash today",entertainment
-online payment 360.25$ at Health Insurance (yesterday),health_&medical
-Eye Doctor / 93.86$ / contactless / this afternoon,health_&medical
+online payment 360.25$ at Health Insurance (yesterday),health_&_medical
+Eye Doctor / 93.86$ / contactless / this afternoon,health_&_medical
 POS payment 317.04 at Ogero Internet (earlier),bills_&_utilities
 Refund: 588.6$ mobile wallet this afternoon,income_&_transfers
 paid by card → Unknown Entry 19.02$ [a while ago],other
@@ -405,7 +405,7 @@ Concert Ticket / 112.06 / contactless / earlier,entertainment
 137.16$ at Alfa Plan on the weekend,bills_&_utilities
 673.41 spent at Refund - yesterday,income_&_transfers
 Cash Deposit: 703.39 mobile wallet earlier,income_&_transfers
-Lab Test / 194.76 / online payment / this morning,health_&medical
+Lab Test / 194.76 / online payment / this morning,health_&_medical
 "Ogero Internet 42.81$, contactless this morning",bills_&_utilities
 "Burger King 45.72$, online payment last night",food_&_dining
 online payment 287.9 at Water Bill (today),bills_&_utilities
@@ -424,7 +424,7 @@ Municipality Tax / 249.69 / paid in cash / Friday night,bills_&_utilities
 "CinemaCity 6.47$, paid in cash this morning",entertainment
 POS payment 76.54$ at Spinneys Deli (Friday night),food_&_dining
 EDL Electricity: 151.64$ POS payment yesterday,bills_&_utilities
-259.54$ spent at Pharmacy - last night,health_&medical
+259.54$ spent at Pharmacy - last night,health_&_medical
 mobile wallet 45.16$ at Alfa Plan (a while ago),bills_&_utilities
 apple pay → Bank Charge 56.25 [earlier],other
 CinemaCity / 111.8 / contactless / on the weekend,entertainment
@@ -437,14 +437,14 @@ Misc Purchase / 67.85 / mobile wallet / yesterday,other
 194.22 spent at City Centre - Friday night,shopping
 Netflix: 41.36 contactless a while ago,entertainment
 online payment 59.74 at Burger King (last night),food_&_dining
-mobile wallet 195.54 at Dental Clinic (on the weekend),health_&medical
-438.2 spent at Pharmacy - last night,health_&medical
+mobile wallet 195.54 at Dental Clinic (on the weekend),health_&_medical
+438.2 spent at Pharmacy - last night,health_&_medical
 online payment 188.72$ at Touch Mobile (on the weekend),bills_&_utilities
 contactless → Vox Cinema 131.67$ [last night],entertainment
 "Ogero Internet 48.4$, POS payment last night",bills_&_utilities
 231.76 spent at Ogero Internet - a while ago,bills_&_utilities
 160.04 spent at Gas Subscription - a while ago,bills_&_utilities
-contactless → Dental Clinic 95.52$ [today],health_&medical
+contactless → Dental Clinic 95.52$ [today],health_&_medical
 "KFC 79.51, contactless last night",food_&_dining
 Roadster: 12.02 POS payment a while ago,food_&_dining
 POS payment → Shawarma House 60.43$ [a while ago],food_&_dining
@@ -458,13 +458,13 @@ EDL Electricity / 261.56$ / contactless / earlier,bills_&_utilities
 EDL Electricity: 333.63$ paid in cash earlier,bills_&_utilities
 106.72 spent at Concert Ticket - Friday night,entertainment
 CinemaCity / 27.29$ / moobile wallet / earlier,entertainment
-183.48$ at Eye Doctor today,health_&medical
+183.48$ at Eye Doctor today,health_&_medical
 Gas Subscription / 303.59 / contactless / this afternoon,bills_&_utilities
 contactless 23.8 at Parking Pay (today),transportation
 Water Bill: 112.72$ paid by card yesterday,bills_&_utilities
 Mcdonalds: 14.48 POS payment Friday night,food_&_dining
 57.17$ at KFC earlier,food_&_dining
-online payment → Lab Test 324.77$ [Friday night],health_&medical
+online payment → Lab Test 324.77$ [Friday night],health_&_medical
 paid in cash 1131.78$ at Fraelance Payment (today),income_&_transfers
 21.98 at Touch Mobile earlier,bills_&_utilities
 Shawarma Hoouse: 59.69 apple pay earlier,food_&_dining
@@ -472,31 +472,31 @@ Shawarma Hoouse: 59.69 apple pay earlier,food_&_dining
 Roadster: 43.49 POS payment Friday night,food_&_dining
 Taxi Beirut / 34.75 / paid by card / yesterday,transportation
 apple pay 13.81$ at Mcdonalds (today),food_&_dining
-12.02 at Pharmcy Friday night,health_&medical
+12.02 at Pharmcy Friday night,health_&_medical
 "Ogero Internet 206.63, mobile wallet today",bills_&_utilities
 "Concert Ticket 102.09, paid by card a while ago",entertainment
 "CinemaCity 25.94$, paid by card Friday night",entertainment
 375.45$ at Ogero Internet this morning,bills_&_utilities
 Alfa Plan: 190.31$ paid by card earlier,bills_&_utilities
-contactless → Health Insurance 47.49 [yesterday],health_&medical
+contactless → Health Insurance 47.49 [yesterday],health_&_medical
 71.04$ spent at McDonald's - Friday night,food_&_dining
 apple pay 93.3$ at CinemaCity (yesterday),entertainment
 Touch Mobile / 33.66$ / POS payment / Friday night,bills_&_utilities
 appla pay 9.24 at Bowling Beirut (earlier),entertainment
-contactless → Eye Doctor 246.76$ [yesterday],health_&medical
+contactless → Eye Doctor 246.76$ [yesterday],health_&_medical
 onleene payment 717.84 at Refund (this afternoon),income_&_transfers
 "OGERO 213.67$, mobile wallet yesterday",bills_&_utilities
 applepay→ATMFee61.19[awhileago],other
 267.61$ at Ogero Internet earleeer,bills_&_utilities
 141.37 spent at CinemaCity - earlier,entertainment
-Pharmcy / 58.75 / POS payment / a while ago,health_&medical
+Pharmcy / 58.75 / POS payment / a while ago,health_&_medical
 Touch Mobile: 245.91$ apple pay this afternoon,bills_&_utilities
 Barbar / 65.72 / online payment / on the weekend,food_&_dining
 POS payment 36.04 at Mobile Shop (earlier),shopping
 mobile wallet 46.47 at Service Fee (earlier),other
 apple pay → KFC 19.96$ [this morning],food_&_dining
-LabTest:345.36onlinepaymentFridaynight,health_&medical
-"Dental Clinic 476.62$, online payment last night",health_&medical
+LabTest:345.36onlinepaymentFridaynight,health_&_medical
+"Dental Clinic 476.62$, online payment last night",health_&_medical
 mobile wallet → Cash Deposit 1153.82$ [this afternoon],income_&_transfers
 contactless → CinemaCity 70.41 [Friday night],entertainment
 "KFC 33.21$, online payment last night",food_&_dining
@@ -504,7 +504,7 @@ contactless → CinemaCity 70.41 [Friday night],entertainment
 Water Bill / 358.64$ / paid by card / Friday night,bills_&_utilities
 apple pay 69.09 at McDonald's (last night),food_&_dining
 paid in cash 915.4$ at Refund (last night),income_&_transfers
-271.01 spent at Pharmcy - today,health_&medical
+271.01 spent at Pharmcy - today,health_&_medical
 Touch Mobile: 353.36$ paid by card yesterday,bills_&_utilities
 9.63 spent at Bus Ticket - a while ago,transportation
 Bank Charge / 79.86 / POS payment / today,other
@@ -528,7 +528,7 @@ paid by card → OGERO 75.04$ [this morning],bills_&_utilities
 paid by card 23.34$ at Water Bill (a while ago),bills_&_utilities
 Spotify/138.07$/onlinepayment/yesterday,entertainment
 mobila wallet → Misc Purchase 57.82 [this morning],other
-contactless 285.96 at Medical Center (last night),health_&medical
+contactless 285.96 at Medical Center (last night),health_&_medical
 POS payment → CinemaCity 40.08 [this afternoon],entertainment
 83.87 spent at Spotify - Friday night,entertainment
 "H&M 196.46$, apple pay earlier",shopping
@@ -536,12 +536,12 @@ online payment → Concert Ticket 43.21$ [on the weekend],entertainment
 POS payment → Netflix 59.66$ [this afternoon],entertainment
 Alfa Plan: 90.12$ POS payment a while agoo,bills_&_utilities
 POS payment 104.5$ at Netflix (last night),entertainment
-apple pay 271.77$ at Pharmcy (this morning),health_&medical
-93.57$ at Pharmcy a while ago,health_&medical
+apple pay 271.77$ at Pharmcy (this morning),health_&_medical
+93.57$ at Pharmcy a while ago,health_&_medical
 Classic Burger Joint: 55.41 online payment Friday night,food_&_dining
 paid in cash → Unknown Entry 41.86 [last night],other
 POS payment 109.12$ at Escape Room (a while ago),entertainment
-coontactless 34.03$ at Clinic Visit (a while ago),health_&medical
+coontactless 34.03$ at Clinic Visit (a while ago),health_&_medical
 online payment 283.46 at OGERO (a while ago),bills_&_utilities
 POS payment 20.74 at Crepaway (yesterday),food_&_dining
 paid in cash → Fuel Station 17.21$ [last night],transportation
@@ -560,7 +560,7 @@ contactless 355.59 at Municipality Tax (a while ago),bills_&_utilities
 132.05$ at Gaming Store this afternoon,entertainment
 "Municipality Tax 239.66, paid in cash last night",bills_&_utilities
 91.87 at Misc Purchase last night,other
-Clinic Visit / 54.48 / paid by card / last night,health_&medical
+Clinic Visit / 54.48 / paid by card / last night,health_&_medical
 10.88$ spent at Spotify - yesterday,entertainment
 "Pizza Hut 35.56$, paid in cash this morning",food_&_dining
 "Mobile Shop 175.92$, apple pay on the weekend",shopping
@@ -569,7 +569,7 @@ Salary Bank / 94.0$ / contactlass / earlier,income_&_transfers
 "Service Fee 96.25$, contactless a while ago",other
 contactless 134.69$ at Netflix (on the weekend),entertainment
 47.29$ spent at Shawarma House - earlier,food_&_dining
-Clinic Visit / 51.87$ / contactless / a while ago,health_&medical
+Clinic Visit / 51.87$ / contactless / a while ago,health_&_medical
 POS payment → OGERO 271.17$ [on the weekend],bills_&_utilities
 POS payment 371.87$ at Municipality Tax (a while ago),bills_&_utilities
 "McDonald's 55.87$, apple pay this morning",food_&_dining
@@ -596,7 +596,7 @@ paid in cash → Gas Subscription 137.46$ [earlier],bills_&_utilities
 "Barbar 75.55$, paid by card earlier",food_&_dining
 99.44$ spent at CinemaCity - earlier,entertainment
 7.3 at Fuel Station this morning,transportation
-onleene payment → Pharmacy 404.26 [Friday night],health_&medical
+onleene payment → Pharmacy 404.26 [Friday night],health_&_medical
 143.83 at Municipality Tax yesterday,bills_&_utilities
 257.34$ at Ogero Internet yesterday,bills_&_utilities
 Burger King / 61.18 / paid by card / this morning,food_&_dining
@@ -608,8 +608,8 @@ Bank Charge: 86.73$ POS payment a while ago,other
 Misc Purchase: 147.06$ apple pay earlier,other
 "Municipality Tax 26.8, mobile wallet last night",bills_&_utilities
 Escape Room: 104.74 POS payment earlier,entertainment
-"Pharmcy 348.53, paid by card earlier",health_&medical
-POS payment 348.79 at Eye Doctor (a while ago),health_&medical
+"Pharmcy 348.53, paid by card earlier",health_&_medical
+POS payment 348.79 at Eye Doctor (a while ago),health_&_medical
 POSpayment1415.85atBankTransferIN(thisafternoon),income_&_transfers
 Vox Cinema: 96.62$ apple pay a while ago,entertainment
 Local Bakery / 16.64$ / mobile wallet / earlier,food_&_dining
@@ -620,7 +620,7 @@ online payment 19.62 at Zaatar W Zeit (a while ago),food_&_dining
 contactless → Vox Cinema 133.8 [last night],entertainment
 Refund: 1096.25$ online payment yesterday,income_&_transfers
 Bowling Beirut / 106.05$ / mobile wallet / this afternoon,entertainment
-paid by card 465.83$ at Pharmacy (Friday night),health_&medical
+paid by card 465.83$ at Pharmacy (Friday night),health_&_medical
 42.86$ at EDL Electricity Friday night,bills_&_utilities
 47.36 at Burger King a while ago,food_&_dining
 contactless → Vox Cinema 58.45 [a while ago],entertainment
@@ -630,12 +630,12 @@ Freelance Payment / 695.13 / apple pay / Friday night,income_&_transfers
 253.53$ spent at Ogero Internet - this afternoon,bills_&_utilities
 apple pay 19.85$ at Gaming Store (this afternoon),entertainment
 58.16$ at Burger King this afternoon,food_&_dining
-415.71 spent at Pharmcy - today,health_&medical
+415.71 spent at Pharmcy - today,health_&_medical
 49.61$ spent at CinemaCity - today,entertainment
 "Gas Subscription 111.14$, contactless Friday night",bills_&_utilities
 91.09 spent at Ogero Internet - yesterday,bills_&_utilities
 paid by card → Alfa Plan 84.96 [a while ago],bills_&_utilities
-258.55 spent at Eye Doctor - today,health_&medical
+258.55 spent at Eye Doctor - today,health_&_medical
 "Netflix 139.96, contactless a while ago",entertainment
 mobile wallet 334.57 at OGERO (this morning),bills_&_utilities
 Gas Subscription: 166.93 paid by card yasterday,bills_&_utilities
@@ -652,24 +652,24 @@ Adjustment Entry: 107.92 paid by card today,other
 moobile wallet 161.36 at Touch Mobile (on the weekend),bills_&_utilities
 paid by card → Spotify 54.3 [last night],entertainment
 Concert Ticket / 37.85$ / contactless / this afternoon,entertainment
-416.98 spent at Medical Center - yesterday,health_&medical
+416.98 spent at Medical Center - yesterday,health_&_medical
 online payment 39.77$ at Escape Room (on the weekend),entertainment
 100.85$ spent at Municipality Tax - today,bills_&_utilities
 paid in cash 35.6 at Alfa Plan (on the weekend),bills_&_utilities
 Raimbursement / 1258.09$ / paid in cash / Friday night,income_&_transfers
 mobilewallet148.97$atBowlingBeirut(thismorning),entertainment
 288.57 at Watar Bill on the weekend,bills_&_utilities
-Clinic Visit / 84.16 / mobile wallet / earlier,health_&medical
+Clinic Visit / 84.16 / mobile wallet / earlier,health_&_medical
 Barbar: 32.87 online payment yesterday,food_&_dining
 142.29$ at OGERO on the weekend,bills_&_utilities
 "OGERO 72.46, contactless earlier",bills_&_utilities
 Cash Deposit: 1557.56 contactless this morning,income_&_transfers
-online payment → Clinic Visit 496.46$ [today],health_&medical
+online payment → Clinic Visit 496.46$ [today],health_&_medical
 "Alfa Plan 179.41, POS payment this morning",bills_&_utilities
 contactless → Crepaway 68.73 [last night],food_&_dining
 65.89 at EDL Electricity this afternoon,bills_&_utilities
 "McDonald's 40.33$, online payment on the weekend",food_&_dining
-online payment → Pharmacy 267.1 [Friday night],health_&medical
+online payment → Pharmacy 267.1 [Friday night],health_&_medical
 Gas Subscription / 193.18 / paid in cash / today,bills_&_utilities
 Bank Charge: 84.18 mobile wallet earlier,other
 25.34$ spent at Municipality Tax - earlier,bills_&_utilities
@@ -679,15 +679,15 @@ Bank Transfer IN: 588.3$ paid in cash on the weekend,income_&_transfers
 "Concert Ticket 12.39, online payment yesterday",entertainment
 182.35 at Municipality Tax Friday night,bills_&_utilities
 323.74$ spent at Refund - earlier,income_&_transfers
-251.33$ at Health Insurance this morning,health_&medical
+251.33$ at Health Insurance this morning,health_&_medical
 online payment → Ogero Internet 109.5 [last night],bills_&_utilities
 "H&M 100.98$, mobile wallet earlier",shopping
-paid in cash → Clinic Visit 387.15 [yesterday],health_&medical
+paid in cash → Clinic Visit 387.15 [yesterday],health_&_medical
 Gas Subscription: 298.74$ apple pay yesterday,bills_&_utilities
 31.27 spent at Crepaway - a while ago,food_&_dining
 149.77 at OGERO yesterday,bills_&_utilities
 "Kabajji 72.06$, POS payment last night",food_&_dining
-POS payment 364.08$ at Dental Clinic (earlier),health_&medical
+POS payment 364.08$ at Dental Clinic (earlier),health_&_medical
 apple pay 94.85 at Netflix (earlier),entertainment
 Escape Room: 85.64$ POS payment this afternoon,entertainment
 70.15$ spent at Escape Room - this afternoon,entertainment
@@ -712,18 +712,18 @@ OGERO / 24.57$ / appla pay / on the weekend,bills_&_utilities
 96.68$ spent at OGERO - today,bills_&_utilities
 Bowling Beirut / 75.47 / apple pay / a while ago,entertainment
 Escape Room / 24.68 / POS payment / last night,entertainment
-359.07$ spent at Pharmacy - a while ago,health_&medical
+359.07$ spent at Pharmacy - a while ago,health_&_medical
 191.54 at Ogero Internet today,bills_&_utilities
 121.22 spent at Spotify - last night,entertainment
-paid in cash → Lab Test 221.25$ [this afternoon],health_&medical
+paid in cash → Lab Test 221.25$ [this afternoon],health_&_medical
 paid by card → EDL Electricity 49.78 [this afternoon],bills_&_utilities
-474.44 at Health Insurance this afternoon,health_&medical
+474.44 at Health Insurance this afternoon,health_&_medical
 Reimbursement: 863.42 POS payment Friday night,income_&_transfers
 Municipality Tax: 266.75 contactless Friday night,bills_&_utilities
-paid in cash → Dental Clinic 416.57 [last night],health_&medical
+paid in cash → Dental Clinic 416.57 [last night],health_&_medical
 paid by card 383.36 at EDL Electricity (earlier),bills_&_utilities
 74.02$ at Gas Subscription a while ago,bills_&_utilities
-211.81 at Eye Doctor a while ago,health_&medical
+211.81 at Eye Doctor a while ago,health_&_medical
 Barbar: 52.43 mobile wallet last night,food_&_dining
 Shein: 206.35 POS payment this afternoon,shopping
 Misc Purchase: 27.52 online payment Friday night,other
@@ -764,14 +764,14 @@ Adjustment Entry: 88.23 contactless this afternoon,other
 241.78$ at Water Bill on the weekend,bills_&_utilities
 paid by card → Vox Cinema 18.69 [last night],entertainment
 38.08 at Water Beell on the weekend,bills_&_utilities
-paid by card → Medical Center 64.87 [this afternoon],health_&medical
+paid by card → Medical Center 64.87 [this afternoon],health_&_medical
 paid by card 265.98$ at OGERO (yesterday),bills_&_utilities
 172.54$ at Municipality Tax Friday night,bills_&_utilities
 paid by card 48.57$ at ATM Fee (last night),other
 Water Bill: 187.09$ apple pay Friday night,bills_&_utilities
 Reimbursement / 1445.99 / paid by card / today,income_&_transfers
 Alfa Plan / 232.55 / POS payment / a while ago,bills_&_utilities
-167.68$ at Medical Center today,health_&medical
+167.68$ at Medical Center today,health_&_medical
 75.47 at Misc Purchase a while ago,other
 32.3$ at Local Bakery this afternoon,food_&_dining
 mobile wallet → Alfa Plan 391.43$ [on the weekend],bills_&_utilities
@@ -792,13 +792,13 @@ ATM Fee / 22.7 / contactless / a while ago,other
 POS payment 67.84$ at Sportswear Store (earlier),shopping
 Gas Subscription / 194.66$ / online payment / this afternoon,bills_&_utilities
 Crepaway / 61.29 / online payment / this morning,food_&_dining
-357.43$ at Pharmcy today,health_&medical
+357.43$ at Pharmcy today,health_&_medical
 OGERO: 256.31 onlina payment yesterday,bills_&_utilities
 paeed in cash → Municipality Tax 116.78$ [last night],bills_&_utilities
 POS payment → Netflix 68.72 [a while ago],entertainment
 contactless → Gas Station 22.47 [earlier],transportation
-348.91$ spent at Clinic Visit - on the weekend,health_&medical
-354.15 spent at Eye Doctor - earlier,health_&medical
+348.91$ spent at Clinic Visit - on the weekend,health_&_medical
+354.15 spent at Eye Doctor - earlier,health_&_medical
 OGERO / 352.0 / POS payment / earleeer,bills_&_utilities
 Refund: 120.71$ apple pay this morning,income_&_transfers
 "Spinneys Deli 18.02, paid in cash a while ago",food_&_dining
@@ -813,7 +813,7 @@ Roadster: 41.29 contactless Friday night,food_&_dining
 contactless→EDLElectricity28.33$[thismorning],bills_&_utilities
 "Aeerport Taxi 13.35, paid by card a while ago",transportation
 228.56$ spent at Touch Mobile - earlier,bills_&_utilities
-"Dental Clinic 222.62, contactless today",health_&medical
+"Dental Clinic 222.62, contactless today",health_&_medical
 apple pay → EDL Electricity 186.54 [earlier],bills_&_utilities
 63.5$ at Alfa Plan last night,bills_&_utilities
 Concert Ticket: 84.85 POS payment earlier,entertainment
@@ -822,16 +822,16 @@ POS payment 161.42$ at LeMall (a while ago),shopping
 106.92$ spent at Service Fee - last night,other
 Toouch Mobile: 378.03$ POS payment this afternoon,bills_&_utilities
 contactless → Spinneys Deli 64.47 [a while ago],food_&_dining
-Medical Center: 424.66$ contactless today,health_&medical
+Medical Center: 424.66$ contactless today,health_&_medical
 POS payment → OGERO 47.85$ [yesterday],bills_&_utilities
 contactless → Bowling Beirut 105.59 [on the weekend],entertainment
 KFC / 71.03$ / apple pay / this afternoon,food_&_dining
-20.47 spent at Pharmacy - yesterday,health_&medical
+20.47 spent at Pharmacy - yesterday,health_&_medical
 online payment → Spotify 63.44$ [today],entertainment
 8.15 spent at Spinneys Deli - yesterday,food_&_dining
 "Water Bill 387.44$, online payment today",bills_&_utilities
 CinemaCity / 122.5$ / paid in cash / on the weekend,entertainment
-"Health Insurance 396.87$, POS payment today",health_&medical
+"Health Insurance 396.87$, POS payment today",health_&_medical
 73.13$ spent at Zaatar W Zeit - today,food_&_dining
 37.76 at Bowling Beirut last night,entertainment
 EDL Electricity: 229.38 contactless Friday night,bills_&_utilities
@@ -839,14 +839,14 @@ contactless → Salary Bank 883.66 [last night],income_&_transfers
 mobile wallet → Netflix 102.09 [today],entertainment
 Netflix / 89.32$ / contactless / a while ago,entertainment
 Bowling Beirut: 76.03$ paid in cash earlier,entertainment
-316.12$ spent at Pharmacy - earlier,health_&medical
+316.12$ spent at Pharmacy - earlier,health_&_medical
 paid in cash → Vox Cinema 107.37 [today],entertainment
 53.35$ spent at Misc Purchase - last night,other
 online payment 278.02$ at Cash Deposit (this morning),income_&_transfers
-POS payment → Eye Doctor 400.04 [this afternoon],health_&medical
+POS payment → Eye Doctor 400.04 [this afternoon],health_&_medical
 apple pay 222.54$ at Laptop Store (this morning),shopping
-paid by card → Eye Dooctor 406.81 [last night],health_&medical
-paid in cash 255.13 at Dental Clinic (this morning),health_&medical
+paid by card → Eye Dooctor 406.81 [last night],health_&_medical
+paid in cash 255.13 at Dental Clinic (this morning),health_&_medical
 Salary Bank / 1883.9 / mobile wallet / last night,income_&_transfers
 Misc Purchase: 22.65$ paid by card earlier,other
 paid in cash 34.24 at Netflix (this morning),entertainment
@@ -867,7 +867,7 @@ paid in cash 303.8 at Ogero Internet (Friday night),bills_&_utilities
 Concert Ticket: 87.14$ paid in cash yesterday,entertainment
 60.33$ at ATM Fee today,other
 1819.78 at Freelance Payment last night,income_&_transfers
-130.47 at Medeecal Center this morning,health_&medical
+130.47 at Medeecal Center this morning,health_&_medical
 96.52 at Service Fee Friday night,other
 "Decathlon 174.69$, paid in cash Friday night",shopping
 CinemaCity: 34.09 POS payment today,entertainment
@@ -876,7 +876,7 @@ paid in cash 354.69$ at Alfa Plan (Friday night),bills_&_utilities
 apple pay → Netflix 104.83$ [today],entertainment
 Alfa Plan: 311.51$ POS payment Friday night,bills_&_utilities
 17.58$ spent at Gaming Store - yesterday,entertainment
-Eye Doctor / 285.58 / apple pay / today,health_&medical
+Eye Doctor / 285.58 / apple pay / today,health_&_medical
 online payment 185.63$ at Water Bill (last night),bills_&_utilities
 27.41$ spent at Mcdonalds - a while ago,food_&_dining
 paid by card 374.57$ at EDL Electricity (Friday night),bills_&_utilities
@@ -884,16 +884,16 @@ paid by card 374.57$ at EDL Electricity (Friday night),bills_&_utilities
 McDonald's / 25.25$ / paid by card / this afternoon,food_&_dining
 Water Bill / 279.36$ / contactless / on the weekend,bills_&_utilities
 paid by card → OGERO 396.41$ [Friday night],bills_&_utilities
-POS payment 173.21 at Pharmacy (this morning),health_&medical
+POS payment 173.21 at Pharmacy (this morning),health_&_medical
 "Classic Burger Joint 74.26, POS payment a while ago",food_&_dining
-"ClinicVisit490.11,paidincashFridaynight",health_&medical
+"ClinicVisit490.11,paidincashFridaynight",health_&_medical
 61.57$ at Mcdonalds Friday night,food_&_dining
 6.31 at Misc Purchase on the weekend,other
 "Roadster 78.63$, POS payment earlier",food_&_dining
 apple pay 73.18$ at Unknoown Entry (yesterday),other
 127.83 at Netflix today,entertainment
 259.23$ at Gas Subscription on the weekend,bills_&_utilities
-20.36 at Lab Test last night,health_&medical
+20.36 at Lab Test last night,health_&_medical
 "Classic Burger Joint 34.94, apple pay on the weekend",food_&_dining
 POS payment → Gas Subscription 371.0 [earlier],bills_&_utilities
 "Spinneys Deli 68.91, paid in cash this morning",food_&_dining
@@ -902,16 +902,16 @@ Refund / 534.66$ / online payment / this afternoon,income_&_transfers
 Souk Beirut / 67.28 / apple pay / this morning,shopping
 1939.24$ at Freelance Payment last night,income_&_transfers
 mobile wallet 141.51$ at Escape Room (on the weekend),entertainment
-paid in cash 43.65$ at Health Insurance (this morning),health_&medical
+paid in cash 43.65$ at Health Insurance (this morning),health_&_medical
 Salary Bank: 880.76$ paid in cash yesterday,income_&_transfers
 mobile wallet → Misc Purchase 55.06 [last night],other
 Gas Subscription / 307.72$ / contactless / on the weekend,bills_&_utilities
 191.44 at Water Bill yesterday,bills_&_utilities
 POS payment 58.16$ at Adjustment Entry (today),other
-Clinic Visit / 492.74 / online payment / last night,health_&medical
+Clinic Visit / 492.74 / online payment / last night,health_&_medical
 mobile wallet → Concert Ticket 105.16 [Friday night],entertainment
 online payment → Water Bill 395.59$ [yesterday],bills_&_utilities
-"Dental Clinic 108.89$, POS payment earlier",health_&medical
+"Dental Clinic 108.89$, POS payment earlier",health_&_medical
 paid in cash 55.01$ at LeMall (on the weekend),shopping
 Crepaway: 10.17$ POS payment this afternoon,food_&_dining
 Burger King / 41.44 / contactless / this morning,food_&_dining
@@ -922,7 +922,7 @@ Gas Subscription / 228.93 / paid by card / Friday night,bills_&_utilities
 175.87 spent at Gas Subscription - on the weekend,bills_&_utilities
 EDL Electricity: 321.76 mobile wallet last night,bills_&_utilities
 Zara / 225.69 / online payment / this morning,shopping
-67.29$ spent at Clinic Visit - this morning,health_&medical
+67.29$ spent at Clinic Visit - this morning,health_&_medical
 54.59$ at Kabajji this afternoon,food_&_dining
 57.2$ at Beirut Falafel last night,food_&_dining
 Adjustment Entry: 102.84 apple pay today,other
@@ -937,7 +937,7 @@ apple pay → CinemaCity 73.42$ [this afternoon],entertainment
 Crepaway / 69.99 / mobile wallet / last night,food_&_dining
 38.58 spent at Vox Cinema - on the weekend,entertainment
 "Ogero Internet 369.53, mobile wallet Friday night",bills_&_utilities
-Lab Test: 192.14 POS payment today,health_&medical
+Lab Test: 192.14 POS payment today,health_&_medical
 Vox Cinema: 89.56 paid in cash this morning,entertainment
 257.19 at Shein on the weekend,shopping
 contactless 345.53 at Water Bill (this morning),bills_&_utilities
@@ -958,7 +958,7 @@ POS payment → Alfa Plan 297.29 [this morning],bills_&_utilities
 Adjustment Entry: 68.73 paid by card on the weekend,other
 Alfa Plan / 60.81$ / online payment / this morning,bills_&_utilities
 Water Bill / 61.9$ / online payment / this afternoon,bills_&_utilities
-apple pay 237.19$ at Lab Test (Friday night),health_&medical
+apple pay 237.19$ at Lab Test (Friday night),health_&_medical
 paid by card 293.45 at Alfa Plan (today),bills_&_utilities
 apple pay 66.13 at Netflix (a while ago),entertainment
 POS payment 292.77 at Ogero Internet (today),bills_&_utilities
@@ -967,12 +967,12 @@ paid in cash → Cash Deposit 240.83 [this morning],income_&_transfers
 apple pay → OGERO 233.6 [a wheele ago],bills_&_utilities
 Bolt: 25.11 POS payment today,transportation
 POS payment 41.35 at Unknown Entry (earlier),other
-apple pay 478.34$ at Health Insurance (yesterday),health_&medical
-Health Insurance / 478.72 / online payment / yesterday,health_&medical
+apple pay 478.34$ at Health Insurance (yesterday),health_&_medical
+Health Insurance / 478.72 / online payment / yesterday,health_&_medical
 POS paymant → Concert Ticket 76.44$ [this morning],entertainment
 paid in cash → KFC 5.37$ [today],food_&_dining
 mobile wallet 258.22$ at Zara (this morning),shopping
-paid by card → Pharmacy 487.54 [Friday night],health_&medical
+paid by card → Pharmacy 487.54 [Friday night],health_&_medical
 paid in cash → Refund 88.11$ [Friday night],income_&_transfers
 "Spotify 90.19$, mobile wallet on the weekend",entertainment
 contactless → Bank Charge 116.19 [today],other
@@ -986,7 +986,7 @@ Concert Ticket: 27.7$ paid by card last night,entertainment
 "Misc Purchase 45.65, POS payment today",other
 81.99$ spent at Freelance Payment - a while ago,income_&_transfers
 paid in cash 150.6 at Water Bill (Friday night),bills_&_utilities
-online payment 272.67 at Eye Doctor (a while ago),health_&medical
+online payment 272.67 at Eye Doctor (a while ago),health_&_medical
 contactless 65.2$ at Bank Charge (this morning),other
 "Reimbursement 1575.31, online payment last night",income_&_transfers
 paid in cash 56.33 at Burger King (last night),food_&_dining
@@ -996,7 +996,7 @@ paid in cash 56.33 at Burger King (last night),food_&_dining
 "Bowling Beirut 146.96$, paid by card yesterday",entertainment
 "Touch Mobile 183.2, apple pay this morning",bills_&_utilities
 contactless → Spinneys Deli 78.53 [Friday night],food_&_dining
-POS payment 434.82 at Clinic Visit (this afternoon),health_&medical
+POS payment 434.82 at Clinic Visit (this afternoon),health_&_medical
 OgeroInternet/267.42/mobilewallet/ontheweekend,bills_&_utilities
 CinemaCity: 43.34 online payment this morning,entertainment
 24.65$ spent at ATM Fee - a while ago,other
@@ -1010,9 +1010,9 @@ Touch Mobile / 377.63 / apple pay / this afternoon,bills_&_utilities
 "Escape Room 127.54$, paid by card last night",entertainment
 POS payment 49.11$ at Spotify (this afternoon),entertainment
 1079.7 at Cash Deposit last night,income_&_transfers
-Dental Clinic: 264.73$ online payment this morning,health_&medical
+Dental Clinic: 264.73$ online payment this morning,health_&_medical
 "Misc Purchase 74.92, contactless Friday night",other
-paid by card → Pharmcy 270.86 [this afternoon],health_&medical
+paid by card → Pharmcy 270.86 [this afternoon],health_&_medical
 174.31 spent at Water Bill - today,bills_&_utilities
 Touch Mobile / 29.89$ / online payment / today,bills_&_utilities
 paid in cash → Shawarma House 61.44$ [last night],food_&_dining
@@ -1029,12 +1029,12 @@ Bank Transfer IN / 422.93$ / POS payment / this morning,income_&_transfers
 "Water Bill 315.08, POS payment earlier",bills_&_utilities
 286.65$ spent at OGERO - yesterday,bills_&_utilities
 Water Bill: 126.63$ contactless a while ago,bills_&_utilities
-online payment 453.94$ at Dental Clinic (yesterday),health_&medical
+online payment 453.94$ at Dental Clinic (yesterday),health_&_medical
 OGERO / 43.88$ / online payment / yesterday,bills_&_utilities
 online payment 78.41$ at Burger King (this afternoon),food_&_dining
-Pharmacy / 121.27$ / apple pay / yesterday,health_&medical
+Pharmacy / 121.27$ / apple pay / yesterday,health_&_medical
 POS payment → Water Bill 114.82$ [a while ago],bills_&_utilities
-"Lab Test 396.02$, paid by card earlier",health_&medical
+"Lab Test 396.02$, paid by card earlier",health_&_medical
 POS payment 317.61$ at Municipality Tax (yesterday),bills_&_utilities
 49.59 at Roadster last night,food_&_dining
 8.59 spent at Classic Burger Joint - yesterday,food_&_dining
@@ -1046,9 +1046,9 @@ Escape Room: 85.05 mobile wallet Friday night,entertainment
 apple pay 191.34 at Gas Subscription (last night),bills_&_utilities
 Gaming Store / 86.96$ / paid in cash / on the weekend,entertainment
 paid in cash 297.34 at Municipality Tax (today),bills_&_utilities
-"Dental Clinic 354.85$, contactless yesterday",health_&medical
+"Dental Clinic 354.85$, contactless yesterday",health_&_medical
 197.48 spent at Municipality Tax - this afternoon,bills_&_utilities
-"Clinic Visit 390.06$, paid in cash this afternoon",health_&medical
+"Clinic Visit 390.06$, paid in cash this afternoon",health_&_medical
 online payment → McDonald's 50.91 [on the weekend],food_&_dining
 Roadster: 16.02$ paid by card this morning,food_&_dining
 online payment 64.43 at ATM Fee (on the weekend),other
@@ -1057,7 +1057,7 @@ online payment 1883.97$ at Reimbursement (last night),income_&_transfers
 Municipality Tax / 88.81$ / paid in cash / last night,bills_&_utilities
 117.65$ spent at City Centre - this morning,shopping
 paidincash→MiscPurchase130.0[awhileago],other
-mobile wallet 492.17 at Medical Center (this afternoon),health_&medical
+mobile wallet 492.17 at Medical Center (this afternoon),health_&_medical
 contactless 87.33$ at ABC Mall (Friday night),shopping
 POS payment → Misc Purchase 112.69 [on the weekend],other
 Kabajji / 37.63$ / online payment / earlier,food_&_dining
@@ -1073,7 +1073,7 @@ mobile wallet → Escape Room 42.35$ [on the weekend],entertainment
 "Roadster 14.22, apple pay this morning",food_&_dining
 28.41$ at Ogero Internet earlier,bills_&_utilities
 101.79 spent at CinemaCity - on the weekend,entertainment
-paid in cash 321.55$ at Health Insurance (yesterday),health_&medical
+paid in cash 321.55$ at Health Insurance (yesterday),health_&_medical
 74.44 at Classic Burger Joint this afternoon,food_&_dining
 online payment 52.78 at Local Bakery (today),food_&_dining
 38.73 at Shawarma House last night,food_&_dining
@@ -1088,7 +1088,7 @@ Shawarma Hoouse / 37.36$ / POS payment / today,food_&_dining
 "OGERO 152.92$, paid in cash Friday night",bills_&_utilities
 108.05 spent at Vox Cinema - this afternoon,entertainment
 Zara: 53.14 mobile wallet this afternoon,shopping
-online payment → Health Insurance 61.75$ [Friday night],health_&medical
+online payment → Health Insurance 61.75$ [Friday night],health_&_medical
 Ogero Internet / 21.82$ / mobile wallet / yesterday,bills_&_utilities
 Ogero Internet / 168.88$ / POS payment / this afternoon,bills_&_utilities
 "Service Fee 52.46$, paid in cash Friday night",other
@@ -1099,7 +1099,7 @@ OGERO: 104.4$ paid in cash this afternoon,bills_&_utilities
 Burger King / 40.04$ / contactless / a while ago,food_&_dining
 Gaming Store: 19.82 contactless this afternoon,entertainment
 online payment 37.39 at Gaming Store (a while ago),entertainment
-193.39$ at Clinic Visit earlier,health_&medical
+193.39$ at Clinic Visit earlier,health_&_medical
 "OGERO 294.61, mobile wallet last night",bills_&_utilities
 36.53$atBarbarontheweekend,food_&_dining
 online payment → Municipality Tax 58.1 [earlier],bills_&_utilities
@@ -1116,7 +1116,7 @@ mobile wallet → Bus Ticket 20.11 [Friday night],transportation
 Gas Subscription: 326.58$ online payment on the weekend,bills_&_utilities
 "TouchMobile378.35$,POSpaymentthisafternoon",bills_&_utilities
 337.71$ at EDL Electricity on the weekend,bills_&_utilities
-Eye Doctor: 225.77$ apple pay this morning,health_&medical
+Eye Doctor: 225.77$ apple pay this morning,health_&_medical
 POS payment → Home Furniture 267.66$ [today],shopping
 mobile wallet → Classic Burger Joint 63.25 [this morning],food_&_dining
 POS payment → Fuel Station 8.79$ [yesterday],transportation
@@ -1142,7 +1142,7 @@ Bowling Beirut: 44.34$ paid by card Friday night,entertainment
 POS payment → Bank Transfer IN 948.33$ [a while ago],income_&_transfers
 EDL Electricity: 165.96$ paid by card Friday night,bills_&_utilities
 104.15 spent at Gaming Store - last night,entertainment
-Pharmcy: 17.73 paid by card Friday night,health_&medical
+Pharmcy: 17.73 paid by card Friday night,health_&_medical
 "Ogero Internet 374.35$, apple pay on the weekend",bills_&_utilities
 EDL Electricity: 93.32$ online payment a while ago,bills_&_utilities
 "Reimbursement 815.03, paid in cash this afternoon",income_&_transfers
@@ -1156,7 +1156,7 @@ Barbar: 54.07$ paid by card on the weekend,food_&_dining
 paid by card → Beirut Falafel 66.64 [yesterday],food_&_dining
 ATM Fee / 72.86$ / paid in cash / today,other
 1356.36$ spent at Cash Deposit - last night,income_&_transfers
-paid in cash 204.23 at Pharmacy (earlier),health_&medical
+paid in cash 204.23 at Pharmacy (earlier),health_&_medical
 341.0 at EDL Electricity last night,bills_&_utilities
 Zaatar W Zeit: 22.42 paid by card this afternoon,food_&_dining
 EDL Elactricity: 254.41$ contactless yesterday,bills_&_utilities
@@ -1167,14 +1167,14 @@ paid in cash → Mcdonalds 34.09$ [this morning],food_&_dining
 Bowling Beirut: 120.05$ apple pay a while ago,entertainment
 7.56 spent at Classic Burger Joint - Friday night,food_&_dining
 Uberr: 32.97 paid by card this afternoon,transportation
-212.38$ spent at Clinic Visit - yesterday,health_&medical
+212.38$ spent at Clinic Visit - yesterday,health_&_medical
 CinemaCity: 134.42 contactless on the weekend,entertainment
 paid by card → Salary Bank 1753.62 [earlier],income_&_transfers
 online payment → Spotify 112.76$ [this afternoon],entertainment
-applepay→Pharmcy49.65[awhileago],health_&medical
+applepay→Pharmcy49.65[awhileago],health_&_medical
 Gas Subscription: 87.44 contactless yesterday,bills_&_utilities
 35.95 spent at Beirut Falafel - earlier,food_&_dining
-Clinic Visit: 286.43 paid in cash a while ago,health_&medical
+Clinic Visit: 286.43 paid in cash a while ago,health_&_medical
 "Uber4.37$,applepayearlier",transportation
 Alfa Plan / 162.57 / online payment / this afternoon,bills_&_utilities
 paid in cash 209.86$ at EDL Electricity (on the weekend),bills_&_utilities
@@ -1186,22 +1186,22 @@ paid in cash 52.22 at Vox Cinema (a while ago),entertainment
 mobile wallet 50.72 at Unknown Entry (earlier),other
 Escape Room / 62.35 / paid in cash / earlier,entertainment
 65.07$ spent at Municipality Tax - on the weekend,bills_&_utilities
-online payment → Health Insurance 196.34$ [a while ago],health_&medical
+online payment → Health Insurance 196.34$ [a while ago],health_&_medical
 Salary Bank: 479.7$ contactless earlier,income_&_transfers
 onlinepayment3.9$atBankCharge(earlier),other
-Eye Doctor / 53.79 / paid by card / on the weekend,health_&medical
+Eye Doctor / 53.79 / paid by card / on the weekend,health_&_medical
 Home Furniture: 78.21$ POS payment this afternoon,shopping
 Water Bill: 106.85$ paid in cash yesterday,bills_&_utilities
 mobile wallet 347.87$ at Alfa Plan (this morning),bills_&_utilities
 paid by card 54.24 at Zaatar W Zeit (today),food_&_dining
-124.98$ at Lab Test a while ago,health_&medical
+124.98$ at Lab Test a while ago,health_&_medical
 Water Bill: 102.06 mobile wallet earlier,bills_&_utilities
 914.58$ spent at Refund - earlier,income_&_transfers
 contactless → Water Bill 296.58 [earlier],bills_&_utilities
 paid by card → KFC 61.52$ [this morning],food_&_dining
-Pharmcy: 123.87 POS payment last night,health_&medical
+Pharmcy: 123.87 POS payment last night,health_&_medical
 "CinemaCity 38.51$, online payment last night",entertainment
-430.38$ at Pharmcy on the weekend,health_&medical
+430.38$ at Pharmcy on the weekend,health_&_medical
 311.54$ spent at Gas Subscription - earlier,bills_&_utilities
 Gas Subscription / 192.13 / POS payment / this morning,bills_&_utilities
 mobile wallet 365.87 at Gas Subscription (today),bills_&_utilities
@@ -1214,7 +1214,7 @@ online payment → CinemaCity 30.69$ [a while ago],entertainment
 paid in cash 107.2$ at OGERO (yesterday),bills_&_utilities
 114.85 at Bank Charge Friday night,other
 POS payment 82.52$ at Vox Cinema (yesterday),entertainment
-360.02 spent at Clinic Visit - this morning,health_&medical
+360.02 spent at Clinic Visit - this morning,health_&_medical
 EDL Electricity: 167.22 mobile wallet a while ago,bills_&_utilities
 "Gaming Store 95.46, online payment last night",entertainment
 mobilewallet→ShawarmaHouse31.8$[ontheweekend],food_&_dining
@@ -1238,7 +1238,7 @@ Kabajji: 34.59 contactless a while ago,food_&_dining
 paid by card → Barbar 76.84 [yesterday],food_&_dining
 City Centre: 89.29$ apple pay last night,shopping
 apple pay → Municipality Tax 253.52 [this afternoon],bills_&_utilities
-43.86$ at Health Insurance last night,health_&medical
+43.86$ at Health Insurance last night,health_&_medical
 "OGERO 363.86, paid by card on the weekend",bills_&_utilities
 Local Bakery / 40.37 / online payment / today,food_&_dining
 58.37$ spent at Voox Cinema - on the weekend,entertainment
@@ -1282,10 +1282,10 @@ paidbycard→MunicipalityTax312.6$[earlier],bills_&_utilities
 mobile wallet → Salary Bank 1858.53$ [last night],income_&_transfers
 paid in cash → Kabajji 29.14 [last night],food_&_dining
 Gaming Store / 81.58$ / contactless / this afternoon,entertainment
-"Eye Doctor 474.48, mobile wallet this afternoon",health_&medical
+"Eye Doctor 474.48, mobile wallet this afternoon",health_&_medical
 paid by card 19.03$ at Bolt (this afternoon),transportation
 49.62$atMcdonaldsearlier,food_&_dining
-paid in cash 276.16 at Pharmacy (this afternoon),health_&medical
+paid in cash 276.16 at Pharmacy (this afternoon),health_&_medical
 Gaming Store / 50.48 / online payment / today,entertainment
 online payment 281.54 at Reimbursement (yesterday),income_&_transfers
 "Salary Bank 1819.56$, POS payment on the weekend",income_&_transfers
@@ -1328,7 +1328,7 @@ Netflix: 82.4$ paid in cash this afternoon,entertainment
 Water Bill: 39.8$ contactless on the weekend,bills_&_utilities
 53.16$ spent at Service Fee - earlier,other
 POS payment 13.42 at Vox Cinema (last night),entertainment
-73.72$ at Medical Center this moorning,health_&medical
+73.72$ at Medical Center this moorning,health_&_medical
 Misc Purchase: 122.54 online payment on the weekend,other
 188.46$ spent at OGERO - this morning,bills_&_utilities
 Antoine Bookstore: 241.19$ apple pay on the weekend,shopping
@@ -1346,7 +1346,7 @@ paid in cash → Netflix 106.75 [on the weekend],entertainment
 POS payment → Reimbursement 1088.06$ [on the weekend],income_&_transfers
 contactless→TaxiBeirut42.7$[ontheweekend],transportation
 paid in cash 129.89$ at CinemaCity (yesterday),entertainment
-POS payment 249.28$ at Eye Doctor (on the weekend),health_&medical
+POS payment 249.28$ at Eye Doctor (on the weekend),health_&_medical
 POS payment → Spotify 67.34 [today],entertainment
 247.35 spent at Alfa Plan - this morning,bills_&_utilities
 paid by card 162.52$ at Zara (Friday night),shopping
@@ -1360,7 +1360,7 @@ mobile wallet → Touch Mobile 59.3$ [on the weekend],bills_&_utilities
 137.66 spent at Adjustment Entry - today,other
 paid in cash 192.3$ at Municipality Tax (yesterday),bills_&_utilities
 mobile wallet → Municipality Tax 291.59$ [Friday night],bills_&_utilities
-297.13 spent at Clinic Visit - this moorning,health_&medical
+297.13 spent at Clinic Visit - this moorning,health_&_medical
 43.01 at Service Fee a while ago,other
 Water Beell / 290.91$ / apple pay / this afternoon,bills_&_utilities
 McDonald's: 73.28$ paid in cash today,food_&_dining
@@ -1368,34 +1368,34 @@ McDonald's: 73.28$ paid in cash today,food_&_dining
 326.88 spent at Ogero Internet - earlier,bills_&_utilities
 30.65$ spent at OGERO - on the weekend,bills_&_utilities
 apple pay → Spotify 112.22$ [this morning],entertainment
-Dental Clinic / 362.41$ / paid in cash / this morning,health_&medical
+Dental Clinic / 362.41$ / paid in cash / this morning,health_&_medical
 OGERO: 115.98$ mobila wallet earlier,bills_&_utilities
 Ogero Internet: 38.81$ paid by card this afternoon,bills_&_utilities
 "Water Bill 224.1$, apple pay this afternoon",bills_&_utilities
 "Bowling Beirut 26.75, paid by card on the weekend",entertainment
 85.61$ at CinemaCity Friday night,entertainment
 Bank Transfar IN: 360.68$ POS payment Friday night,income_&_transfers
-"Dental Clinic 106.92, paid in cash today",health_&medical
-paid by card → Pharmacy 206.66$ [on the weekend],health_&medical
+"Dental Clinic 106.92, paid in cash today",health_&_medical
+paid by card → Pharmacy 206.66$ [on the weekend],health_&_medical
 84.77$ at Water Bill earlier,bills_&_utilities
-online payment 128.07 at Medical Center (on the weekend),health_&medical
+online payment 128.07 at Medical Center (on the weekend),health_&_medical
 mobile wallet → Bank Charge 5.37$ [this afternoon],other
-60.63 at Lab Test today,health_&medical
+60.63 at Lab Test today,health_&_medical
 onleene payment → CinemaCity 74.93$ [yesterday],entertainment
-79.38 spent at Lab Test - earlier,health_&medical
+79.38 spent at Lab Test - earlier,health_&_medical
 OGERO: 86.29$ apple pay Friday night,bills_&_utilities
 Burger King / 24.67 / paid by card / today,food_&_dining
 EDL Electricity / 267.87$ / contactless / Friday night,bills_&_utilities
 23.67 at Uberr earlier,transportation
-474.24$ spent at Medical Center - this morning,health_&medical
+474.24$ spent at Medical Center - this morning,health_&_medical
 Pizza Hut: 6.82$ apple pay on the weekend,food_&_dining
 344.13$ spent at Alfa Plan - this morning,bills_&_utilities
 mobile wallet 93.64 at Netflix (yesterday),entertainment
 "Zaatar W Zeit 75.26, contactless yesterday",food_&_dining
-Clinic Visit: 76.89 apple pay Friday night,health_&medical
+Clinic Visit: 76.89 apple pay Friday night,health_&_medical
 294.51$ spent at Ogero Internet - this afternoon,bills_&_utilities
 747.99 at Salary Bank this morning,income_&_transfers
-Clinic Visit / 83.84 / paid by card / today,health_&medical
+Clinic Visit / 83.84 / paid by card / today,health_&_medical
 81.72 spent at Gaming Store - last night,entertainment
 "Escape Room 66.55, apple pay today",entertainment
 POS payment 368.01$ at Alfa Plan (on the weekend),bills_&_utilities
@@ -1406,7 +1406,7 @@ Spotify: 57.24$ paid in cash last night,entertainment
 29.65$ spent at Uber - a while ago,transportation
 paid by card 237.05 at Sportswear Store (today),shopping
 94.78$ spent at Escape Rooom - today,entertainment
-"Eye Dooctor 138.37, contactless on the weekend",health_&medical
+"Eye Dooctor 138.37, contactless on the weekend",health_&_medical
 "Netflix 47.5$, paid by card last night",entertainment
 Bank Transfer IN / 1832.67 / online payment / this morning,income_&_transfers
 41.09spentatCinemaCity-lastnight,entertainment
@@ -1424,7 +1424,7 @@ Adjustment Entry / 49.73 / online payment / Friday night,other
 30.69$ at ATM Fee a while ago,other
 Misc Purchase / 45.93$ / apple pay / yesterday,other
 33.31 spent at Airport Taxi - today,transportation
-contactlass → Health Insurance 421.84$ [on the weekend],health_&medical
+contactlass → Health Insurance 421.84$ [on the weekend],health_&_medical
 Roadster: 74.0$ contactless last night,food_&_dining
 paid in cash → Gas Subscription 258.7$ [a while ago],bills_&_utilities
 32.3 at Uberr today,transportation
@@ -1487,8 +1487,8 @@ Spotify: 61.72$ apple pay this morning,entertainment
 334.68 at OGERO earlier,bills_&_utilities
 EDL Electricity / 389.27$ / mobile wallet / earlier,bills_&_utilities
 "Touch Mobile 250.14, online payment this afternoon",bills_&_utilities
-paid by card 266.34$ at Dental Clinic (earlier),health_&medical
-125.99 spent at Health Insurance - Friday night,health_&medical
+paid by card 266.34$ at Dental Clinic (earlier),health_&_medical
+125.99 spent at Health Insurance - Friday night,health_&_medical
 25.97$ spent at Fuel Station - today,transportation
 Gas Station: 28.38 contactless this afternoon,transportation
 "Vox Cinema 61.06$, contactless on the weekend",entertainment
@@ -1501,11 +1501,11 @@ Concert Teecket / 130.93 / apple pay / this morning,entertainment
 Ogero Internet / 317.83$ / mobile wallet / today,bills_&_utilities
 6.35 spent at ATM Fee - earlier,other
 paid in cash → OGERO 338.02$ [today],bills_&_utilities
-paid by card → Eye Doctor 434.54$ [on the weekend],health_&medical
+paid by card → Eye Doctor 434.54$ [on the weekend],health_&_medical
 POS payment 227.39 at Municipality Tax (on the weekend),bills_&_utilities
-Clinic Visit / 441.5$ / POS payment / on the weekend,health_&medical
+Clinic Visit / 441.5$ / POS payment / on the weekend,health_&_medical
 mobile wallet 26.53 at EDL Electricity (today),bills_&_utilities
-"Pharmcy 225.24, apple pay this morning",health_&medical
+"Pharmcy 225.24, apple pay this morning",health_&_medical
 Kabajji: 41.18 paid in cash on the weekend,food_&_dining
 "Gas Subscription 69.22$, contactless today",bills_&_utilities
 mobile wallet → EDL Electricity 298.48$ [this afternoon],bills_&_utilities
@@ -1523,17 +1523,17 @@ EDL Electricity: 159.75$ online payment Friday night,bills_&_utilities
 online payment 11.67 at Concert Ticket (earlier),entertainment
 24.56 at Concert Ticket earlier,entertainment
 POS payment → Vox Cinema 41.0$ [earlier],entertainment
-apple pay 42.83$ at Dental Clinic (last night),health_&medical
+apple pay 42.83$ at Dental Clinic (last night),health_&_medical
 94.2$ spent at Water Bill - Friday night,bills_&_utilities
 "Netflix 47.19$, online payment this afternoon",entertainment
 mobile wallet → Freelance Payment 166.67$ [today],income_&_transfers
 Bolt / 44.93 / paid by card / today,transportation
 contactless 47.39$ at Beirut Falafel (a while ago),food_&_dining
 76.34$ at Shawarma House last night,food_&_dining
-Medical Center: 132.81 contactless Friday night,health_&medical
+Medical Center: 132.81 contactless Friday night,health_&_medical
 OGERO: 195.92 paid by card earlier,bills_&_utilities
 Unknown Entry: 78.87$ POS payment earlier,other
-contactless → Pharmacy 499.47 [today],health_&medical
+contactless → Pharmacy 499.47 [today],health_&_medical
 Bank Transfer IN: 1402.37$ POS payment a while ago,income_&_transfers
 Touch Mobile / 339.15 / contactless / on the weekend,bills_&_utilities
 131.86 spent at Escape Room - earlier,entertainment
@@ -1556,8 +1556,8 @@ Uber: 37.15 contactless this morning,transportation
 Touch Mobile: 292.64$ paid in cash on the weekend,bills_&_utilities
 mobile wallet 68.34 at Vox Cinema (today),entertainment
 online payment 30.03 at KFC (this afternoon),food_&_dining
-Clinic Visit / 267.48$ / paid in cash / a while ago,health_&medical
-"Medical Center 32.55$, mobile wallet this morning",health_&medical
+Clinic Visit / 267.48$ / paid in cash / a while ago,health_&_medical
+"Medical Center 32.55$, mobile wallet this morning",health_&_medical
 Municipality Tax / 103.92 / apple pay / yesterday,bills_&_utilities
 105.38$ spent at Bowling Beirut - a while ago,entertainment
 136.25 at Concert Ticket last night,entertainment
@@ -1568,9 +1568,9 @@ mobile wallet 218.43 at OGERO (this afternoon),bills_&_utilities
 CinemaCity / 10.65$ / apple pay / last night,entertainment
 Parking Pay / 35.33$ / apple pay / a while ago,transportation
 paid by card 63.8$ at Mcdonalds (this morning),food_&_dining
-454.03$ at Pharmacy today,health_&medical
+454.03$ at Pharmacy today,health_&_medical
 56.44$ at ATM Fee Friday night,other
-oonline payment 243.67$ at Pharmacy (earlier),health_&medical
+oonline payment 243.67$ at Pharmacy (earlier),health_&_medical
 ATM Fee: 25.84$ online payment earlier,other
 Zara / 71.32$ / apple pay / last night,shopping
 26.15 spent at Uber - on the weekend,transportation
@@ -1587,12 +1587,12 @@ Mcdonalds: 58.11$ paid in cash Friday night,food_&_dining
 55.58 at Roadster this morning,food_&_dining
 apple pay 321.19$ at EDL Electricity (yesterday),bills_&_utilities
 99.69 spent at Alfa Plan - this afternoon,bills_&_utilities
-Eye Doctor / 225.62$ / online payment / earlier,health_&medical
+Eye Doctor / 225.62$ / online payment / earlier,health_&_medical
 online payment 235.33$ at Laptop Store (today),shopping
 Concert Ticket: 7.8$ contactless this afternoon,entertainment
 Netflix: 53.81 POS payment this afternoon,entertainment
 "Service Fee 25.03, online payment last night",other
-contactless → Dental Clinic 129.67 [yesterday],health_&medical
+contactless → Dental Clinic 129.67 [yesterday],health_&_medical
 "Gaming Store 89.71$, online payment on the weekend",entertainment
 POS payment → Refund 897.35$ [tooday],income_&_transfers
 AdjustmentEntry:124.06paidbycardthisafternoon,other
@@ -1600,14 +1600,14 @@ Escape Room / 135.18 / POS payment / Friday night,entertainment
 Crepaway / 21.34$ / contactless / today,food_&_dining
 POS payment → Misc Purchase 141.55 [this afternoon],other
 POS payment → Barbar 73.2$ [oon the weekend],food_&_dining
-Dental Clinic: 382.52$ paid in cash a while ago,health_&medical
+Dental Clinic: 382.52$ paid in cash a while ago,health_&_medical
 Reimbursement: 1687.73$ online payment a while ago,income_&_transfers
-mobile wallet 25.39 at Pharmcy (yesterday),health_&medical
+mobile wallet 25.39 at Pharmcy (yesterday),health_&_medical
 online payment 70.09$ at Spotify (last night),entertainment
 coontactless → Touch Mobile 120.1 [today],bills_&_utilities
-201.23$ spent at Medical Center - on the weekend,health_&medical
+201.23$ spent at Medical Center - on the weekend,health_&_medical
 Amazon / 34.72$ / online payment / this afternoon,shopping
-paid by card 115.24 at Dental Clinic (last night),health_&medical
+paid by card 115.24 at Dental Clinic (last night),health_&_medical
 136.34 at Ogero Internet earlier,bills_&_utilities
 Ogero Internet: 280.11 mobile wallet this afternoon,bills_&_utilities
 CinemaCity / 39.72 / POS payment / a while ago,entertainment
@@ -1617,7 +1617,7 @@ Gaming Store: 53.97$ POS payment this afternoon,entertainment
 265.44 at Touch Mobile today,bills_&_utilities
 POS paymant 1688.34 at Bank Transfer IN (on the weekend),income_&_transfers
 46.32$ at Classic Burger Joint last night,food_&_dining
-online payment 404.28 at Clinic Visit (this afternoon),health_&medical
+online payment 404.28 at Clinic Visit (this afternoon),health_&_medical
 179.57 spent at Touch Mobile - Friday night,bills_&_utilities
 129.66$ spent at Service Fee - this morning,other
 131.61spentatATMFee-thisafternoon,other
@@ -1625,7 +1625,7 @@ paid in cash 168.09 at Municipality Tax (on the weekend),bills_&_utilities
 paid by card → Ogero Internet 189.52 [on the weekend],bills_&_utilities
 "Vox Cinema 133.93, apple pay Friday night",entertainment
 CinemaCity / 30.67$ / online payment / yesterday,entertainment
-Lab Test / 489.45 / POS payment / on the weekend,health_&medical
+Lab Test / 489.45 / POS payment / on the weekend,health_&_medical
 paid in cash 363.44$ at Touch Mobile (today),bills_&_utilities
 Escape Room: 119.21 online payment on the weekend,entertainment
 Touch Mobile / 64.2$ / contactless / yesterday,bills_&_utilities
@@ -1633,7 +1633,7 @@ Touch Mobile / 64.2$ / contactless / yesterday,bills_&_utilities
 Vox Cinema / 61.63$ / contactless / earlier,entertainment
 "Laptop Store 170.28$, mobile wallet on the weekend",shopping
 paid by card 148.92 at CinemaCity (last night),entertainment
-"Pharmacy 65.05, POS payment last night",health_&medical
+"Pharmacy 65.05, POS payment last night",health_&_medical
 apple pay → Classic Burger Joint 44.24$ [earlier],food_&_dining
 Water Bill / 75.2$ / online payment / yesterday,bills_&_utilities
 72.0$ spent at Concert Ticket - today,entertainment
@@ -1641,7 +1641,7 @@ apple pay → Uberr 44.29 [a while ago],transportation
 POS payment → CinemaCity 41.02 [a while ago],entertainment
 Roadster: 56.2 apple pay this morning,food_&_dining
 28.57$ spent at Gaming Store - this morning,entertainment
-"Health Insurance 56.24$, mobeele wallet on the weekend",health_&medical
+"Health Insurance 56.24$, mobeele wallet on the weekend",health_&_medical
 "Water Bill 301.77, contactless yesterday",bills_&_utilities
 "Zaatar W Zeit 70.95, contactless this afternoon",food_&_dining
 "Concert Ticket 124.43$, paid by card today",entertainment
@@ -1653,12 +1653,12 @@ apple pay → Ogero Internet 357.33$ [earlier],bills_&_utilities
 Municipality Tax: 184.26 contactless this morning,bills_&_utilities
 263.34 at Touch Mobile earlier,bills_&_utilities
 37.03 at Water Bill today,bills_&_utilities
-486.22$ at Pharmcy this morning,health_&medical
+486.22$ at Pharmcy this morning,health_&_medical
 "Water Bill 215.27, POS payment this afternoon",bills_&_utilities
 Reimbursement: 863.82$ paid in cash a while ago,income_&_transfers
 "Cooncert Ticket 147.82$, contactless today",entertainment
 paid by card 44.95$ at Escape Room (this morning),entertainment
-499.79 spent at Clinic Visit - Friday night,health_&medical
+499.79 spent at Clinic Visit - Friday night,health_&_medical
 Reimbursement: 367.31$ contactless earlier,income_&_transfers
 114.36 at Concert Ticket yesterday,entertainment
 "CinemaCity 23.89$, online payment this afternoon",entertainment
@@ -1669,18 +1669,18 @@ Refund / 954.04 / paid in cash / on the weekend,income_&_transfers
 paid by card 69.36$ at Vox Cinema (a while ago),entertainment
 "LeMall 109.37, POS payment this morning",shopping
 "Bowling Beirut 45.05, POS payment this morning",entertainment
-"Pharmcy 367.85, mobile wallet a while ago",health_&medical
+"Pharmcy 367.85, mobile wallet a while ago",health_&_medical
 "Alfa Plan 267.29, mobile wallet this morning",bills_&_utilities
 Spotify: 57.68$ mobile wallet this morning,entertainment
 "CinemaCity 106.12$, contactless Friday night",entertainment
-contactless 205.88 at Health Insurance (yesterday),health_&medical
+contactless 205.88 at Health Insurance (yesterday),health_&_medical
 61.64 at Ogero Internet on the weekend,bills_&_utilities
 "City Centre 123.24, paid in cash yesterday",shopping
 EDL Electricity / 294.98 / paid by card / earlier,bills_&_utilities
 62.77$ spent at Barbar - today,food_&_dining
 Gas Subscription / 265.97 / contactless / last night,bills_&_utilities
 67.28$ spent at Misc Purchase - Friday night,other
-"Health Insurance 195.28$, online payment this morning",health_&medical
+"Health Insurance 195.28$, online payment this morning",health_&_medical
 EDL Electricity / 128.43 / apple pay / yesterday,bills_&_utilities
 42.64 spent at Alfa Plan - a while ago,bills_&_utilities
 online payment 49.44$ at Zaatar W Zeit (this afternoon),food_&_dining
@@ -1703,9 +1703,9 @@ paid by card 24.15 at Uberr (Friday night),transportation
 Municipality Tax / 364.8 / paid by card / a while ago,bills_&_utilities
 109.67 spent at EDL Electricity - a while ago,bills_&_utilities
 paid by card 261.67 at OGERO (a while ago),bills_&_utilities
-paid by card 153.76$ at Pharmcy (this morning),health_&medical
+paid by card 153.76$ at Pharmcy (this morning),health_&_medical
 "Alfa Plan 314.07$, contactless Friday night",bills_&_utilities
-apple pay → Dental Clinic 257.62 [earlier],health_&medical
+apple pay → Dental Clinic 257.62 [earlier],health_&_medical
 paid in cash → Gas Subscription 146.91$ [Friday night],bills_&_utilities
 93.5$ at Alfa Plan Friday night,bills_&_utilities
 "Concert Ticket 76.21, paid in cash this morning",entertainment
@@ -1714,7 +1714,7 @@ Gas Subscription / 86.22 / paid by card / this afternoon,bills_&_utilities
 110.39spentatGasSubscription-thisafternoon,bills_&_utilities
 Reimbursement: 179.95$ POS payment this morning,income_&_transfers
 Alfa Plan: 86.3 paid in cash earlier,bills_&_utilities
-Clinic Visit / 25.37 / paid by card / this afternoon,health_&medical
+Clinic Visit / 25.37 / paid by card / this afternoon,health_&_medical
 154.74 at Refund this morning,income_&_transfers
 online payment 127.83 at City Centre (last night),shopping
 apple pay 38.75 at Netflix (a while ago),entertainment
@@ -1724,11 +1724,11 @@ McDoonald's: 25.38 online payment this afternoon,food_&_dining
 apple pay → Ogero Internet 314.64$ [today],bills_&_utilities
 55.15$ spent at Beirut Falafel - yesterday,food_&_dining
 "Adjustment Entry 134.25, mobile wallet last night",other
-23.31 at Eye Doctor yesterday,health_&medical
+23.31 at Eye Doctor yesterday,health_&_medical
 CinemaCity: 60.61$ paid by card this afternoon,entertainment
-139.54 at Lab Tast on the weekend,health_&medical
+139.54 at Lab Tast on the weekend,health_&_medical
 paid in cash 62.8 at Kabajji (today),food_&_dining
-366.66 at Pharmcy this afternooon,health_&medical
+366.66 at Pharmcy this afternooon,health_&_medical
 74.27 at Zara this afternoon,shopping
 Cash Deposit / 138.74 / POS payment / on the weekend,income_&_transfers
 apple pay 45.74 at Gas Station (last night),transportation
@@ -1742,13 +1742,13 @@ EDL Electricity / 230.79$ / POS payment / on the weekend,bills_&_utilities
 paid in cash 11.49$ at Zaatar W Zeit (yesterday),food_&_dining
 96.23 spent at Netflix - on the weekend,entertainment
 CinemaCity: 79.99 contactless on the weekend,entertainment
-apple pay → Pharmacy 148.47 [on the weekend],health_&medical
+apple pay → Pharmacy 148.47 [on the weekend],health_&_medical
 "Refund 1030.46$, mobile wallet this afternoon",income_&_transfers
 paid by card 21.71$ at Alfa Plan (this morning),bills_&_utilities
 13.59 at Gaming Store on the weekend,entertainment
 Souk Beirut / 285.65$ / online payment / today,shopping
 mobile wallet 356.43 at EDL Electricity (a while ago),bills_&_utilities
-Pharmcy / 48.58 / paid in cash / this morning,health_&medical
+Pharmcy / 48.58 / paid in cash / this morning,health_&_medical
 7.24 spent at CinemaCity - this afternoon,entertainment
 "Water Bill 112.95$, mobile wallet last night",bills_&_utilities
 mobile wallet → OGERO 152.35 [a while ago],bills_&_utilities
@@ -1757,7 +1757,7 @@ Misc Purchase: 41.8 apple pay this afternoon,other
 13.29 spent at Mcdonalds - this morning,food_&_dining
 paid in cash 42.12$ at Vox Cinema (last night),entertainment
 Spotify: 75.58 POS payment on the weekend,entertainment
-online payment → Medical Center 470.8 [today],health_&medical
+online payment → Medical Center 470.8 [today],health_&_medical
 paid by card 8.97$ at KFC (last night),food_&_dining
 241.42$ at Water Bill yesterday,bills_&_utilities
 POS payment 1176.85 at Cash Deposit (last night),income_&_transfers
@@ -1770,7 +1770,7 @@ mobeele wallet 38.39$ at Barbar (this afternoon),food_&_dining
 apple pay 48.36 at Bank Charge (on the weekend),other
 165.34$ at Municipality Tax on the weekend,bills_&_utilities
 Spinneys Deli: 30.88$ mobile wallet this morning,food_&_dining
-contactless → Medeecal Center 224.09 [this afternoon],health_&medical
+contactless → Medeecal Center 224.09 [this afternoon],health_&_medical
 Concert Ticket: 10.12$ apple pay earlier,entertainment
 WaterBill/72.55/paidbycard/earlier,bills_&_utilities
 "H&M 95.94, mobile wallet yesterday",shopping
@@ -1784,7 +1784,7 @@ Gas Subscription: 348.62 POS payment a while ago,bills_&_utilities
 Classic Burger Joint / 15.23$ / mobile wallet / yesterday,food_&_dining
 paid by card → Municipality Tax 153.37$ [a while ago],bills_&_utilities
 Concert Teecket: 128.86$ paid in cash yesterday,entertainment
-paid by card 249.22$ at Eye Doctor (earlier),health_&medical
+paid by card 249.22$ at Eye Doctor (earlier),health_&_medical
 online payment → Municipality Tax 25.28 [today],bills_&_utilities
 "Burger King 36.58$, mobile wallet a while ago",food_&_dining
 paid in cash 66.17$ at Adjustment Entry (Friday night),other
@@ -1802,29 +1802,29 @@ contactless 187.68$ at Municipality Tax (yesterday),bills_&_utilities
 paid by card 1728.5$ at Freelance Payment (on the weekend),income_&_transfers
 CinemaCity: 59.19$ paid by card today,entertainment
 "Spotify 21.7, contactless this afternoon",entertainment
-contactless → Health Insurance 302.78$ [earlier],health_&medical
+contactless → Health Insurance 302.78$ [earlier],health_&_medical
 contactless → Spotify 38.79 [today],entertainment
 CinemaCity / 89.65 / contactless / on the weekend,entertainment
-mobile wallet → Pharmcy 62.56 [last night],health_&medical
+mobile wallet → Pharmcy 62.56 [last night],health_&_medical
 129.04 spent at OGERO - Freeday night,bills_&_utilities
 mobile wallet → Vox Cinema 6.16$ [yesterday],entertainment
 Touch Mobile: 209.28$ apple pay today,bills_&_utilities
 mobile wallet → Uber 49.03$ [on the weekend],transportation
 Freelance Payment: 1338.17 POS payment a while ago,income_&_transfers
-289.02$ at Dental Clinic earlier,health_&medical
+289.02$ at Dental Clinic earlier,health_&_medical
 Taxi Beirut: 7.5$ online payment on the weekend,transportation
-356.1 at Haalth Insurance a while ago,health_&medical
+356.1 at Haalth Insurance a while ago,health_&_medical
 paid by card 46.97 at Taxi Beirut (earlier),transportation
 Vox Cinema: 82.86 POS payment earlier,entertainment
 "Bus Ticket 2.44, paid in cash last night",transportation
 375.61$ spent at Water Bill - this afternoon,bills_&_utilities
 contactless 100.39 at Water Bill (this morning),bills_&_utilities
-Health Insurance / 33.54 / POS payment / a while ago,health_&medical
+Health Insurance / 33.54 / POS payment / a while ago,health_&_medical
 POS payment → Shein 224.32 [on the weekend],shopping
 onlina payment → Ogero Internet 262.17 [this morning],bills_&_utilities
 45.94$ at Shawarma House yesterday,food_&_dining
-209.74 spent at Lab Test - earlier,health_&medical
-166.56 spent at Dental Clinic - earlier,health_&medical
+209.74 spent at Lab Test - earlier,health_&_medical
+166.56 spent at Dental Clinic - earlier,health_&_medical
 paid in cash 69.44$ at Freelance Payment (Friday night),income_&_transfers
 Taxi Beirut / 23.89 / apple pay / this afternoon,transportation
 Home Furniture: 274.6$ paid by card on the weekend,shopping
@@ -1874,25 +1874,25 @@ Netflix / 147.02 / mobile wallet / earlier,entertainment
 Municipality Tax / 361.77 / paid in cash / a while ago,bills_&_utilities
 paid by card → Gas Subscription 128.16 [a while ago],bills_&_utilities
 "Zaatar W Zeit 33.9$, online payment yesterday",food_&_dining
-"Dental Clinic 262.05$, online payment Friday night",health_&medical
+"Dental Clinic 262.05$, online payment Friday night",health_&_medical
 paid in cash 112.16 at Concert Ticket (a while ago),entertainment
 40.71 at Mcdonalds yesterday,food_&_dining
 160.47$ spent at Gas Subscription - this morning,bills_&_utilities
 144.65 spent at Concert Ticket - a while ago,entertainment
 paid by card → OGERO 40.48$ [today],bills_&_utilities
-"Dental Clinic 138.66, online payment a while ago",health_&medical
-Medical Center: 391.69$ online payment a while ago,health_&medical
+"Dental Clinic 138.66, online payment a while ago",health_&_medical
+Medical Center: 391.69$ online payment a while ago,health_&_medical
 contactless 109.26 at Municipality Tax (this morning),bills_&_utilities
-"Medical Center 413.58$, apple pay this morning",health_&medical
+"Medical Center 413.58$, apple pay this morning",health_&_medical
 POS payment 379.25 at Muneecipality Tax (earlier),bills_&_utilities
 Escape Room / 121.12 / mobile wallet / Friday night,entertainment
 "Cash Deposit 1551.69, POS payment on the weekend",income_&_transfers
 324.94$ spent at Ogero Internet - this morning,bills_&_utilities
 CinemaCity: 98.4$ POS payment this morning,entertainment
 151.08$ at Touch Mobile last night,bills_&_utilities
-paid by card 125.17 at Health Insurance (this moorning),health_&medical
+paid by card 125.17 at Health Insurance (this moorning),health_&_medical
 126.67 at Adjustment Entry Friday night,other
-Dental Clinic: 390.72$ contactless a while ago,health_&medical
+Dental Clinic: 390.72$ contactless a while ago,health_&_medical
 onlinepayment→ShawarmaHouse63.11[lastnight],food_&_dining
 POS payment → Alfa Plan 346.29$ [earlier],bills_&_utilities
 mobile wallet 19.4$ at Airport Taxi (last night),transportation
@@ -1900,7 +1900,7 @@ mobile wallet 19.4$ at Airport Taxi (last night),transportation
 mobile wallet 58.61$ at EDL Electricity (today),bills_&_utilities
 95.44$ spent at Spotify - this afternoon,entertainment
 13.53 spent at McDonald's - this afternoon,food_&_dining
-186.9 at Health Insurance this afternoon,health_&medical
+186.9 at Health Insurance this afternoon,health_&_medical
 Water Bill / 88.28 / paid in cash / earlier,bills_&_utilities
 113.94$ at Gas Subscription last night,bills_&_utilities
 Alfa Plan / 121.43 / contactless / on the weekend,bills_&_utilities
@@ -1915,7 +1915,7 @@ apple pay 221.08$ at Salary Bank (on the weekend),income_&_transfers
 KFC / 33.85$ / mobile wallet / this afternoon,food_&_dining
 online payment → ATM Fee 87.35 [earlier],other
 CinemaCity / 60.15$ / online payment / Friday night,entertainment
-Dental Clinic: 13.94 mobile wallet this morning,health_&medical
+Dental Clinic: 13.94 mobile wallet this morning,health_&_medical
 "OGERO 315.35, mobile wallet earlier",bills_&_utilities
 paid by card 94.88$ at Vox Cinema (Friday night),entertainment
 Classic Burger Joint: 47.44$ paid in cash Friday night,food_&_dining
@@ -1930,7 +1930,7 @@ Spootify / 9.44 / contactless / today,entertainment
 "Bank Charge 104.53$, paeed in cash yesterday",other
 "OGERO 171.29$, paid in cash Friday night",bills_&_utilities
 Spotify: 12.88 apple pay earlier,entertainment
-"Clinic Visit 308.23, mobile wallet earlier",health_&medical
+"Clinic Visit 308.23, mobile wallet earlier",health_&_medical
 POS payment 32.9$ at Shawarma House (on the weekend),food_&_dining
 mobile wallet 309.36 at OGERO (this afternoon),bills_&_utilities
 Local Bakery: 73.87$ contactless on the weekend,food_&_dining
@@ -1938,7 +1938,7 @@ Local Bakery: 73.87$ contactless on the weekend,food_&_dining
 57.06 spent at Adjustment Entry - today,other
 46.73$ at Gas Subscription on the weekend,bills_&_utilities
 76.75$ spent at Local Bakery - this afternoon,food_&_dining
-"Dental Clinic 185.66$, apple pay last night",health_&medical
+"Dental Clinic 185.66$, apple pay last night",health_&_medical
 mobile wallet 139.33$ at Water Bill (a while ago),bills_&_utilities
 Municipality Tax / 345.2 / apple pay / last night,bills_&_utilities
 contactless 7.72$ at Vox Cinema (last night),entertainment
@@ -1978,11 +1978,11 @@ Escape Room / 133.71 / contactless / this afternoon,entertainment
 54.82 at Gaming Store this afternoon,entertainment
 Vox Cinema / 28.92$ / paid by card / this afternoon,entertainment
 56.87atATMFeeyesterday,other
-Lab Test: 125.91$ POS payment this morning,health_&medical
+Lab Test: 125.91$ POS payment this morning,health_&_medical
 apple pay 21.77$ at Escape Room (Friday night),entertainment
 Municipality Tax / 114.51 / apple pay / Friday night,bills_&_utilities
 Touch Mobile: 332.52$ apple pay today,bills_&_utilities
-119.65$ spent at Pharmcy - Friday night,health_&medical
+119.65$ spent at Pharmcy - Friday night,health_&_medical
 contactless→LocalBakery75.77[Fridaynight],food_&_dining
 "Alfa Plan 311.48, mobile wallet earlier",bills_&_utilities
 Vox Cinema: 102.57$ POS payment last night,entertainment

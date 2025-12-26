@@ -35,12 +35,12 @@ def _detect_columns(df: pd.DataFrame) -> tuple[str, str]:
     return dcol, ccol
 
 
-def main():
+def main(user_id: str | int | None = None, train_path: Path | str | None = None):
+    suffix = f"_{user_id}" if user_id is not None else ""
     ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
 
-    
     base_path = Path(DATASET_PROCESSED).parent  
-    train_path = base_path / "dataset_train.csv"
+    train_path = Path(train_path) if train_path else (base_path / "dataset_train.csv")
     test_path = base_path / "dataset_test.csv"
 
     train_df = pd.read_csv(train_path)
@@ -76,25 +76,37 @@ def main():
     Xtr = vectorizer.fit_transform(X_train)
     Xte = vectorizer.transform(X_test)
 
+    # Encode labels
     le = LabelEncoder()
-    ytr = le.fit_transform(y_train)
-    yte = le.transform(y_test)
+    # Fit on ALL possible labels from both sets to prevent "unseen label" errors
+    all_labels = pd.concat([train_df[ccol], test_df[ccol]])
+    le.fit(all_labels)
+    
+    ytr = le.transform(train_df[ccol])
+    yte = le.transform(test_df[ccol])
 
     model = LogisticRegression(max_iter=2000, n_jobs=None)
     model.fit(Xtr, ytr)
 
     pred = model.predict(Xte)
     acc = float(accuracy_score(yte, pred))
+    
+    # Explicitly pass all labels to ensure target_names matches
+    all_classes = list(le.classes_)
     report = classification_report(
-        yte, pred, target_names=list(le.classes_), output_dict=True
+        yte, 
+        pred, 
+        labels=range(len(all_classes)),
+        target_names=all_classes, 
+        output_dict=True
     )
 
-    joblib.dump(vectorizer, ARTIFACTS_DIR / "vectorizer.joblib")
-    joblib.dump(model, ARTIFACTS_DIR / "model.joblib")
-    joblib.dump(le, ARTIFACTS_DIR / "label_encoder.joblib")
+    joblib.dump(vectorizer, ARTIFACTS_DIR / f"vectorizer{suffix}.joblib")
+    joblib.dump(model, ARTIFACTS_DIR / f"model{suffix}.joblib")
+    joblib.dump(le, ARTIFACTS_DIR / f"label_encoder{suffix}.joblib")
 
     metrics = {"accuracy": acc, "report": report, "classes": list(le.classes_)}
-    (ARTIFACTS_DIR / "metrics.json").write_text(
+    (ARTIFACTS_DIR / f"metrics{suffix}.json").write_text(
         json.dumps(metrics, indent=2), encoding="utf-8"
     )
 
@@ -102,7 +114,10 @@ def main():
     print(f"Accuracy: {acc:.4f}")
     print(
         classification_report(
-            yte, pred, target_names=list(le.classes_)
+            yte, 
+            pred, 
+            labels=range(len(all_classes)),
+            target_names=all_classes
         )
     )
 

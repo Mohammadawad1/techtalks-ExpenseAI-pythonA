@@ -7,6 +7,12 @@
       "f1-score": 0.9648979591836735,
       "support": 595.0
     },
+    "education": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 0.0
+    },
     "entertainment": {
       "precision": 0.9822335025380711,
       "recall": 0.9723618090452262,
@@ -19,7 +25,7 @@
       "f1-score": 0.98,
       "support": 301.0
     },
-    "health_&medical": {
+    "health_&_medical": {
       "precision": 1.0,
       "recall": 0.9854368932038835,
       "f1-score": 0.9926650366748166,
@@ -51,9 +57,9 @@
     },
     "accuracy": 0.9745,
     "macro avg": {
-      "precision": 0.9879507915758192,
-      "recall": 0.9648737066897439,
-      "f1-score": 0.9759383102516432,
+      "precision": 0.8781784814007282,
+      "recall": 0.8576655170575501,
+      "f1-score": 0.867500720223683,
       "support": 2000.0
     },
     "weighted avg": {
@@ -65,9 +71,10 @@
   },
   "classes": [
     "bills_&_utilities",
+    "education",
     "entertainment",
     "food_&_dining",
-    "health_&medical",
+    "health_&_medical",
     "income_&_transfers",
     "other",
     "shopping",

@@ -2,7 +2,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]  # ExpenseAI/
 
-DATASET_PROCESSED = PROJECT_ROOT / "dataset" / "processed" / "expenseAI_cleaned_dataset.csv"
+DATASET_PROCESSED = PROJECT_ROOT / "dataset" / "processed" / "dataset_train.csv"
 DATASET_RAW_DIR = PROJECT_ROOT / "dataset" / "raw"
 
 ARTIFACTS_DIR = PROJECT_ROOT / "machine_learning" / "artifacts"
