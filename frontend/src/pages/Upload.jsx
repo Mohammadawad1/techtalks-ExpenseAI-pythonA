@@ -122,7 +122,6 @@ export default function Upload() {
                         <table className="w-full text-left text-sm">
                             <thead>
                                 <tr className="border-b border-white/5 text-[10px] font-bold uppercase tracking-widest text-white/30">
-                                    <th className="pb-4 pt-2">Ref ID</th>
                                     <th className="pb-4 pt-2">Date</th>
                                     <th className="pb-4 pt-2">Merchant/Desc</th>
                                     <th className="pb-4 pt-2 text-right">Amount</th>
@@ -132,7 +131,6 @@ export default function Upload() {
                             <tbody className="divide-y divide-white/5">
                                 {txns.slice(0, 10).map((t) => (
                                     <tr key={t.id} className="group hover:bg-white/[0.02] transition-colors border-t border-white/5">
-                                        <td className="py-4 text-white/30 text-xs">#{t.id}</td>
                                         <td className="py-4 text-white/60 text-xs font-mono">{t.txn_date || "—"}</td>
                                         <td className="py-4 font-medium text-white/90 max-w-[220px] truncate">{t.description}</td>
                                         <td className={`py-4 text-right font-mono font-bold ${t.amount < 0 ? "text-red-400" : "text-green-400"}`}>

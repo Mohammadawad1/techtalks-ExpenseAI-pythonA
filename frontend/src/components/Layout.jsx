@@ -159,41 +159,15 @@ export default function Layout() {
                 </nav>
 
                 <div className="border-t border-white/10 p-4">
-                    {!collapsed && <h2 className="mb-3 px-2 text-[10px] font-bold uppercase tracking-wider text-white/40 animate-in fade-in">Global Actions</h2>}
+                    {!collapsed && <h2 className="mb-3 px-2 text-[10px] font-bold uppercase tracking-wider text-white/40 animate-in fade-in">System</h2>}
                     <div className="space-y-2">
-                        <Button
-                            onClick={runRetrain}
-                            disabled={busyRetrain}
-                            title={collapsed ? "Retrain Model" : ""}
-                            className={`w-full justify-start gap-3 rounded-xl bg-white/5 hover:bg-white/10 border-white/5 ${collapsed ? 'justify-center px-0' : ''}`}
-                        >
-                            <span>🔄</span>
-                            {!collapsed && <span>{busyRetrain ? "Processing…" : "Retrain Model"}</span>}
-                        </Button>
-                        <Button
-                            onClick={downloadExport}
-                            disabled={busyExport}
-                            title={collapsed ? "Export CSV" : ""}
-                            className={`w-full justify-start gap-3 rounded-xl bg-white/5 hover:bg-white/10 border-white/5 ${collapsed ? 'justify-center px-0' : ''}`}
-                        >
-                            <span>📥</span>
-                            {!collapsed && <span>{busyExport ? "Downloading…" : "Export CSV"}</span>}
-                        </Button>
-                        <Button
-                            onClick={refreshAll}
-                            title={collapsed ? "Refresh All" : ""}
-                            className={`w-full justify-start gap-3 rounded-xl bg-white/5 hover:bg-white/10 border-white/5 ${collapsed ? 'justify-center px-0' : ''}`}
-                        >
-                            <span>⚡</span>
-                            {!collapsed && <span>Refresh All</span>}
-                        </Button>
                         <Button
                             onClick={() => {
                                 localStorage.removeItem("expenseai_token");
                                 window.location.href = "/login";
                             }}
                             title={collapsed ? "Logout" : ""}
-                            className={`w-full justify-start gap-3 rounded-xl bg-red-500/10 hover:bg-red-500/20 border-red-500/10 text-red-400 mt-4 ${collapsed ? 'justify-center px-0' : ''}`}
+                            className={`w-full justify-start gap-3 rounded-xl bg-red-500/10 hover:bg-red-500/20 border-red-500/10 text-red-400 ${collapsed ? 'justify-center px-0' : ''}`}
                         >
                             <span>🚪</span>
                             {!collapsed && <span>Logout</span>}

@@ -90,4 +90,25 @@ export const api = {
     if (!res.ok) throw new Error(`Export failed: HTTP ${res.status}`);
     return await res.blob();
   },
+
+  exportCategories: async (scope, fromDate, toDate, filters = {}) => {
+    const token = localStorage.getItem("expenseai_token");
+    const params = new URLSearchParams();
+
+    if (scope) params.set('scope', scope);
+    if (fromDate) params.set('from', fromDate);
+    if (toDate) params.set('to', toDate);
+    if (filters.search) params.set('search', filters.search);
+    if (filters.category) params.set('category', filters.category);
+    if (filters.showUnreviewed) params.set('show_unreviewed', 'true');
+
+    const url = `${API_BASE}/exports/categories${params.toString() ? '?' + params.toString() : ''}`;
+    const res = await fetch(url, {
+      method: "GET",
+      headers: { "Authorization": token ? `Bearer ${token}` : "" },
+    });
+
+    if (!res.ok) throw new Error(`Export failed: HTTP ${res.status}`);
+    return await res.blob();
+  },
 };

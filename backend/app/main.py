@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, Depends, HTTPException
+from fastapi import FastAPI, UploadFile, File, Depends, HTTPException, Query
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 import io
@@ -184,6 +184,89 @@ def export_csv(db: Session = Depends(get_db), current_user: UserModel = Depends(
         media_type="text/csv",
         headers={"Content-Disposition": "attachment; filename=expenseai_export.csv"},
     )
+
+@app.get("/exports/categories")
+def export_categories(
+    scope: str = "all",
+    from_val: str = Query(None, alias="from"),
+    to_val: str = Query(None, alias="to"),
+    search: str = "",
+    category: str = "",
+    show_unreviewed: bool = False,
+    db: Session = Depends(get_db),
+    current_user: UserModel = Depends(get_current_user)
+):
+    """
+    Export transactions with scope filtering:
+    - scope=all: All transactions
+    - scope=latest: Only the most recent upload batch
+    - scope=range: Filter by date range (requires from_date and to_date)
+    - date_field: 'txn_date' (transaction date) or 'created_at' (upload date)
+    - search: Filter by description text
+    - category: Filter by specific category
+    - show_unreviewed: Show only unreviewed transactions
+    """
+    from datetime import datetime
+    from sqlalchemy import desc
+    
+    tx_repo = TransactionRepository(db)
+    txns = tx_repo.list_all(current_user.id)
+    
+    # Apply scope filtering
+    if scope == "latest":
+        # Find the latest created_at timestamp
+        if txns:
+            latest_time = max(t.created_at for t in txns)
+            # Filter transactions created within 1 second of the latest (same batch)
+            txns = [t for t in txns if abs((t.created_at - latest_time).total_seconds()) < 1]
+    
+    elif scope == "range":
+        if from_val:
+            # Parse date string (YYYY-MM-DD format)
+            from_dt = datetime.strptime(from_val, '%Y-%m-%d').date()
+            # Filter by transaction date
+            txns = [t for t in txns if t.txn_date and t.txn_date >= from_dt]
+        
+        if to_val:
+            # Parse date string (YYYY-MM-DD format)
+            to_dt = datetime.strptime(to_val, '%Y-%m-%d').date()
+            # Filter by transaction date
+            txns = [t for t in txns if t.txn_date and t.txn_date <= to_dt]
+    
+    # Apply additional filters (matching UI behavior)
+    if search:
+        txns = [t for t in txns if search.lower() in t.description.lower()]
+    
+    if category:
+        txns = [t for t in txns if (t.final_category or t.predicted_category) == category]
+    
+    if show_unreviewed:
+        txns = [t for t in txns if not t.final_category]
+    
+    # Convert to DataFrame and export
+    df = ExportService().to_dataframe(txns)
+    
+    if len(df) == 0:
+        # Return empty CSV with headers
+        df = pd.DataFrame(columns=["date", "description", "amount", "predicted_category", "final_category", "confidence"])
+    else:
+        # Rename txn_date to date
+        df = df.rename(columns={"txn_date": "date"})
+        # Select only required columns (excluding 'category')
+        df = df[["date", "description", "amount", "predicted_category", "final_category", "confidence"]]
+    
+    buf = io.StringIO()
+    df.to_csv(buf, index=False)
+    buf.seek(0)
+    
+    filename = f"transactions_{scope}_{datetime.now().strftime('%Y%m%d')}.csv"
+    
+    return StreamingResponse(
+        io.BytesIO(buf.getvalue().encode("utf-8")),
+        media_type="text/csv",
+        headers={"Content-Disposition": f"attachment; filename={filename}"},
+    )
+
 # --- Auth Endpoints ---
 
 @app.post("/auth/signup", response_model=UserOut)

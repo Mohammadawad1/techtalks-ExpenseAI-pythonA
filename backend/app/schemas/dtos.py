@@ -9,6 +9,7 @@ class TransactionOut(BaseModel):
     predicted_category: str | None
     final_category: str | None
     confidence: float | None
+    created_at: datetime | None
 
     class Config:
         from_attributes = True
