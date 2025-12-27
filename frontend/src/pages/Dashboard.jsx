@@ -1,5 +1,7 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import { useOutletContext } from "react-router-dom";
+import { toPng } from "html-to-image";
+import { saveAs } from "file-saver";
 import {
     BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
     PieChart, Pie, LineChart, Line, ComposedChart, Area, Legend,
@@ -118,102 +120,152 @@ export default function Dashboard() {
     const grandTotal = filteredData.reduce((sum, item) => sum + Math.abs(parseFloat(item.amount)), 0);
     const topCategory = monthlyTop5Data[0]?.category || "N/A";
 
+    const chartRef = useRef(null);
+
+    const downloadChart = async (title) => {
+        if (!chartRef.current) return;
+        try {
+            const dataUrl = await toPng(chartRef.current, {
+                backgroundColor: "#0b0f19",
+                style: {
+                    borderRadius: "16px",
+                },
+                filter: (node) => {
+                    // Filter out the download button itself from the image
+                    if (node.tagName === "BUTTON" && node.title === "Download as Image") return false;
+                    return true;
+                }
+            });
+            saveAs(dataUrl, `ExpenseAI-${title.replace(/\s+/g, "-")}.png`);
+        } catch (error) {
+            console.error("Failed to download chart:", error);
+        }
+    };
+
     const renderInsightContent = () => {
         switch (selectedInsight) {
             case "top10":
                 return (
-                    <SectionCard title="Top 10 Largest Expenses" subtitle="Highest single transaction amounts in this period.">
-                        <ResponsiveContainer width="100%" height={400}>
-                            <BarChart data={top10Data} layout="vertical" margin={{ left: 20, right: 40, top: 20, bottom: 20 }}>
-                                <XAxis type="number" hide />
-                                <YAxis dataKey="name" type="category" width={120} fontSize={10} stroke="rgba(255,255,255,0.4)" axisLine={false} tickLine={false} />
-                                <Tooltip
-                                    contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                    itemStyle={{ color: '#fff' }}
-                                    labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
-                                    formatter={(v) => `$${v.toFixed(2)}`}
-                                />
-                                <Bar dataKey="amount" fill="#3b82f6" radius={[0, 4, 4, 0]} />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </SectionCard>
+                    <div ref={chartRef}>
+                        <SectionCard
+                            title="Top 10 Largest Expenses"
+                            subtitle="Highest single transaction amounts in this period."
+                            onDownload={() => downloadChart("Top-10-Expenses")}
+                        >
+                            <ResponsiveContainer width="100%" height={400}>
+                                <BarChart data={top10Data} layout="vertical" margin={{ left: 20, right: 40, top: 20, bottom: 20 }}>
+                                    <XAxis type="number" hide />
+                                    <YAxis dataKey="name" type="category" width={120} fontSize={10} stroke="rgba(255,255,255,0.4)" axisLine={false} tickLine={false} />
+                                    <Tooltip
+                                        contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                                        itemStyle={{ color: '#fff' }}
+                                        labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                        formatter={(v) => `$${v.toFixed(2)}`}
+                                    />
+                                    <Bar dataKey="amount" fill="#3b82f6" radius={[0, 4, 4, 0]} />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
                 );
             case "weeklyTrend":
                 return (
-                    <SectionCard title="Weekly Expense Trend" subtitle="Outgoings aggregated by week.">
-                        <ResponsiveContainer width="100%" height={400}>
-                            <AreaChart data={weeklyTrendData}>
-                                <defs>
-                                    <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.3} />
-                                        <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
-                                    </linearGradient>
-                                </defs>
-                                <XAxis dataKey="week" stroke="rgba(255,255,255,0.3)" fontSize={10} tickFormatter={(v) => v.split('-').slice(1).join('/')} axisLine={false} tickLine={false} />
-                                <YAxis stroke="rgba(255,255,255,0.3)" fontSize={10} axisLine={false} tickLine={false} />
-                                <Tooltip
-                                    contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                    itemStyle={{ color: '#fff' }}
-                                    labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
-                                    formatter={(v) => `$${v.toFixed(2)}`}
-                                />
-                                <Area type="monotone" dataKey="amount" stroke="#8b5cf6" strokeWidth={3} fillOpacity={1} fill="url(#colorAmount)" />
-                            </AreaChart>
-                        </ResponsiveContainer>
-                    </SectionCard>
+                    <div ref={chartRef}>
+                        <SectionCard
+                            title="Weekly Expense Trend"
+                            subtitle="Outgoings aggregated by week."
+                            onDownload={() => downloadChart("Weekly-Trend")}
+                        >
+                            <ResponsiveContainer width="100%" height={400}>
+                                <AreaChart data={weeklyTrendData}>
+                                    <defs>
+                                        <linearGradient id="colorAmount" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.3} />
+                                            <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
+                                        </linearGradient>
+                                    </defs>
+                                    <XAxis dataKey="week" stroke="rgba(255,255,255,0.3)" fontSize={10} tickFormatter={(v) => v.split('-').slice(1).join('/')} axisLine={false} tickLine={false} />
+                                    <YAxis stroke="rgba(255,255,255,0.3)" fontSize={10} axisLine={false} tickLine={false} />
+                                    <Tooltip
+                                        contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                                        itemStyle={{ color: '#fff' }}
+                                        labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                        formatter={(v) => `$${v.toFixed(2)}`}
+                                    />
+                                    <Area type="monotone" dataKey="amount" stroke="#8b5cf6" strokeWidth={3} fillOpacity={1} fill="url(#colorAmount)" />
+                                </AreaChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
                 );
             case "monthlyCountAmount":
                 return (
-                    <SectionCard title="Volume vs. Magnitude" subtitle="Monthly transaction count and total spending.">
-                        <ResponsiveContainer width="100%" height={400}>
-                            <ComposedChart data={monthlyCountAmountData}>
-                                <XAxis dataKey="month" stroke="rgba(255,255,255,0.3)" fontSize={10} axisLine={false} tickLine={false} />
-                                <YAxis yAxisId="left" stroke="rgba(255,255,255,0.3)" fontSize={10} axisLine={false} tickLine={false} />
-                                <YAxis yAxisId="right" orientation="right" stroke="rgba(255,255,255,0.3)" fontSize={10} axisLine={false} tickLine={false} />
-                                <Tooltip
-                                    contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                    itemStyle={{ color: '#fff' }}
-                                    labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
-                                />
-                                <Legend verticalAlign="top" height={36} iconType="circle" />
-                                <Bar yAxisId="left" dataKey="amount" name="Total Amount ($)" fill="#3b82f6" radius={[4, 4, 0, 0]} barSize={40} />
-                                <Line yAxisId="right" type="monotone" dataKey="count" name="Txn Count" stroke="#f59e0b" strokeWidth={3} dot={{ fill: '#f59e0b', r: 4 }} />
-                            </ComposedChart>
-                        </ResponsiveContainer>
-                    </SectionCard>
+                    <div ref={chartRef}>
+                        <SectionCard
+                            title="Volume vs. Magnitude"
+                            subtitle="Monthly transaction count and total spending."
+                            onDownload={() => downloadChart("Volume-vs-Magnitude")}
+                        >
+                            <ResponsiveContainer width="100%" height={400}>
+                                <ComposedChart data={monthlyCountAmountData}>
+                                    <XAxis dataKey="month" stroke="rgba(255,255,255,0.3)" fontSize={10} axisLine={false} tickLine={false} />
+                                    <YAxis yAxisId="left" stroke="rgba(255,255,255,0.3)" fontSize={10} axisLine={false} tickLine={false} />
+                                    <YAxis yAxisId="right" orientation="right" stroke="rgba(255,255,255,0.3)" fontSize={10} axisLine={false} tickLine={false} />
+                                    <Tooltip
+                                        contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                                        itemStyle={{ color: '#fff' }}
+                                        labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                    />
+                                    <Legend verticalAlign="top" height={36} iconType="circle" />
+                                    <Bar yAxisId="left" dataKey="amount" name="Total Amount ($)" fill="#3b82f6" radius={[4, 4, 0, 0]} barSize={40} />
+                                    <Line yAxisId="right" type="monotone" dataKey="count" name="Txn Count" stroke="#f59e0b" strokeWidth={3} dot={{ fill: '#f59e0b', r: 4 }} />
+                                </ComposedChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
                 );
             case "sizeShare":
                 return (
-                    <SectionCard title="Transaction Size Distribution" subtitle="Proportion of spending by amount range count.">
-                        <ResponsiveContainer width="100%" height={400}>
-                            <PieChart>
-                                <Pie
-                                    data={sizeShareData}
-                                    innerRadius={80}
-                                    outerRadius={120}
-                                    paddingAngle={5}
-                                    dataKey="value"
-                                    stroke="none"
-                                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                                    activeShape={renderActiveShape}
-                                >
-                                    {sizeShareData.map((e, i) => <Cell key={`c-${i}`} fill={colors[i % colors.length]} />)}
-                                </Pie>
-                                <Tooltip
-                                    contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                    itemStyle={{ color: '#fff' }}
-                                    labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
-                                />
-                            </PieChart>
-                        </ResponsiveContainer>
-                    </SectionCard>
+                    <div ref={chartRef}>
+                        <SectionCard
+                            title="Transaction Size Distribution"
+                            subtitle="Proportion of spending by amount range count."
+                            onDownload={() => downloadChart("Size-Distribution")}
+                        >
+                            <ResponsiveContainer width="100%" height={400}>
+                                <PieChart>
+                                    <Pie
+                                        data={sizeShareData}
+                                        innerRadius={80}
+                                        outerRadius={120}
+                                        paddingAngle={5}
+                                        dataKey="value"
+                                        stroke="none"
+                                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                                        activeShape={renderActiveShape}
+                                    >
+                                        {sizeShareData.map((e, i) => <Cell key={`c-${i}`} fill={colors[i % colors.length]} />)}
+                                    </Pie>
+                                    <Tooltip
+                                        contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                                        itemStyle={{ color: '#fff' }}
+                                        labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                    />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
                 );
             case "monthlyTop5":
             default:
                 return (
-                    <div className="space-y-8">
+                    <div className="space-y-8" ref={chartRef}>
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                            <SectionCard title="Top 5 Categories" subtitle="Highest expense groups by total magnitude.">
+                            <SectionCard
+                                title="Top 5 Categories"
+                                subtitle="Highest expense groups by total magnitude."
+                                onDownload={() => downloadChart("Top-Categories")}
+                            >
                                 <ResponsiveContainer width="100%" height={320}>
                                     <BarChart data={monthlyTop5Data} margin={{ bottom: 20 }}>
                                         <XAxis dataKey="category" stroke="rgba(255,255,255,0.3)" fontSize={10} tickLine={false} axisLine={false} interval={0} angle={-30} textAnchor="end" />

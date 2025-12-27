@@ -112,7 +112,7 @@ export default function Upload() {
                 <SectionCard
                     title="Activity Feed"
                     subtitle="latest categorized records from your bank data."
-                    className="lg:col-span-2 overflow-hidden px-0"
+                    className="lg:col-span-2 overflow-hidden px-6"
                 >
                     <div className="px-6 mb-4 flex justify-between items-center text-xs text-white/40 font-medium">
                         <span>Showing first {Math.min(txns.length, 10)} records</span>

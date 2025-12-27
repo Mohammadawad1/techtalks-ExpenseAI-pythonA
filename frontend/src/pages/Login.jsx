@@ -128,7 +128,7 @@ export default function Login() {
                 </div>
 
                 <p className="text-center text-[10px] text-white/20 uppercase tracking-[0.2em]">
-                    Powered by ExpenseAI Intelligence
+                    Powered by ExpenseAI
                 </p>
             </div>
             <Toast

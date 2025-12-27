@@ -31,9 +31,7 @@ export default function Home() {
                             Log In
                         </Link>
                         <Link to="/signup">
-                            <Button className="bg-blue-600 px-6 py-2.5 shadow-lg shadow-blue-600/20 hover:bg-blue-500 active:scale-95 transition-all">
-                                Get Started
-                            </Button>
+                            <button className="rounded-xl px-4 py-2 text-sm font-medium text-white hover:bg-white/15 active:bg-white/20 disabled:opacity-50 w-full sm:w-auto bg-blue-600 px-8 py-4 text-base font-bold shadow-xl shadow-blue-600/20 hover:bg-blue-500 active:scale-[0.98] transition-all">Get Started</button>
                         </Link>
                     </div>
                 </div>
@@ -46,7 +44,7 @@ export default function Home() {
                     <div className="relative mx-auto max-w-7xl px-6 text-center">
                         <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-xs font-semibold text-blue-400 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
                             <span>✨</span>
-                            <span>Powered by Advanced AI Intelligence</span>
+                            <span>Powered by Machine Learning Classification</span>
                         </div>
                         <h1 className="mx-auto max-w-4xl text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-8 [text-wrap:balance] animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-both">
                             Turn Raw Bank Transactions into <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Clear Insights</span>
@@ -56,9 +54,7 @@ export default function Home() {
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 fill-mode-both">
                             <Link to="/signup" className="w-full sm:w-auto">
-                                <Button className="w-full sm:w-auto bg-blue-600 px-8 py-4 text-base font-bold shadow-xl shadow-blue-600/20 hover:bg-blue-500 active:scale-[0.98] transition-all">
-                                    Start Free Account
-                                </Button>
+                                <button className="rounded-xl px-4 py-2 text-sm font-medium text-white hover:bg-white/15 active:bg-white/20 disabled:opacity-50 w-full sm:w-auto bg-blue-600 px-8 py-4 text-base font-bold shadow-xl shadow-blue-600/20 hover:bg-blue-500 active:scale-[0.98] transition-all">Start Free Account</button>
                             </Link>
                             <Link to="/login" className="w-full sm:w-auto">
                                 <button className="w-full sm:w-auto rounded-xl border border-white/10 bg-white/5 px-8 py-4 text-base font-bold text-white hover:bg-white/10 transition-all">
@@ -108,13 +104,20 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-                {/* How it Works Section */}
                 <section id="how-it-works" className="py-24 bg-white/[0.01] border-y border-white/5">
                     <div className="mx-auto max-w-7xl px-6">
-                        <div className="flex flex-col lg:flex-row items-center gap-16">
+
+                        <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
+
                             <div className="lg:w-1/2">
-                                <h2 className="text-4xl font-extrabold mb-6 tracking-tight">Cleaning your expenses <br /><span className="text-blue-500">doesn't have to be hard.</span></h2>
-                                <p className="text-lg text-white/40 mb-10">We've streamlined the workflow so you can focus on making decisions, not sorting spreadsheets.</p>
+                                <h2 className="text-4xl font-extrabold mb-6 tracking-tight">
+                                    Cleaning your expenses <br />
+                                    <span className="text-blue-500">doesn't have to be hard.</span>
+                                </h2>
+                                <p className="text-lg text-white/40 mb-10">
+                                    We've streamlined the workflow so you can focus on making decisions, not sorting spreadsheets.
+                                </p>
+
                                 <div className="space-y-6">
                                     <div className="flex gap-4">
                                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-600/20 font-bold text-blue-500">1</div>
@@ -123,6 +126,7 @@ export default function Home() {
                                             <p className="text-sm text-white/40">Drag and drop any bank transaction file into our secure uploader.</p>
                                         </div>
                                     </div>
+
                                     <div className="flex gap-4">
                                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-600/20 font-bold text-blue-500">2</div>
                                         <div>
@@ -130,6 +134,7 @@ export default function Home() {
                                             <p className="text-sm text-white/40">Sit back as our engine predicts categories for every single line item.</p>
                                         </div>
                                     </div>
+
                                     <div className="flex gap-4">
                                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-600/20 font-bold text-blue-500">3</div>
                                         <div>
@@ -139,27 +144,35 @@ export default function Home() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="lg:w-1/2 w-full">
-                                <div className="aspect-video rounded-3xl border border-white/10 bg-[#0b0f19] p-2 shadow-2xl relative overflow-hidden group">
-                                    <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                                    <div className="w-full h-full rounded-2xl bg-white/[0.03] flex items-center justify-center border border-white/5">
-                                        <div className="text-center">
-                                            <div className="text-6xl mb-4">🚀</div>
-                                            <div className="text-sm font-medium text-white/40 uppercase tracking-widest">Interactive Dashboard Demo</div>
-                                        </div>
-                                    </div>
+
+                            <div className="lg:w-1/2 relative mt-4 mr-2">
+                                <div className="absolute -inset-4 bg-blue-500/10 blur-xl rounded-full"></div>
+
+                                <div className="relative rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                                    <img
+                                        src="/img/ExpenseAI-Weekly-Trend.png"
+                                        alt="Dashboard Preview"
+                                        className="w-full h-full object-cover rounded-2xl shadow-xl"
+                                    />
+
+                                    <p className="mt-2 text-center text-xs text-white/30 italic">
+                                        Dashboard Preview
+                                    </p>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
                 </section>
+
 
                 {/* About Section */}
                 <section id="about" className="py-24 relative overflow-hidden">
                     <div className="mx-auto max-w-7xl px-6">
                         <div className="flex flex-col lg:flex-row items-center gap-16">
                             <div className="lg:w-1/2">
-                                <span className="text-blue-500 font-bold tracking-widest uppercase text-xs mb-4 block">Our Story</span>
+
                                 <h2 className="text-4xl font-extrabold mb-6 tracking-tight">📗 About Expense AI</h2>
                                 <p className="mb-4 text-lg font-semibold text-white/90">
                                     We are the developers of this project.
@@ -190,7 +203,6 @@ export default function Home() {
                 <section id="contact" className="py-24 bg-white/[0.01] border-y border-white/5">
                     <div className="mx-auto max-w-7xl px-6">
                         <div className="text-center mb-16">
-                            <span className="text-blue-500 font-bold tracking-widest uppercase text-xs mb-4 block">Support</span>
                             <h2 className="text-4xl font-extrabold mb-4 tracking-tight">📞 Contact Us</h2>
                             <p className="text-white/40 max-w-2xl mx-auto">
                                 We'd love to hear from you! Your thoughts help us make the experience even better.
@@ -226,7 +238,10 @@ export default function Home() {
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] bg-indigo-600/10 blur-[100px] rounded-full pointer-events-none"></div>
                     <div className="mx-auto max-w-7xl px-6 text-center">
                         <h2 className="text-4xl font-extrabold mb-6">Ready to regain control?</h2>
-                        <p className="text-white/40 mb-10 max-w-xl mx-auto">Join freelancers and small business owners who save hours every month on bookkeeping.</p>
+                        <p className="text-white/40 mb-2 max-w-xl mx-auto">Avoid hours of manual cleanup</p>
+                        <p className="text-white/40 mb-2 max-w-xl mx-auto">Automated categorization</p>
+                        <p className="text-white/40 mb-2 max-w-xl mx-auto">Instant insights</p>
+
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <Link to="/signup">
                                 <Button className="bg-blue-600 px-10 py-4 font-bold shadow-xl shadow-blue-600/20 hover:bg-blue-500 active:scale-95 transition-all">
