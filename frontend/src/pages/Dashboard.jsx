@@ -18,6 +18,7 @@ export default function Dashboard() {
     const [selectedInsight, setSelectedInsight] = useState("monthlyTop5");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
+    const [activeCategory, setActiveCategory] = useState(null);
 
     const colors = [
         "#3b82f6", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981",
@@ -43,7 +44,7 @@ export default function Dashboard() {
         );
     };
 
-    const filteredData = useMemo(() => {
+    const dateFilteredData = useMemo(() => {
         if (!startDate && !endDate) return txns;
         return txns.filter((t) => {
             const txnDate = new Date(t.txn_date);
@@ -54,6 +55,14 @@ export default function Dashboard() {
             return true;
         });
     }, [txns, startDate, endDate]);
+
+    const filteredData = useMemo(() => {
+        if (!activeCategory) return dateFilteredData;
+        return dateFilteredData.filter(t => {
+            const cat = t.final_category || t.predicted_category || "Uncategorized";
+            return cat === activeCategory;
+        });
+    }, [dateFilteredData, activeCategory]);
 
     // Data Processing for Insights
     const top10Data = useMemo(() => {
@@ -81,7 +90,7 @@ export default function Dashboard() {
 
     const monthlyTop5Data = useMemo(() => {
         const spending = {};
-        filteredData.forEach((t) => {
+        dateFilteredData.forEach((t) => {
             const amount = Math.abs(parseFloat(t.amount)) || 0;
             const category = t.final_category || t.predicted_category || "Uncategorized";
             spending[category] = (spending[category] || 0) + amount;
@@ -90,7 +99,7 @@ export default function Dashboard() {
             .map(([category, total]) => ({ category, total }))
             .sort((a, b) => b.total - a.total)
             .slice(0, 5);
-    }, [filteredData]);
+    }, [dateFilteredData]);
 
     const monthlyCountAmountData = useMemo(() => {
         const months = {};
@@ -142,7 +151,45 @@ export default function Dashboard() {
         }
     };
 
+    const renderEmptyState = (title, subtitle) => (
+        <SectionCard title={title} subtitle={subtitle}>
+            <div className="flex flex-col items-center justify-center h-[400px] text-center space-y-4">
+                <div className="h-16 w-16 rounded-full bg-white/5 flex items-center justify-center text-2xl">🔍</div>
+                <div>
+                    <h3 className="text-white font-medium">No results found</h3>
+                    <p className="text-white/40 text-sm max-w-[280px] mx-auto mt-1">
+                        Try adjusting your date range or removing the <span className="text-blue-400 font-bold">{activeCategory}</span> filter.
+                    </p>
+                </div>
+                {activeCategory && (
+                    <button
+                        onClick={() => setActiveCategory(null)}
+                        className="px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold hover:bg-blue-500/20 transition-all"
+                    >
+                        Clear Category Filter
+                    </button>
+                )}
+            </div>
+        </SectionCard>
+    );
+
     const renderInsightContent = () => {
+        if (filteredData.length === 0 && selectedInsight !== "monthlyTop5") {
+            const insightTitles = {
+                top10: "Top 10 Largest Expenses",
+                weeklyTrend: "Weekly Expense Trend",
+                monthlyCountAmount: "Volume vs. Magnitude",
+                sizeShare: "Transaction Size Distribution"
+            };
+            const insightSubtitles = {
+                top10: "Highest single transaction amounts in this period.",
+                weeklyTrend: "Outgoings aggregated by week.",
+                monthlyCountAmount: "Monthly transaction count and total spending.",
+                sizeShare: "Proportion of spending by amount range count."
+            };
+            return renderEmptyState(insightTitles[selectedInsight], insightSubtitles[selectedInsight]);
+        }
+
         switch (selectedInsight) {
             case "top10":
                 return (
@@ -229,35 +276,49 @@ export default function Dashboard() {
                     <div ref={chartRef}>
                         <SectionCard
                             title="Transaction Size Distribution"
-                            subtitle="Proportion of spending by amount range count."
+                            subtitle="Count of transactions by amount range."
                             onDownload={() => downloadChart("Size-Distribution")}
                         >
                             <ResponsiveContainer width="100%" height={400}>
-                                <PieChart>
-                                    <Pie
-                                        data={sizeShareData}
-                                        innerRadius={80}
-                                        outerRadius={120}
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                        stroke="none"
-                                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                                        activeShape={renderActiveShape}
-                                    >
-                                        {sizeShareData.map((e, i) => <Cell key={`c-${i}`} fill={colors[i % colors.length]} />)}
-                                    </Pie>
+                                <BarChart data={sizeShareData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                                    <XAxis dataKey="name" stroke="rgba(255,255,255,0.3)" fontSize={12} tickLine={false} axisLine={false} />
+                                    <YAxis stroke="rgba(255,255,255,0.3)" fontSize={12} tickLine={false} axisLine={false} allowDecimals={false} />
                                     <Tooltip
+                                        cursor={{ fill: 'rgba(255,255,255,0.05)' }}
                                         contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
                                         itemStyle={{ color: '#fff' }}
                                         labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
                                     />
-                                </PieChart>
+                                    <Bar dataKey="value" radius={[6, 6, 6, 6]} barSize={60}>
+                                        {sizeShareData.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                                        ))}
+                                    </Bar>
+                                </BarChart>
                             </ResponsiveContainer>
                         </SectionCard>
                     </div>
                 );
             case "monthlyTop5":
             default:
+                let chartFilteredTop5 = [];
+                if (activeCategory) {
+                    const existing = monthlyTop5Data.find(d => d.category === activeCategory);
+                    if (existing) {
+                        chartFilteredTop5 = [existing];
+                    } else {
+                        // Calculate total for this category even if not in top 5
+                        const total = filteredData
+                            .filter(t => (t.final_category || t.predicted_category || "Uncategorized") === activeCategory)
+                            .reduce((sum, t) => sum + (Math.abs(parseFloat(t.amount)) || 0), 0);
+                        if (total > 0) {
+                            chartFilteredTop5 = [{ category: activeCategory, total }];
+                        }
+                    }
+                } else {
+                    chartFilteredTop5 = monthlyTop5Data;
+                }
+
                 return (
                     <div className="space-y-8" ref={chartRef}>
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -266,68 +327,68 @@ export default function Dashboard() {
                                 subtitle="Highest expense groups by total magnitude."
                                 onDownload={() => downloadChart("Top-Categories")}
                             >
-                                <ResponsiveContainer width="100%" height={320}>
-                                    <BarChart data={monthlyTop5Data} margin={{ bottom: 20 }}>
-                                        <XAxis dataKey="category" stroke="rgba(255,255,255,0.3)" fontSize={10} tickLine={false} axisLine={false} interval={0} angle={-30} textAnchor="end" />
-                                        <YAxis hide />
-                                        <Tooltip
-                                            contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                            itemStyle={{ color: '#fff' }}
-                                            labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
-                                            formatter={(value) => `$${value.toFixed(2)}`}
-                                        />
-                                        <Bar dataKey="total" radius={[6, 6, 6, 6]}>
-                                            {monthlyTop5Data.map((entry, index) => (
-                                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} fillOpacity={0.8} />
-                                            ))}
-                                        </Bar>
-                                    </BarChart>
-                                </ResponsiveContainer>
+                                {chartFilteredTop5.length > 0 ? (
+                                    <ResponsiveContainer width="100%" height={320}>
+                                        <BarChart data={chartFilteredTop5} margin={{ bottom: 20 }}>
+                                            <XAxis dataKey="category" stroke="rgba(255,255,255,0.3)" fontSize={10} tickLine={false} axisLine={false} interval={0} angle={-30} textAnchor="end" />
+                                            <YAxis hide />
+                                            <Tooltip
+                                                contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                                                itemStyle={{ color: '#fff' }}
+                                                labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                                formatter={(value) => `$${value.toFixed(2)}`}
+                                            />
+                                            <Bar dataKey="total" radius={[6, 6, 6, 6]}>
+                                                {chartFilteredTop5.map((entry, index) => (
+                                                    <Cell key={`cell-${index}`} fill={colors[index % colors.length]} fillOpacity={0.8} />
+                                                ))}
+                                            </Bar>
+                                        </BarChart>
+                                    </ResponsiveContainer>
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center h-[320px] text-white/20">
+                                        <span className="text-2xl mb-2">📉</span>
+                                        <p className="text-xs">No data for this period</p>
+                                    </div>
+                                )}
                             </SectionCard>
 
                             <SectionCard title="Distribution Share" subtitle="Proportional breakdown of your top expenses.">
-                                <ResponsiveContainer width="100%" height={320}>
-                                    <PieChart>
-                                        <Pie
-                                            data={monthlyTop5Data}
-                                            dataKey="total"
-                                            nameKey="category"
-                                            cx="50%"
-                                            cy="50%"
-                                            innerRadius={60}
-                                            outerRadius={100}
-                                            paddingAngle={5}
-                                            label={({ category, percent }) => `${category} ${(percent * 100).toFixed(0)}%`}
-                                            activeShape={renderActiveShape}
-                                        >
-                                            {monthlyTop5Data.map((entry, index) => (
-                                                <Cell key={`cellpie-${index}`} fill={colors[index % colors.length]} stroke="rgba(0,0,0,0)" />
-                                            ))}
-                                        </Pie>
-                                        <Tooltip
-                                            contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                            itemStyle={{ color: '#fff' }}
-                                            labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
-                                            formatter={(value) => `$${value.toFixed(2)}`}
-                                        />
-                                    </PieChart>
-                                </ResponsiveContainer>
+                                {chartFilteredTop5.length > 0 ? (
+                                    <ResponsiveContainer width="100%" height={320}>
+                                        <PieChart>
+                                            <Pie
+                                                data={chartFilteredTop5}
+                                                dataKey="total"
+                                                nameKey="category"
+                                                cx="50%"
+                                                cy="50%"
+                                                innerRadius={60}
+                                                outerRadius={100}
+                                                paddingAngle={5}
+                                                label={({ category, percent }) => `${category} ${(percent * 100).toFixed(0)}%`}
+                                                activeShape={renderActiveShape}
+                                            >
+                                                {chartFilteredTop5.map((entry, index) => (
+                                                    <Cell key={`cellpie-${index}`} fill={colors[index % colors.length]} stroke="rgba(0,0,0,0)" />
+                                                ))}
+                                            </Pie>
+                                            <Tooltip
+                                                contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                                                itemStyle={{ color: '#fff' }}
+                                                labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                                formatter={(value) => `$${value.toFixed(2)}`}
+                                            />
+                                        </PieChart>
+                                    </ResponsiveContainer>
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center h-[320px] text-white/20">
+                                        <span className="text-2xl mb-2">🍰</span>
+                                        <p className="text-xs">No distribution data</p>
+                                    </div>
+                                )}
                             </SectionCard>
                         </div>
-
-                        <SectionCard title="Priority Recap" subtitle="Summary of top categorization results." className="border-white/5">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                {monthlyTop5Data.map((item, idx) => (
-                                    <div key={item.category} className="p-4 rounded-xl bg-white/5 border border-white/5 flex flex-col gap-1">
-                                        <div className="flex items-center gap-2">
-                                            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: colors[idx % colors.length] }}></span>
-                                            <span className="text-xs font-bold uppercase tracking-wider text-white/40">{item.category}</span>
-                                        </div>
-                                        <span className="text-xl font-bold text-white">${item.total.toLocaleString()}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </SectionCard>
                     </div>
                 );
         }
@@ -383,6 +444,50 @@ export default function Dashboard() {
                             <KpiCard title="Active Insight" value={selectedInsight.replace(/([A-Z])/g, ' $1').trim().replace(/^\w/, c => c.toUpperCase())} icon="📊" subtitle="Current perspective" />
                             <KpiCard title="Records count" value={filteredData.length} icon="🧩" subtitle="Analyzed transactions" />
                         </KpiRow>
+
+                        {/* Interactive Category Filter Bar */}
+                        <div className="space-y-3">
+                            <div className="flex items-center justify-between px-1">
+                                <div className="text-[10px] font-bold uppercase tracking-widest text-white/30">Priority Recap / Quick Filters</div>
+                                {activeCategory && (
+                                    <button
+                                        onClick={() => setActiveCategory(null)}
+                                        className="text-[10px] font-bold uppercase tracking-widest text-blue-400 hover:text-blue-300 transition-colors"
+                                    >
+                                        Clear Filter
+                                    </button>
+                                )}
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                                {monthlyTop5Data.map((item, idx) => {
+                                    const isActive = activeCategory === item.category;
+                                    return (
+                                        <div
+                                            key={item.category}
+                                            onClick={() => setActiveCategory(isActive ? null : item.category)}
+                                            className={`p-4 rounded-xl transition-all cursor-pointer border flex flex-col gap-1 
+                                                ${isActive
+                                                    ? "bg-blue-500/15 border-blue-500/40 shadow-[0_0_20px_rgba(59,130,246,0.1)]"
+                                                    : "bg-white/5 border-white/5 hover:bg-white/[0.08] hover:border-white/10"
+                                                }`}
+                                        >
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-2 overflow-hidden">
+                                                    <span className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: colors[idx % colors.length] }}></span>
+                                                    <span className="text-[10px] font-bold uppercase tracking-wider text-white/40 truncate">{item.category}</span>
+                                                </div>
+                                                {isActive && (
+                                                    <div className="h-3 w-3 shrink-0 rounded-full bg-blue-500 flex items-center justify-center text-[8px] text-white">
+                                                        ✓
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <span className="text-lg font-bold text-white">${item.total.toLocaleString()}</span>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
 
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                             {renderInsightContent()}
