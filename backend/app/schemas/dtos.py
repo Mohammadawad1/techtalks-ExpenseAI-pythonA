@@ -20,6 +20,18 @@ class CategoryListOut(BaseModel):
 class CategoryCreateIn(BaseModel):
     name: str
 
+class TransactionCreateIn(BaseModel):
+    txn_date: date
+    description: str
+    amount: float
+    category: str | None = None
+
+class TransactionUpdateIn(BaseModel):
+    txn_date: date
+    description: str
+    amount: float
+    category: str | None = None
+
 class FeedbackIn(BaseModel):
     transaction_id: int
     new_category: str

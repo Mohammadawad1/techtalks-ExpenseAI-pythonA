@@ -36,8 +36,8 @@ export default function Upload() {
     return (
         <div className="space-y-8 animate-in fade-in duration-700">
             <div>
-                <h1 className="text-3xl font-bold tracking-tight text-white/90">Transaction Management</h1>
-                <p className="mt-1 text-white/40 text-sm">Import and analyze your bank statements with AI-powered categorization.</p>
+                <h1 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">Transaction Management</h1>
+                <p className="mt-1 text-[var(--text-muted)] text-sm">Import and analyze your bank statements with AI-powered categorization.</p>
             </div>
 
             <KpiRow>
@@ -84,7 +84,7 @@ export default function Upload() {
                         </div>
                     ) : (
                         <>
-                            <div className={`group relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-10 transition-all ${file ? 'border-blue-500/50 bg-blue-500/10' : 'border-white/10 bg-white/[0.02] hover:border-white/20'}`}>
+                            <div className={`group relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-10 transition-all ${file ? 'border-blue-500/50 bg-blue-500/10' : 'border-[var(--border-primary)] bg-[var(--bg-tertiary)] hover:border-[var(--border-secondary)]'}`}>
                                 <input
                                     type="file"
                                     onChange={(e) => setFile(e.target.files?.[0] || null)}
@@ -93,10 +93,10 @@ export default function Upload() {
                                 />
                                 <div className="flex flex-col items-center text-center">
                                     <span className="mb-4 text-4xl group-hover:scale-110 transition-transform duration-300">📥</span>
-                                    <p className="text-sm font-medium text-white/80">
+                                    <p className="text-sm font-medium text-[var(--text-primary)]">
                                         {file ? file.name : "Drag & drop CSV here"}
                                     </p>
-                                    <p className="mt-1 text-xs text-white/40 underline">or click to browse</p>
+                                    <p className="mt-1 text-xs text-[var(--text-dim)] underline">or click to browse</p>
                                 </div>
                             </div>
 
@@ -123,26 +123,26 @@ export default function Upload() {
                     subtitle="latest categorized records from your bank data."
                     className="lg:col-span-2 overflow-hidden px-6"
                 >
-                    <div className="px-6 mb-4 flex justify-between items-center text-xs text-white/40 font-medium">
+                    <div className="px-6 mb-4 flex justify-between items-center text-xs text-[var(--text-muted)] font-medium">
                         <span>Showing first {Math.min(txns.length, 10)} records</span>
                         {txns.length > 10 && <span>+ {txns.length - 10} more in Review</span>}
                     </div>
                     <div className="overflow-x-auto px-6">
                         <table className="w-full text-left text-sm">
                             <thead>
-                                <tr className="border-b border-white/5 text-[10px] font-bold uppercase tracking-widest text-white/30">
+                                <tr className="border-b border-[var(--border-secondary)] text-[11px] font-bold uppercase tracking-wider text-[var(--text-dim)]">
                                     <th className="pb-4 pt-2">Date</th>
                                     <th className="pb-4 pt-2">Merchant/Desc</th>
                                     <th className="pb-4 pt-2 text-right">Amount</th>
                                     <th className="pb-4 pt-2 text-right">Category</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-white/5">
+                            <tbody className="divide-y divide-[var(--border-secondary)]">
                                 {txns.slice(0, 10).map((t) => (
-                                    <tr key={t.id} className="group hover:bg-white/[0.02] transition-colors border-t border-white/5">
-                                        <td className="py-4 text-white/60 text-xs font-mono">{t.txn_date || "—"}</td>
-                                        <td className="py-4 font-medium text-white/90 max-w-[220px] truncate">{t.description}</td>
-                                        <td className={`py-4 text-right font-mono font-bold ${t.amount < 0 ? "text-red-400" : "text-green-400"}`}>
+                                    <tr key={t.id} className="group hover:bg-[var(--bg-tertiary)] transition-colors border-t border-[var(--border-secondary)]">
+                                        <td className="py-4 text-[var(--text-muted)] text-[13px] font-mono">{t.txn_date || "—"}</td>
+                                        <td className="py-4 font-medium text-[var(--text-primary)] max-w-[220px] truncate">{t.description}</td>
+                                        <td className={`py-4 text-right font-mono font-bold text-[14px] ${t.amount < 0 ? "text-red-400" : "text-green-400"}`}>
                                             {Number(t.amount).toFixed(2)}
                                         </td>
                                         <td className="py-4 text-right">
@@ -153,7 +153,7 @@ export default function Upload() {
                             </tbody>
                         </table>
                         {txns.length === 0 && (
-                            <div className="py-16 text-center text-white/20">
+                            <div className="py-16 text-center text-[var(--text-dim)]">
                                 <span className="text-4xl block mb-2">📋</span>
                                 <p>No transactions available for preview yet.</p>
                             </div>

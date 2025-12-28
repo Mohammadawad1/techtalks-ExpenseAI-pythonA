@@ -63,6 +63,13 @@ export const api = {
     return request("/upload", { method: "POST", body: fd });
   },
 
+  createTransaction: (data) =>
+    request("/transactions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }),
+
   getTransactions: () => request("/transactions"),
 
   feedback: (transaction_id, new_category) =>
@@ -111,4 +118,18 @@ export const api = {
     if (!res.ok) throw new Error(`Export failed: HTTP ${res.status}`);
     return await res.blob();
   },
+
+  deleteTransactions: (ids) =>
+    request("/transactions", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(ids),
+    }),
+
+  updateTransaction: (id, data) =>
+    request(`/transactions/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }),
 };

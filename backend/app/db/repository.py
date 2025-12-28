@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import select, delete
 from .models import TransactionRecord, FeedbackRecord, CategoryRecord, User
+from ..schemas.dtos import TransactionCreateIn, TransactionUpdateIn
 
 class TransactionRepository:
     def __init__(self, db: Session):
@@ -33,6 +34,56 @@ class TransactionRepository:
             self.db.commit()
             self.db.refresh(txn)
         return txn
+
+    def add_manual(self, data: TransactionCreateIn, user_id: int, predicted: dict | None = None) -> TransactionRecord:
+        txn = TransactionRecord(
+            source="manual",
+            txn_date=data.txn_date,
+            description=data.description,
+            amount=data.amount,
+            user_id=user_id
+        )
+        
+        if data.category:
+            txn.final_category = data.category
+        elif predicted:
+            txn.predicted_category = predicted.get("predicted_category")
+            txn.confidence = predicted.get("confidence")
+            
+        self.db.add(txn)
+        self.db.commit()
+        self.db.refresh(txn)
+        return txn
+
+    def update_prediction(self, txn_id: int, category: str, confidence: float):
+        txn = self.db.execute(
+            select(TransactionRecord).where(TransactionRecord.id == txn_id)
+        ).scalar_one_or_none()
+        if txn:
+            txn.predicted_category = category
+            txn.confidence = confidence
+            self.db.commit()
+            self.db.refresh(txn)
+        return txn
+
+    def update(self, txn_id: int, data: TransactionUpdateIn, user_id: int) -> TransactionRecord | None:
+        txn = self.db.execute(
+            select(TransactionRecord).where(TransactionRecord.id == txn_id, TransactionRecord.user_id == user_id)
+        ).scalar_one_or_none()
+        if txn:
+            txn.txn_date = data.txn_date
+            txn.description = data.description
+            txn.amount = data.amount
+            txn.final_category = data.category
+            self.db.commit()
+            self.db.refresh(txn)
+        return txn
+
+    def delete_transactions(self, txn_ids: list[int], user_id: int):
+        self.db.query(TransactionRecord)\
+            .filter(TransactionRecord.id.in_(txn_ids), TransactionRecord.user_id == user_id)\
+            .delete(synchronize_session=False)
+        self.db.commit()
 
 class FeedbackRepository:
     def __init__(self, db: Session):

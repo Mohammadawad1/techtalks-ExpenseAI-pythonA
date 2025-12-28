@@ -72,14 +72,14 @@ export default function InsightsMenu({ selected, onChange }) {
                     onClick={() => onChange(item.id)}
                     className={`flex items-center justify-between gap-4 p-4 rounded-2xl transition-all border text-left group
             ${selected === item.id
-                            ? "bg-blue-600/10 border-blue-500/50 text-white shadow-lg shadow-blue-500/5"
-                            : "bg-white/[0.03] border-white/5 text-white/60 hover:bg-white/[0.05] hover:border-white/10 hover:text-white/80"
+                            ? "bg-blue-600/10 border-blue-500/50 text-[var(--text-primary)] shadow-lg shadow-blue-500/5"
+                            : "bg-[var(--bg-tertiary)] border-[var(--border-secondary)] text-[var(--text-muted)] hover:bg-[var(--bg-secondary)] hover:border-[var(--border-primary)] hover:text-[var(--text-primary)]"
                         }`}
                 >
                     <span className={`text-sm font-medium leading-tight ${selected === item.id ? "font-bold" : ""}`}>
                         {item.title}
                     </span>
-                    <div className={`${selected === item.id ? "text-blue-400" : "text-white/20 group-hover:text-white/40"} transition-colors shrink-0`}>
+                    <div className={`${selected === item.id ? "text-blue-400" : "text-[var(--text-dim)] group-hover:text-[var(--text-muted)]"} transition-colors shrink-0`}>
                         {item.icon}
                     </div>
                 </button>

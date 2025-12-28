@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, Depends, HTTPException, Query
+from fastapi import FastAPI, UploadFile, File, Depends, HTTPException, Query, BackgroundTasks
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 import io
@@ -11,7 +11,7 @@ from .core.config import settings
 from .db.database import Base, engine, get_db
 from .db.repository import TransactionRepository, CategoryRepository, UserRepository
 from .schemas.dtos import (
-    TransactionOut, CategoryListOut, CategoryCreateIn, FeedbackIn, BulkFeedbackIn, RetrainOut,
+    TransactionOut, CategoryListOut, CategoryCreateIn, TransactionCreateIn, TransactionUpdateIn, FeedbackIn, BulkFeedbackIn, RetrainOut,
     UserCreate, UserOut, Token, UserLogin
 )
 from .services.cleaning_service import CleaningService
@@ -112,9 +112,74 @@ def upload_csv(file: UploadFile = File(...), db: Session = Depends(get_db), curr
         traceback.print_exc()
         raise HTTPException(status_code=400, detail=str(e))
 
+@app.post("/transactions", response_model=TransactionOut)
+async def create_transaction(
+    payload: TransactionCreateIn, 
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db), 
+    current_user: UserModel = Depends(get_current_user)
+):
+    predicted = None
+    if payload.category:
+        # Validate provided category
+        cats = CategoryRepository(db).list_all()
+        if payload.category not in cats:
+            raise HTTPException(status_code=400, detail=f"Category '{payload.category}' does not exist")
+    else:
+        # Initial placeholder prediction
+        predicted = {"predicted_category": "Predicting...", "confidence": 0.0}
+    
+    txn = TransactionRepository(db).add_manual(payload, current_user.id, predicted=predicted)
+    
+    # If no category, run prediction in background
+    if not payload.category:
+        background_tasks.add_task(
+            predict_and_update_manual_txn,
+            txn.id,
+            payload.description,
+            payload.amount,
+            current_user.id
+        )
+    
+    return txn
+
+def predict_and_update_manual_txn(txn_id: int, description: str, amount: float, user_id: int):
+    """
+    Background task to run ML prediction and update the transaction.
+    """
+    from .db.database import SessionLocal
+    db = SessionLocal()
+    try:
+        # Load artifacts and predict
+        ml = MLService(settings.artifacts_dir, user_id=user_id)
+        df_temp = pd.DataFrame([{"description": description, "amount": amount}])
+        df_pred = ml.predict(df_temp)
+        pred = df_pred.iloc[0]
+        
+        # Update record
+        TransactionRepository(db).update_prediction(
+            txn_id, 
+            str(pred["predicted_category"]), 
+            float(pred["confidence"])
+        )
+    finally:
+        db.close()
+
 @app.get("/transactions", response_model=list[TransactionOut])
 def list_transactions(db: Session = Depends(get_db), current_user: UserModel = Depends(get_current_user)):
     return TransactionRepository(db).list_all(current_user.id)
+
+@app.delete("/transactions")
+def delete_transactions(payload: list[int], db: Session = Depends(get_db), current_user: UserModel = Depends(get_current_user)):
+    TransactionRepository(db).delete_transactions(payload, current_user.id)
+    return {"status": "success", "deleted_count": len(payload)}
+
+@app.put("/transactions/{txn_id}", response_model=TransactionOut)
+def update_transaction(txn_id: int, payload: TransactionUpdateIn, db: Session = Depends(get_db), current_user: UserModel = Depends(get_current_user)):
+    txn = TransactionRepository(db).update(txn_id, payload, current_user.id)
+    if txn is None:
+        raise HTTPException(status_code=404, detail="Transaction not found")
+    return txn
 
 @app.post("/feedback")
 def feedback(payload: FeedbackIn, db: Session = Depends(get_db), current_user: UserModel = Depends(get_current_user)):

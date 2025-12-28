@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../api";
 import Button from "../components/ui/Button";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function Signup() {
     const [email, setEmail] = useState("");
@@ -36,22 +37,31 @@ export default function Signup() {
 
     if (success) {
         return (
-            <div className="flex min-h-screen items-center justify-center bg-[#0a0e17] px-4">
+            <div className="flex min-h-screen items-center justify-center bg-[var(--bg-primary)] px-4">
                 <div className="w-full max-w-md text-center p-8 rounded-3xl border border-green-500/20 bg-green-500/5 backdrop-blur-xl">
                     <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-green-500/20 text-green-500 mb-6 animate-bounce">
                         <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                         </svg>
                     </div>
-                    <h2 className="text-2xl font-bold text-white">Account Created!</h2>
-                    <p className="mt-2 text-white/40 text-sm">Redirecting you to the login page...</p>
+                    <h2 className="text-2xl font-bold text-[var(--text-primary)]">Account Created!</h2>
+                    <p className="mt-2 text-[var(--text-muted)] text-sm">Redirecting you to the login page...</p>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-[#0a0e17] px-4 py-12">
+        <div className="flex min-h-screen items-center justify-center bg-[var(--bg-primary)] px-4 py-12 relative">
+            <Link to="/" className="absolute top-8 left-8 flex items-center gap-2 group transition-all">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 font-bold text-white shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
+                    EA
+                </div>
+                <span className="text-xl font-bold tracking-tight text-[var(--text-primary)]">ExpenseAI</span>
+            </Link>
+            <div className="absolute top-8 right-8">
+                <ThemeToggle />
+            </div>
             <div className="w-full max-w-md space-y-8">
                 <div className="text-center">
                     <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-600/20 text-blue-500 shadow-xl shadow-blue-500/10 mb-6">
@@ -59,11 +69,11 @@ export default function Signup() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                         </svg>
                     </div>
-                    <h2 className="text-3xl font-extrabold tracking-tight text-white/90">Join ExpenseAI</h2>
-                    <p className="mt-2 text-sm text-white/40">Start mastering your expenses today</p>
+                    <h2 className="text-3xl font-extrabold tracking-tight text-[var(--text-primary)]">Join ExpenseAI</h2>
+                    <p className="mt-2 text-sm text-[var(--text-muted)]">Start mastering your expenses today</p>
                 </div>
 
-                <div className="rounded-3xl border border-white/5 bg-white/[0.03] p-8 shadow-2xl backdrop-blur-xl">
+                <div className="rounded-3xl border border-[var(--border-primary)] bg-[var(--bg-secondary)] p-8 shadow-lg backdrop-blur-xl">
                     <form className="space-y-6" onSubmit={handleSubmit}>
                         {error && (
                             <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-xs font-medium text-red-400">
@@ -72,23 +82,23 @@ export default function Signup() {
                         )}
                         <div className="space-y-4">
                             <div>
-                                <label className="block text-xs font-bold uppercase tracking-widest text-white/30 mb-2">Email Address</label>
+                                <label className="block text-[11px] font-bold uppercase tracking-wider text-[var(--text-dim)] mb-2">Email Address</label>
                                 <input
                                     type="email"
                                     required
-                                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-blue-500/50 outline-none transition-all placeholder:text-white/20"
+                                    className="w-full rounded-xl border border-[var(--border-primary)] bg-[var(--bg-tertiary)] px-4 py-3 text-sm text-[var(--text-primary)] focus:border-blue-500/50 outline-none transition-all placeholder:text-[var(--text-dim)]"
                                     placeholder="name@company.com"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                             <div className="relative">
-                                <label className="block text-xs font-bold uppercase tracking-widest text-white/30 mb-2">Password</label>
+                                <label className="block text-[11px] font-bold uppercase tracking-wider text-[var(--text-dim)] mb-2">Password</label>
                                 <div className="relative">
                                     <input
                                         type={showPassword ? "text" : "password"}
                                         required
-                                        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 pr-12 text-sm text-white focus:border-blue-500/50 outline-none transition-all placeholder:text-white/20"
+                                        className="w-full rounded-xl border border-[var(--border-primary)] bg-[var(--bg-tertiary)] px-4 py-3 pr-12 text-sm text-[var(--text-primary)] focus:border-blue-500/50 outline-none transition-all placeholder:text-[var(--text-dim)]"
                                         placeholder="••••••••"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
@@ -112,12 +122,12 @@ export default function Signup() {
                                 </div>
                             </div>
                             <div className="relative">
-                                <label className="block text-xs font-bold uppercase tracking-widest text-white/30 mb-2">Confirm Password</label>
+                                <label className="block text-[11px] font-bold uppercase tracking-wider text-[var(--text-dim)] mb-2">Confirm Password</label>
                                 <div className="relative">
                                     <input
                                         type={showConfirmPassword ? "text" : "password"}
                                         required
-                                        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 pr-12 text-sm text-white focus:border-blue-500/50 outline-none transition-all placeholder:text-white/20"
+                                        className="w-full rounded-xl border border-[var(--border-primary)] bg-[var(--bg-tertiary)] px-4 py-3 pr-12 text-sm text-[var(--text-primary)] focus:border-blue-500/50 outline-none transition-all placeholder:text-[var(--text-dim)]"
                                         placeholder="••••••••"
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
@@ -151,14 +161,14 @@ export default function Signup() {
                         </Button>
                     </form>
 
-                    <div className="mt-8 text-center text-xs text-white/30">
+                    <div className="mt-8 text-center text-xs text-[var(--text-dim)] font-medium">
                         By signing up, you agree to our{" "}
-                        <a href="#" className="underline">Terms</a> and{" "}
-                        <a href="#" className="underline">Privacy Policy</a>.
+                        <a href="#" className="underline decoration-blue-500/30 underline-offset-4">Terms</a> and{" "}
+                        <a href="#" className="underline decoration-blue-500/30 underline-offset-4">Privacy Policy</a>.
                     </div>
 
-                    <div className="mt-8 text-center pt-6 border-t border-white/5">
-                        <p className="text-sm text-white/40">
+                    <div className="mt-8 text-center pt-6 border-t border-[var(--border-secondary)]">
+                        <p className="text-sm text-[var(--text-muted)]">
                             Already have an account?{" "}
                             <Link to="/login" className="font-semibold text-blue-400 hover:text-blue-300 transition-colors">
                                 Sign in

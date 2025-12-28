@@ -1,11 +1,10 @@
-export default function Button({ children, className = "", ...props }) {
+export default function Button({ children, onClick, className = "", disabled = false, title = "" }) {
     return (
         <button
-            className={
-                "rounded-xl bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/15 active:bg-white/20 disabled:opacity-50 " +
-                className
-            }
-            {...props}
+            onClick={onClick}
+            disabled={disabled}
+            title={title}
+            className={`flex items-center justify-center rounded-xl border border-[var(--border-primary)] bg-[var(--bg-tertiary)] px-4 py-2.5 text-sm font-medium text-[var(--text-primary)] transition-all active:scale-95 disabled:opacity-50 ${className}`}
         >
             {children}
         </button>

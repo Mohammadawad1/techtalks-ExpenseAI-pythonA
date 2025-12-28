@@ -2,6 +2,7 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { toPng } from "html-to-image";
 import { saveAs } from "file-saver";
+import { jsPDF } from "jspdf";
 import {
     BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell,
     PieChart, Pie, LineChart, Line, ComposedChart, Area, Legend,
@@ -34,12 +35,12 @@ const PriorityRecapFilters = ({ data, activeCategory, setActiveCategory, colors 
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex items-center justify-between w-full px-1 group"
             >
-                <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 group-hover:text-white/50 transition-colors">Priority Recap / Quick Filters</div>
+                <div className="text-[11px] font-bold uppercase tracking-wider text-[var(--text-dim)] group-hover:text-[var(--text-muted)] transition-colors">Priority Recap / Quick Filters</div>
                 <div className="flex items-center gap-4">
                     {activeCategory && (
-                        <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mr-2">Filter Active: {activeCategory}</span>
+                        <span className="text-[11px] font-bold text-blue-400 uppercase tracking-wider mr-2">Filter Active: {activeCategory}</span>
                     )}
-                    <span className={`text-white/20 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>▼</span>
+                    <span className={`text-[var(--text-dim)] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>▼</span>
                 </div>
             </button>
 
@@ -54,17 +55,17 @@ const PriorityRecapFilters = ({ data, activeCategory, setActiveCategory, colors 
                                 className={`p-3 rounded-xl transition-all cursor-pointer border flex flex-col gap-0.5 
                                     ${isActive
                                         ? "bg-blue-500/15 border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.1)]"
-                                        : "bg-white/5 border-white/5 hover:bg-white/[0.08] hover:border-white/10"
+                                        : "bg-[var(--bg-tertiary)] border-[var(--border-secondary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--border-primary)]"
                                     }`}
                             >
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-2 overflow-hidden">
                                         <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ backgroundColor: colors[idx % colors.length] }}></span>
-                                        <span className="text-[9px] font-bold uppercase tracking-wider text-white/40 truncate">{item.category}</span>
+                                        <span className="text-[10px] font-bold uppercase tracking-wide text-[var(--text-muted)] truncate">{item.category}</span>
                                     </div>
                                     {isActive && <div className="h-2.5 w-2.5 shrink-0 rounded-full bg-blue-500 flex items-center justify-center text-[7px] text-white">✓</div>}
                                 </div>
-                                <span className="text-base font-bold text-white">${item.total.toLocaleString()}</span>
+                                <span className="text-lg font-bold text-[var(--text-primary)]">${item.total.toLocaleString()}</span>
                             </div>
                         );
                     })}
@@ -74,31 +75,25 @@ const PriorityRecapFilters = ({ data, activeCategory, setActiveCategory, colors 
     );
 };
 
-const IntelligenceMenuRow = ({ selected, onChange }) => (
-    <div className="w-full">
-        <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 px-2 mb-3">Intelligence Menu</div>
-        <InsightsMenu selected={selected} onChange={onChange} />
-    </div>
-);
 
 const DateRangeFilter = ({ startDate, endDate, setStartDate, setEndDate }) => (
-    <div className="py-4 border-t border-b border-white/5 mt-4">
+    <div className="py-4 border-t border-b border-[var(--border-secondary)] mt-4">
         <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <div className="text-[10px] font-bold uppercase tracking-widest text-white/30 px-2 shrink-0">Date Range Filter</div>
+            <div className="text-[11px] font-bold uppercase tracking-wider text-[var(--text-dim)] px-2 shrink-0">Date Range Filter</div>
             <div className="flex items-center gap-3 flex-1">
                 <div className="flex-1 max-w-[200px] relative">
                     <input
                         type="date"
-                        className="w-full rounded-lg border border-white/5 bg-white/[0.03] px-3 py-1.5 text-xs text-white outline-none focus:border-blue-500/30 transition-all font-mono"
+                        className="w-full rounded-lg border border-[var(--border-primary)] bg-[var(--bg-tertiary)] px-3 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-blue-500/30 transition-all font-mono"
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
                     />
                 </div>
-                <span className="text-white/20">→</span>
+                <span className="text-[var(--text-dim)]">→</span>
                 <div className="flex-1 max-w-[200px] relative">
                     <input
                         type="date"
-                        className="w-full rounded-lg border border-white/5 bg-white/[0.03] px-3 py-1.5 text-xs text-white outline-none focus:border-blue-500/30 transition-all font-mono"
+                        className="w-full rounded-lg border border-[var(--border-primary)] bg-[var(--bg-tertiary)] px-3 py-1.5 text-xs text-[var(--text-primary)] outline-none focus:border-blue-500/30 transition-all font-mono"
                         value={endDate}
                         onChange={(e) => setEndDate(e.target.value)}
                     />
@@ -106,7 +101,7 @@ const DateRangeFilter = ({ startDate, endDate, setStartDate, setEndDate }) => (
                 {(startDate || endDate) && (
                     <button
                         onClick={() => { setStartDate(""); setEndDate(""); }}
-                        className="text-[10px] font-bold text-white/20 hover:text-white transition-colors uppercase tracking-widest ml-auto"
+                        className="text-[11px] font-bold text-[var(--text-dim)] hover:text-[var(--text-primary)] transition-colors uppercase tracking-wider ml-auto"
                     >
                         Clear Range
                     </button>
@@ -150,7 +145,7 @@ export default function Dashboard() {
                 fill={fill}
                 stroke={fill}
                 strokeWidth={1}
-                style={{ filter: "drop-shadow(0px 0px 8px rgba(255,255,255,0.1))" }}
+                style={{ filter: "drop-shadow(0px 0px 8px rgba(var(--text-primary-rgb),0.1))" }}
             />
         );
     };
@@ -241,14 +236,16 @@ export default function Dashboard() {
     const topCategory = monthlyTop5Data[0]?.category || "N/A";
 
     const chartRef = useRef(null);
+    const reportRef = useRef(null);
+    const [generatingReport, setGeneratingReport] = useState(false);
 
     const downloadChart = async (title) => {
         if (!chartRef.current) return;
         try {
             const dataUrl = await toPng(chartRef.current, {
-                backgroundColor: "#0b0f19",
+                backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim() || "#0b0f19",
                 style: { borderRadius: "16px" },
-                filter: (node) => !(node.tagName === "BUTTON" && node.title === "Download as Image")
+                filter: (node) => !(node.tagName === "BUTTON")
             });
             saveAs(dataUrl, `ExpenseAI-${title.replace(/\s+/g, "-")}.png`);
         } catch (error) {
@@ -256,13 +253,61 @@ export default function Dashboard() {
         }
     };
 
+    const downloadPdf = async (title) => {
+        if (!chartRef.current) return;
+        try {
+            const dataUrl = await toPng(chartRef.current, {
+                backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim() || "#0b0f19",
+                style: { borderRadius: "16px" },
+                filter: (node) => !(node.tagName === "BUTTON")
+            });
+            const pdf = new jsPDF({
+                orientation: "landscape",
+                unit: "px",
+                format: [chartRef.current.offsetWidth + 40, chartRef.current.offsetHeight + 40]
+            });
+            pdf.addImage(dataUrl, "PNG", 20, 20, chartRef.current.offsetWidth, chartRef.current.offsetHeight);
+            pdf.save(`ExpenseAI-${title.replace(/\s+/g, "-")}.pdf`);
+        } catch (error) {
+            console.error("Failed to download PDF:", error);
+        }
+    };
+
+    const downloadFullReport = async () => {
+        if (!reportRef.current) return;
+        setGeneratingReport(true);
+        try {
+            const pdf = new jsPDF({ orientation: "landscape", unit: "px" });
+            const charts = reportRef.current.querySelectorAll('.report-chart');
+
+            for (let i = 0; i < charts.length; i++) {
+                const canvas = await toPng(charts[i], {
+                    backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--bg-primary').trim() || "#0b0f19",
+                    style: { borderRadius: "16px" }
+                });
+
+                const imgProps = pdf.getImageProperties(canvas);
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+                if (i > 0) pdf.addPage();
+                pdf.addImage(canvas, 'PNG', 0, 0, pdfWidth, pdfHeight);
+            }
+            pdf.save(`ExpenseAI-Full-Report-${new Date().toISOString().split('T')[0]}.pdf`);
+        } catch (error) {
+            console.error("Failed to generate report:", error);
+        } finally {
+            setGeneratingReport(false);
+        }
+    };
+
     const renderEmptyState = (title) => (
         <SectionCard title={title}>
             <div className="flex flex-col items-center justify-center h-[400px] text-center space-y-4">
-                <div className="h-16 w-16 rounded-full bg-white/5 flex items-center justify-center text-2xl">🔍</div>
+                <div className="h-16 w-16 rounded-full bg-[var(--bg-tertiary)] flex items-center justify-center text-2xl">🔍</div>
                 <div>
-                    <h3 className="text-white font-medium">No results found</h3>
-                    <p className="text-white/40 text-sm max-w-[280px] mx-auto mt-1">
+                    <h3 className="text-[var(--text-primary)] font-medium">No results found</h3>
+                    <p className="text-[var(--text-muted)] text-sm max-w-[280px] mx-auto mt-1">
                         Try adjusting your date range or removing filters.
                     </p>
                 </div>
@@ -279,15 +324,19 @@ export default function Dashboard() {
             case "top10":
                 return (
                     <div ref={chartRef}>
-                        <SectionCard title="Top 10 Largest Expenses" onDownload={() => downloadChart("Top-10-Expenses")}>
+                        <SectionCard
+                            title="Top 10 Largest Expenses"
+                            onDownload={() => downloadChart("Top-10-Expenses")}
+                            onDownloadPdf={() => downloadPdf("Top-10-Expenses")}
+                        >
                             <ResponsiveContainer width="100%" height={400}>
                                 <BarChart data={top10Data} layout="vertical" margin={{ left: 20, right: 40, top: 10, bottom: 10 }}>
                                     <XAxis type="number" hide />
-                                    <YAxis dataKey="name" type="category" width={110} fontSize={9} stroke="rgba(255,255,255,0.4)" axisLine={false} tickLine={false} />
+                                    <YAxis dataKey="name" type="category" width={110} fontSize={9} stroke="var(--text-dim)" axisLine={false} tickLine={false} />
                                     <Tooltip
-                                        contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                        itemStyle={{ color: '#fff' }}
-                                        labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                        contentStyle={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '12px' }}
+                                        itemStyle={{ color: 'var(--text-primary)' }}
+                                        labelStyle={{ color: 'var(--text-muted)' }}
                                         formatter={(v) => `$${v.toFixed(2)}`}
                                     />
                                     <Bar dataKey="amount" fill="#3b82f6" radius={[0, 4, 4, 0]} />
@@ -299,7 +348,11 @@ export default function Dashboard() {
             case "weeklyTrend":
                 return (
                     <div ref={chartRef}>
-                        <SectionCard title="Weekly Expenditure Pattern" onDownload={() => downloadChart("Weekly-Trend")}>
+                        <SectionCard
+                            title="Weekly Expenditure Pattern"
+                            onDownload={() => downloadChart("Weekly-Trend")}
+                            onDownloadPdf={() => downloadPdf("Weekly-Trend")}
+                        >
                             <ResponsiveContainer width="100%" height={400}>
                                 <AreaChart data={weeklyTrendData}>
                                     <defs>
@@ -308,12 +361,12 @@ export default function Dashboard() {
                                             <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
                                         </linearGradient>
                                     </defs>
-                                    <XAxis dataKey="week" stroke="rgba(255,255,255,0.2)" fontSize={9} tickFormatter={(v) => v.split('-').slice(1).join('/')} axisLine={false} tickLine={false} />
-                                    <YAxis stroke="rgba(255,255,255,0.2)" fontSize={9} axisLine={false} tickLine={false} />
+                                    <XAxis dataKey="week" stroke="var(--text-dim)" fontSize={9} tickFormatter={(v) => v.split('-').slice(1).join('/')} axisLine={false} tickLine={false} />
+                                    <YAxis stroke="var(--text-dim)" fontSize={9} axisLine={false} tickLine={false} />
                                     <Tooltip
-                                        contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                        itemStyle={{ color: '#fff' }}
-                                        labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                        contentStyle={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '12px' }}
+                                        itemStyle={{ color: 'var(--text-primary)' }}
+                                        labelStyle={{ color: 'var(--text-muted)' }}
                                         formatter={(v) => `$${v.toFixed(2)}`}
                                     />
                                     <Area type="monotone" dataKey="amount" stroke="#8b5cf6" strokeWidth={3} fillOpacity={1} fill="url(#colorAmountTrend)" />
@@ -325,16 +378,20 @@ export default function Dashboard() {
             case "monthlyCountAmount":
                 return (
                     <div ref={chartRef}>
-                        <SectionCard title="Traffic Volume & Magnitude" onDownload={() => downloadChart("Volume-Magnitude")}>
+                        <SectionCard
+                            title="Traffic Volume & Magnitude"
+                            onDownload={() => downloadChart("Volume-Magnitude")}
+                            onDownloadPdf={() => downloadPdf("Volume-Magnitude")}
+                        >
                             <ResponsiveContainer width="100%" height={400}>
                                 <ComposedChart data={monthlyCountAmountData}>
-                                    <XAxis dataKey="month" stroke="rgba(255,255,255,0.2)" fontSize={9} axisLine={false} tickLine={false} />
-                                    <YAxis yAxisId="left" stroke="rgba(255,255,255,0.2)" fontSize={9} axisLine={false} tickLine={false} />
-                                    <YAxis yAxisId="right" orientation="right" stroke="rgba(255,255,255,0.2)" fontSize={9} axisLine={false} tickLine={false} />
+                                    <XAxis dataKey="month" stroke="var(--text-dim)" fontSize={9} axisLine={false} tickLine={false} />
+                                    <YAxis yAxisId="left" stroke="var(--text-dim)" fontSize={9} axisLine={false} tickLine={false} />
+                                    <YAxis yAxisId="right" orientation="right" stroke="var(--text-dim)" fontSize={9} axisLine={false} tickLine={false} />
                                     <Tooltip
-                                        contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                        itemStyle={{ color: '#fff' }}
-                                        labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                        contentStyle={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '12px' }}
+                                        itemStyle={{ color: 'var(--text-primary)' }}
+                                        labelStyle={{ color: 'var(--text-muted)' }}
                                     />
                                     <Bar yAxisId="left" dataKey="amount" name="Total Amount ($)" fill="#3b82f6" radius={[4, 4, 0, 0]} barSize={30} />
                                     <Line yAxisId="right" type="monotone" dataKey="count" name="Count" stroke="#f59e0b" strokeWidth={3} dot={{ fill: '#f59e0b', r: 3 }} />
@@ -346,16 +403,20 @@ export default function Dashboard() {
             case "sizeShare":
                 return (
                     <div ref={chartRef}>
-                        <SectionCard title="Distribution by Charge Intensity" onDownload={() => downloadChart("Size-Distribution")}>
+                        <SectionCard
+                            title="Distribution by Charge Intensity"
+                            onDownload={() => downloadChart("Size-Distribution")}
+                            onDownloadPdf={() => downloadPdf("Size-Distribution")}
+                        >
                             <ResponsiveContainer width="100%" height={400}>
                                 <BarChart data={sizeShareData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                                    <XAxis dataKey="name" stroke="rgba(255,255,255,0.2)" fontSize={11} tickLine={false} axisLine={false} />
-                                    <YAxis stroke="rgba(255,255,255,0.2)" fontSize={11} tickLine={false} axisLine={false} allowDecimals={false} />
+                                    <XAxis dataKey="name" stroke="var(--text-dim)" fontSize={11} tickLine={false} axisLine={false} />
+                                    <YAxis stroke="var(--text-dim)" fontSize={11} tickLine={false} axisLine={false} allowDecimals={false} />
                                     <Tooltip
-                                        cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                                        contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                        itemStyle={{ color: '#fff' }}
-                                        labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                        cursor={{ fill: 'var(--bg-tertiary)' }}
+                                        contentStyle={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '12px' }}
+                                        itemStyle={{ color: 'var(--text-primary)' }}
+                                        labelStyle={{ color: 'var(--text-muted)' }}
                                     />
                                     <Bar dataKey="value" radius={[6, 6, 6, 6]} barSize={60}>
                                         {sizeShareData.map((e, idx) => <Cell key={`c-${idx}`} fill={colors[idx % colors.length]} />)}
@@ -381,17 +442,21 @@ export default function Dashboard() {
 
                 return (
                     <div ref={chartRef}>
-                        <SectionCard title="Category Breakdown Portfolio" onDownload={() => downloadChart("Top-Categories")}>
+                        <SectionCard
+                            title="Category Breakdown Portfolio"
+                            onDownload={() => downloadChart("Top-Categories")}
+                            onDownloadPdf={() => downloadPdf("Top-Categories")}
+                        >
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                                 <div className="h-[320px]">
                                     <ResponsiveContainer width="100%" height="100%">
                                         <BarChart data={chartFilteredTop5} margin={{ bottom: 20 }}>
-                                            <XAxis dataKey="category" stroke="rgba(255,255,255,0.2)" fontSize={10} tickLine={false} axisLine={false} interval={0} angle={-30} textAnchor="end" />
+                                            <XAxis dataKey="category" stroke="var(--text-dim)" fontSize={10} tickLine={false} axisLine={false} interval={0} angle={-30} textAnchor="end" />
                                             <YAxis hide />
                                             <Tooltip
-                                                contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                                itemStyle={{ color: '#fff' }}
-                                                labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                                contentStyle={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '12px' }}
+                                                itemStyle={{ color: 'var(--text-primary)' }}
+                                                labelStyle={{ color: 'var(--text-muted)' }}
                                                 formatter={(v) => `$${v.toFixed(2)}`}
                                             />
                                             <Bar dataKey="total" radius={[6, 6, 6, 6]}>
@@ -418,9 +483,9 @@ export default function Dashboard() {
                                                 {chartFilteredTop5.map((e, idx) => <Cell key={`cp-${idx}`} fill={colors[idx % colors.length]} stroke="none" />)}
                                             </Pie>
                                             <Tooltip
-                                                contentStyle={{ backgroundColor: '#151a28', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px' }}
-                                                itemStyle={{ color: '#fff' }}
-                                                labelStyle={{ color: 'rgba(255,255,255,0.5)' }}
+                                                contentStyle={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '12px' }}
+                                                itemStyle={{ color: 'var(--text-primary)' }}
+                                                labelStyle={{ color: 'var(--text-muted)' }}
                                                 formatter={(v) => `$${v.toFixed(2)}`}
                                             />
                                         </PieChart>
@@ -438,17 +503,107 @@ export default function Dashboard() {
             {/* Header Area */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white/90">Spending Dashboard</h1>
-                    <p className="mt-1 text-white/40 text-sm">Visual insights and spending trends based on your history.</p>
+                    <h1 className="text-3xl font-bold tracking-tight text-[var(--text-primary)]">Spending Dashboard</h1>
+                    <p className="mt-1 text-[var(--text-muted)] text-sm">Visual insights and spending trends based on your history.</p>
                 </div>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10">
-                    <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/50">Live Sync</span>
+                <div className="flex items-center gap-3">
+                    <button
+                        onClick={downloadFullReport}
+                        disabled={generatingReport}
+                        className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 hover:bg-blue-600/20 transition-all text-xs font-bold"
+                    >
+                        <svg className={`w-4 h-4 ${generatingReport ? 'animate-spin' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                        {generatingReport ? "Generating Report..." : "Download Full Report (PDF)"}
+                    </button>
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-[var(--bg-tertiary)] border border-[var(--border-primary)]">
+                        <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                        <span className="text-[11px] font-bold uppercase tracking-wide text-[var(--text-dim)]">Live Sync</span>
+                    </div>
+                </div>
+            </div>
+
+            {/* Hidden Report Container for Global Export */}
+            <div className="fixed left-[-9999px] top-0 pointer-events-none opacity-0" ref={reportRef}>
+                <div className="w-[1200px] p-8 space-y-8 bg-[var(--bg-primary)]">
+                    <div className="report-chart">
+                        <SectionCard title="Top 10 Largest Expenses" subtitle={`Generated on ${new Date().toLocaleDateString()}`}>
+                            <ResponsiveContainer width="100%" height={400}>
+                                <BarChart data={top10Data} layout="vertical" margin={{ left: 20, right: 40, top: 10, bottom: 10 }}>
+                                    <XAxis type="number" hide />
+                                    <YAxis dataKey="name" type="category" width={110} fontSize={9} stroke="#666" axisLine={false} tickLine={false} />
+                                    <Bar dataKey="amount" fill="#3b82f6" radius={[0, 4, 4, 0]} />
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
+                    <div className="report-chart">
+                        <SectionCard title="Weekly Expenditure Pattern">
+                            <ResponsiveContainer width="100%" height={400}>
+                                <AreaChart data={weeklyTrendData}>
+                                    <XAxis dataKey="week" stroke="#666" fontSize={9} />
+                                    <YAxis stroke="#666" fontSize={9} />
+                                    <Area type="monotone" dataKey="amount" stroke="#8b5cf6" fill="#8b5cf633" />
+                                </AreaChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
+                    <div className="report-chart">
+                        <SectionCard title="Category Breakdown Portfolio">
+                            <div className="grid grid-cols-2 gap-8">
+                                <div className="h-[350px]">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <BarChart data={monthlyTop5Data}>
+                                            <XAxis dataKey="category" stroke="#666" fontSize={9} angle={-30} textAnchor="end" />
+                                            <Bar dataKey="total">
+                                                {monthlyTop5Data.map((e, idx) => <Cell key={`c-${idx}`} fill={colors[idx % colors.length]} />)}
+                                            </Bar>
+                                        </BarChart>
+                                    </ResponsiveContainer>
+                                </div>
+                                <div className="h-[350px]">
+                                    <ResponsiveContainer width="100%" height="100%">
+                                        <PieChart>
+                                            <Pie data={monthlyTop5Data} dataKey="total" nameKey="category" cx="50%" cy="50%" outerRadius={100}>
+                                                {monthlyTop5Data.map((e, idx) => <Cell key={`cp-${idx}`} fill={colors[idx % colors.length]} />)}
+                                            </Pie>
+                                        </PieChart>
+                                    </ResponsiveContainer>
+                                </div>
+                            </div>
+                        </SectionCard>
+                    </div>
+                    <div className="report-chart">
+                        <SectionCard title="Traffic Volume & Magnitude">
+                            <ResponsiveContainer width="100%" height={400}>
+                                <ComposedChart data={monthlyCountAmountData}>
+                                    <XAxis dataKey="month" stroke="#666" fontSize={9} />
+                                    <YAxis yAxisId="left" stroke="#666" fontSize={9} />
+                                    <Bar yAxisId="left" dataKey="amount" fill="#3b82f6" radius={[4, 4, 0, 0]} />
+                                    <Line yAxisId="right" type="monotone" dataKey="count" stroke="#f59e0b" strokeWidth={3} />
+                                </ComposedChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
+                    <div className="report-chart">
+                        <SectionCard title="Distribution by Charge Intensity">
+                            <ResponsiveContainer width="100%" height={400}>
+                                <BarChart data={sizeShareData}>
+                                    <XAxis dataKey="name" stroke="#666" fontSize={9} />
+                                    <YAxis stroke="#666" fontSize={9} />
+                                    <Bar dataKey="value" radius={[6, 6, 6, 6]}>
+                                        {sizeShareData.map((e, idx) => <Cell key={`c-${idx}`} fill={colors[idx % colors.length]} />)}
+                                    </Bar>
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
                 </div>
             </div>
 
             {txns.length === 0 ? (
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-20 text-center text-white/20">
+                <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-tertiary)] p-20 text-center text-[var(--text-dim)]">
                     <span className="text-5xl block mb-4 opacity-50">📊</span>
                     <p className="text-sm">No data available. Start by uploading a CSV.</p>
                 </div>
@@ -475,11 +630,11 @@ export default function Dashboard() {
                         {/* Desktop: Sidebar Intelligence Menu */}
                         <div className="lg:col-span-1 space-y-6">
                             <div className="hidden lg:block sticky top-8">
-                                <IntelligenceMenuRow selected={selectedInsight} onChange={setSelectedInsight} />
+                                <InsightsMenu selected={selectedInsight} onChange={setSelectedInsight} />
                             </div>
                             {/* Mobile Menu (stacked above) */}
                             <div className="lg:hidden">
-                                <IntelligenceMenuRow selected={selectedInsight} onChange={setSelectedInsight} />
+                                <InsightsMenu selected={selectedInsight} onChange={setSelectedInsight} />
                             </div>
                         </div>
 
@@ -496,7 +651,7 @@ export default function Dashboard() {
                                 <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 min-h-[500px] relative">
                                     <ErrorBoundary>
                                         {isLoading ? (
-                                            <div className="absolute inset-0 flex items-center justify-center bg-[#0b0f19]/40 backdrop-blur-sm z-50 rounded-2xl border border-white/5">
+                                            <div className="absolute inset-0 flex items-center justify-center bg-[var(--bg-primary)]/40 backdrop-blur-sm z-50 rounded-2xl border border-[var(--border-secondary)]">
                                                 <LoadingSpinner message={`Recalculating ${selectedInsight.replace(/([A-Z])/g, ' $1').toLowerCase()}...`} />
                                             </div>
                                         ) : null}
