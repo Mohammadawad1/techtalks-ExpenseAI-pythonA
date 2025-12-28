@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { toPng } from "html-to-image";
 import { saveAs } from "file-saver";
@@ -12,6 +12,8 @@ import KpiCard from "../components/ui/KpiCard";
 import KpiRow from "../components/ui/KpiRow";
 import SectionCard from "../components/ui/SectionCard";
 import InsightsMenu from "../components/InsightsMenu";
+import LoadingSpinner from "../components/LoadingSpinner";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 // --- Subcomponents ---
 
@@ -120,6 +122,14 @@ export default function Dashboard() {
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [activeCategory, setActiveCategory] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+
+    // Simulate loading for better UX when switching heavy filters/insights
+    useEffect(() => {
+        setIsLoading(true);
+        const timer = setTimeout(() => setIsLoading(false), 400);
+        return () => clearTimeout(timer);
+    }, [selectedInsight, startDate, endDate, activeCategory]);
 
     const colors = [
         "#3b82f6", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981",
@@ -483,8 +493,15 @@ export default function Dashboard() {
                                     setEndDate={setEndDate}
                                 />
 
-                                <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 min-h-[500px]">
-                                    {renderInsightContent()}
+                                <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 min-h-[500px] relative">
+                                    <ErrorBoundary>
+                                        {isLoading ? (
+                                            <div className="absolute inset-0 flex items-center justify-center bg-[#0b0f19]/40 backdrop-blur-sm z-50 rounded-2xl border border-white/5">
+                                                <LoadingSpinner message={`Recalculating ${selectedInsight.replace(/([A-Z])/g, ' $1').toLowerCase()}...`} />
+                                            </div>
+                                        ) : null}
+                                        {renderInsightContent()}
+                                    </ErrorBoundary>
                                 </div>
                             </div>
                         </div>

@@ -7,6 +7,7 @@ import Badge from "../components/ui/Badge";
 import KpiCard from "../components/ui/KpiCard";
 import KpiRow from "../components/ui/KpiRow";
 import SectionCard from "../components/ui/SectionCard";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function Upload() {
     const [file, setFile] = useState(null);
@@ -77,36 +78,44 @@ export default function Upload() {
                     subtitle="Select a CSV formatted bank statement to analyze."
                     className="lg:col-span-1 h-fit"
                 >
-                    <div className={`group relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-10 transition-all ${file ? 'border-blue-500/50 bg-blue-500/10' : 'border-white/10 bg-white/[0.02] hover:border-white/20'}`}>
-                        <input
-                            type="file"
-                            onChange={(e) => setFile(e.target.files?.[0] || null)}
-                            className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
-                            accept=".csv"
-                        />
-                        <div className="flex flex-col items-center text-center">
-                            <span className="mb-4 text-4xl group-hover:scale-110 transition-transform duration-300">📥</span>
-                            <p className="text-sm font-medium text-white/80">
-                                {file ? file.name : "Drag & drop CSV here"}
-                            </p>
-                            <p className="mt-1 text-xs text-white/40 underline">or click to browse</p>
+                    {uploading ? (
+                        <div className="py-10">
+                            <LoadingSpinner message="Normalizing & Categorizing..." />
                         </div>
-                    </div>
-
-                    <div className="mt-6 flex flex-col gap-3">
-                        <Button
-                            onClick={onUpload}
-                            disabled={!file || uploading}
-                            className={`w-full justify-center py-4 text-base font-semibold transition-all ${!file ? 'opacity-50' : 'bg-blue-600 shadow-lg shadow-blue-500/20 hover:bg-blue-500 hover:-translate-y-0.5'}`}
-                        >
-                            {uploading ? "Analyzing Patterns…" : "Import & Categorize"}
-                        </Button>
-                        {uploadInfo && (
-                            <div className={`rounded-lg p-3 text-center text-xs font-medium animate-in slide-in-from-top-2 ${uploadInfo.startsWith("Uploaded") ? "bg-green-500/10 text-green-400" : "bg-red-500/10 text-red-400"}`}>
-                                {uploadInfo}
+                    ) : (
+                        <>
+                            <div className={`group relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-10 transition-all ${file ? 'border-blue-500/50 bg-blue-500/10' : 'border-white/10 bg-white/[0.02] hover:border-white/20'}`}>
+                                <input
+                                    type="file"
+                                    onChange={(e) => setFile(e.target.files?.[0] || null)}
+                                    className="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
+                                    accept=".csv"
+                                />
+                                <div className="flex flex-col items-center text-center">
+                                    <span className="mb-4 text-4xl group-hover:scale-110 transition-transform duration-300">📥</span>
+                                    <p className="text-sm font-medium text-white/80">
+                                        {file ? file.name : "Drag & drop CSV here"}
+                                    </p>
+                                    <p className="mt-1 text-xs text-white/40 underline">or click to browse</p>
+                                </div>
                             </div>
-                        )}
-                    </div>
+
+                            <div className="mt-6 flex flex-col gap-3">
+                                <Button
+                                    onClick={onUpload}
+                                    disabled={!file || uploading}
+                                    className={`w-full justify-center py-4 text-base font-semibold transition-all ${!file ? 'opacity-50' : 'bg-blue-600 shadow-lg shadow-blue-500/20 hover:bg-blue-500 hover:-translate-y-0.5'}`}
+                                >
+                                    Import & Categorize
+                                </Button>
+                                {uploadInfo && (
+                                    <div className={`rounded-lg p-3 text-center text-xs font-medium animate-in slide-in-from-top-2 ${uploadInfo.startsWith("Uploaded") ? "bg-green-500/10 text-green-400" : "bg-red-500/10 text-red-400"}`}>
+                                        {uploadInfo}
+                                    </div>
+                                )}
+                            </div>
+                        </>
+                    )}
                 </SectionCard>
 
                 <SectionCard

@@ -26,14 +26,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="ExpenseAI API")
 
-# Robust CORS for local development
+# Production-ready Dynamic CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173", "http://127.0.0.1:5173", 
-        "http://localhost:5174", "http://127.0.0.1:5174",
-        "http://localhost:3000", "http://127.0.0.1:3000"
-    ],
+    allow_origins=settings.allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -41,9 +37,13 @@ app.add_middleware(
 
 @app.middleware("http")
 async def log_requests(request, call_next):
-    print(f"DEBUG: Incoming {request.method} request to {request.url.path}")
+    if settings.env == "development":
+        print(f"DEBUG: Incoming {request.method} request to {request.url.path}")
+    
     response = await call_next(request)
-    print(f"DEBUG: Response status: {response.status_code}")
+    
+    if settings.env == "development":
+        print(f"DEBUG: Response status: {response.status_code}")
     return response
 
 Base.metadata.create_all(bind=engine)

@@ -18,6 +18,10 @@ const SearchIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white/20"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" /></svg>
 );
 
+const EditIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" /><path d="m15 5 4 4" /></svg>
+);
+
 export default function Categories() {
     const { categories, txns, refreshTransactions } = useOutletContext();
     const [fixOpen, setFixOpen] = useState(false);
@@ -27,6 +31,11 @@ export default function Categories() {
     // Batch save state
     const [localChanges, setLocalChanges] = useState({}); // { [txnId]: newCategory }
     const [submitting, setSubmitting] = useState(false);
+
+    // Bulk Selection state
+    const [selectedIds, setSelectedIds] = useState([]); // [id1, id2, ...]
+    const [bulkMenuOpen, setBulkMenuOpen] = useState(false);
+    const bulkRef = useRef(null);
 
     // Filter states
     const [search, setSearch] = useState("");
@@ -58,11 +67,14 @@ export default function Categories() {
         }
     }
 
-    // Close dropdown on click outside
+    // Close dropdowns on click outside
     useEffect(() => {
         function handleClickOutside(event) {
             if (exportRef.current && !exportRef.current.contains(event.target)) {
                 setExportMenuOpen(false);
+            }
+            if (bulkRef.current && !bulkRef.current.contains(event.target)) {
+                setBulkMenuOpen(false);
             }
         }
         document.addEventListener("click", handleClickOutside);
@@ -144,6 +156,31 @@ export default function Categories() {
         setLocalChanges(prev => ({ ...prev, [fixTxn.id]: fixCategory }));
         setFixOpen(false);
     }
+
+    const toggleSelectAll = () => {
+        if (selectedIds.length === filteredTxns.length) {
+            setSelectedIds([]);
+        } else {
+            setSelectedIds(filteredTxns.map(t => t.id));
+        }
+    };
+
+    const toggleSelect = (id) => {
+        setSelectedIds(prev =>
+            prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+        );
+    };
+
+    const applyBulkCategory = (cat) => {
+        const newChanges = { ...localChanges };
+        selectedIds.forEach(id => {
+            newChanges[id] = cat;
+        });
+        setLocalChanges(newChanges);
+        setSelectedIds([]);
+        setBulkMenuOpen(false);
+        setToastMessage(`Staged category "${cat}" for ${selectedIds.length} items. Don't forget to sync!`);
+    };
 
     async function submitBulkCorrections() {
         const updates = Object.entries(localChanges).map(([id, cat]) => ({
@@ -331,12 +368,39 @@ export default function Categories() {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        {/* Badge Indicator */}
-                        {scope !== 'all' && (
-                            <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest px-2 items-center hidden sm:flex">
-                                {scope === 'range' && fromDate && toDate ? "Range Live" :
-                                    scope === 'latest' ? "Showing Session" : ""}
-                            </span>
+                        {/* Bulk Action Toggle */}
+                        {selectedIds.length > 0 && (
+                            <div className="flex items-center gap-2 animate-in slide-in-from-right-2 duration-300">
+                                <button
+                                    onClick={() => setSelectedIds([])}
+                                    className="text-[10px] font-bold text-white/30 hover:text-white/60 uppercase tracking-widest px-2"
+                                >
+                                    Clear Selection
+                                </button>
+                                <div className="relative" ref={bulkRef}>
+                                    <button
+                                        onClick={() => setBulkMenuOpen(!bulkMenuOpen)}
+                                        className="flex items-center gap-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 px-3 py-1.5 text-[11px] font-bold text-blue-400 transition-all shadow-lg active:scale-95"
+                                    >
+                                        Bulk Category ({selectedIds.length})
+                                        <ChevronDown />
+                                    </button>
+                                    {bulkMenuOpen && (
+                                        <div className="absolute right-0 mt-2 w-56 origin-top-right rounded-xl border border-white/20 bg-[#1a202c] p-1 shadow-2xl z-[300] max-h-60 overflow-y-auto no-scrollbar">
+                                            <div className="p-2 border-b border-white/5 text-[9px] font-bold text-white/20 uppercase tracking-widest">Assign Category</div>
+                                            {categories.map((c) => (
+                                                <button
+                                                    key={c}
+                                                    onClick={() => applyBulkCategory(c)}
+                                                    className="flex w-full items-center px-4 py-2.5 text-[11px] font-bold text-white/70 hover:bg-blue-600 hover:text-white rounded-lg transition-colors text-left"
+                                                >
+                                                    {c}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
                         )}
 
                         {/* Export Dropdown */}
@@ -383,6 +447,14 @@ export default function Categories() {
                     <table className="w-full text-left text-sm">
                         <thead>
                             <tr className="border-b border-white/5 text-[10px] font-bold uppercase tracking-widest text-white/20">
+                                <th className="pb-4 pt-4 px-2 w-8">
+                                    <input
+                                        type="checkbox"
+                                        className="rounded border-white/10 bg-white/5 text-blue-500 focus:ring-0 focus:ring-offset-0 transition-all cursor-pointer"
+                                        checked={filteredTxns.length > 0 && selectedIds.length === filteredTxns.length}
+                                        onChange={toggleSelectAll}
+                                    />
+                                </th>
                                 <th className="pb-4 pt-4">Date</th>
                                 <th className="pb-4 pt-4">Description</th>
                                 <th className="pb-4 pt-4 text-right">Amount</th>
@@ -396,7 +468,15 @@ export default function Categories() {
                             {filteredTxns.length > 0 ? filteredTxns.map((t) => {
                                 const hasLocalChange = !!localChanges[t.id];
                                 return (
-                                    <tr key={t.id} className={`group border-t border-white/5 transition-colors ${hasLocalChange ? 'bg-blue-500/[0.04]' : 'hover:bg-white/[0.02]'}`}>
+                                    <tr key={t.id} className={`group border-t border-white/5 transition-colors ${selectedIds.includes(t.id) ? 'bg-blue-600/10' : hasLocalChange ? 'bg-blue-500/[0.04]' : 'hover:bg-white/[0.02]'}`}>
+                                        <td className="py-3 px-2">
+                                            <input
+                                                type="checkbox"
+                                                className="rounded border-white/10 bg-white/5 text-blue-500 focus:ring-0 focus:ring-offset-0 transition-all cursor-pointer"
+                                                checked={selectedIds.includes(t.id)}
+                                                onChange={() => toggleSelect(t.id)}
+                                            />
+                                        </td>
                                         <td className="py-3 text-white/60 text-[11px] font-mono">
                                             <div className="flex items-center gap-2">
                                                 <span>{t.txn_date || "—"}</span>
@@ -433,12 +513,15 @@ export default function Categories() {
                                             )}
                                         </td>
                                         <td className="py-3 text-right">
-                                            <button
-                                                className="rounded-md px-3 py-1 text-[11px] font-bold text-white/40 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10 transition-all"
-                                                onClick={() => openFix(t)}
-                                            >
-                                                Review
-                                            </button>
+                                            {selectedIds.length === 0 && (
+                                                <button
+                                                    className="rounded-lg p-2 text-white/30 hover:text-blue-400 hover:bg-blue-500/10 border border-transparent hover:border-blue-500/20 transition-all active:scale-95 group/edit"
+                                                    onClick={() => openFix(t)}
+                                                    title="Review transaction"
+                                                >
+                                                    <EditIcon />
+                                                </button>
+                                            )}
                                         </td>
                                     </tr>
                                 )
