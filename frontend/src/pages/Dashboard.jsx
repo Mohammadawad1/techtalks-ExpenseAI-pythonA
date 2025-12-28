@@ -170,20 +170,26 @@ export default function Dashboard() {
         });
     }, [dateFilteredData, activeCategory]);
 
+    // Helper to check if a transaction is an expense
+    const isExpense = (t) => (t.final_category || t.predicted_category || "other") !== "income_&_transfers";
+
+    const expenseData = useMemo(() => filteredData.filter(isExpense), [filteredData]);
+    const expenseDateFilteredData = useMemo(() => dateFilteredData.filter(isExpense), [dateFilteredData]);
+
     // Data Processing for Insights
     const top10Data = useMemo(() => {
-        return [...filteredData]
+        return [...expenseData]
             .sort((a, b) => Math.abs(b.amount) - Math.abs(a.amount))
             .slice(0, 10)
             .map(t => ({
                 name: t.description.length > 20 ? t.description.substring(0, 20) + "..." : t.description,
                 amount: Math.abs(parseFloat(t.amount))
             }));
-    }, [filteredData]);
+    }, [expenseData]);
 
     const weeklyTrendData = useMemo(() => {
         const weeks = {};
-        filteredData.forEach(t => {
+        expenseData.forEach(t => {
             const date = new Date(t.txn_date);
             const firstDay = new Date(date.setDate(date.getDate() - date.getDay()));
             const weekKey = firstDay.toISOString().split('T')[0];
@@ -192,11 +198,11 @@ export default function Dashboard() {
         return Object.entries(weeks)
             .map(([week, amount]) => ({ week, amount }))
             .sort((a, b) => a.week.localeCompare(b.week));
-    }, [filteredData]);
+    }, [expenseData]);
 
     const monthlyTop5Data = useMemo(() => {
         const spending = {};
-        dateFilteredData.forEach((t) => {
+        expenseDateFilteredData.forEach((t) => {
             const amount = Math.abs(parseFloat(t.amount)) || 0;
             const category = t.final_category || t.predicted_category || "Uncategorized";
             spending[category] = (spending[category] || 0) + amount;
@@ -205,11 +211,11 @@ export default function Dashboard() {
             .map(([category, total]) => ({ category, total }))
             .sort((a, b) => b.total - a.total)
             .slice(0, 5);
-    }, [dateFilteredData]);
+    }, [expenseDateFilteredData]);
 
     const monthlyCountAmountData = useMemo(() => {
         const months = {};
-        filteredData.forEach(t => {
+        expenseData.forEach(t => {
             const date = new Date(t.txn_date);
             const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
             if (!months[monthKey]) months[monthKey] = { amount: 0, count: 0 };
@@ -219,20 +225,60 @@ export default function Dashboard() {
         return Object.entries(months)
             .map(([month, stats]) => ({ month, ...stats }))
             .sort((a, b) => a.month.localeCompare(b.month));
-    }, [filteredData]);
+    }, [expenseData]);
 
     const sizeShareData = useMemo(() => {
         const ranges = { "Small (<$50)": 0, "Medium ($50-200)": 0, "Large (>$200)": 0 };
-        filteredData.forEach(t => {
+        expenseData.forEach(t => {
             const amt = Math.abs(parseFloat(t.amount));
             if (amt < 50) ranges["Small (<$50)"]++;
             else if (amt <= 200) ranges["Medium ($50-200)"]++;
             else ranges["Large (>$200)"]++;
         });
         return Object.entries(ranges).map(([range, count]) => ({ name: range, value: count }));
+    }, [expenseData]);
+
+
+    const netCashFlowData = useMemo(() => {
+        const months = {};
+        // Use filteredData here because we need BOTH income and expenses
+        filteredData.forEach(t => {
+            const date = new Date(t.txn_date);
+            const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+            if (!months[monthKey]) months[monthKey] = { month: monthKey, income: 0, expenses: 0 };
+
+            const amt = Math.abs(parseFloat(t.amount));
+            const category = t.final_category || t.predicted_category || "other";
+
+            if (category === "income_&_transfers") {
+                months[monthKey].income += amt;
+            } else {
+                months[monthKey].expenses += amt;
+            }
+        });
+
+        return Object.values(months)
+            .map(m => ({ ...m, net: m.income - m.expenses }))
+            .sort((a, b) => a.month.localeCompare(b.month));
     }, [filteredData]);
 
-    const grandTotal = filteredData.reduce((sum, item) => sum + Math.abs(parseFloat(item.amount)), 0);
+
+    const spendingByWeekdayData = useMemo(() => {
+        const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+        const weekdaySpending = [0, 0, 0, 0, 0, 0, 0];
+
+        expenseData.forEach(t => {
+            const date = new Date(t.txn_date);
+            let dayIndex = date.getDay(); // 0 is Sunday, 1 is Monday...
+            // Adjust to 0=Mon, 6=Sun
+            dayIndex = dayIndex === 0 ? 6 : dayIndex - 1;
+            weekdaySpending[dayIndex] += Math.abs(parseFloat(t.amount));
+        });
+
+        return days.map((day, i) => ({ day, amount: weekdaySpending[i] }));
+    }, [expenseData]);
+
+    const grandTotal = expenseData.reduce((sum, item) => sum + Math.abs(parseFloat(item.amount)), 0);
     const topCategory = monthlyTop5Data[0]?.category || "N/A";
 
     const chartRef = useRef(null);
@@ -339,7 +385,11 @@ export default function Dashboard() {
                                         labelStyle={{ color: 'var(--text-muted)' }}
                                         formatter={(v) => `$${v.toFixed(2)}`}
                                     />
-                                    <Bar dataKey="amount" fill="#3b82f6" radius={[0, 4, 4, 0]} />
+                                    <Bar dataKey="amount" radius={[0, 4, 4, 0]}>
+                                        {top10Data.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                                        ))}
+                                    </Bar>
                                 </BarChart>
                             </ResponsiveContainer>
                         </SectionCard>
@@ -421,6 +471,58 @@ export default function Dashboard() {
                                     <Bar dataKey="value" radius={[6, 6, 6, 6]} barSize={60}>
                                         {sizeShareData.map((e, idx) => <Cell key={`c-${idx}`} fill={colors[idx % colors.length]} />)}
                                     </Bar>
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
+                );
+            case "netCashFlow":
+                return (
+                    <div ref={chartRef}>
+                        <SectionCard
+                            title="Monthly Net Cash Flow"
+                            onDownload={() => downloadChart("Net-Cash-Flow")}
+                            onDownloadPdf={() => downloadPdf("Net-Cash-Flow")}
+                        >
+                            <ResponsiveContainer width="100%" height={400}>
+                                <ComposedChart data={netCashFlowData}>
+                                    <XAxis dataKey="month" stroke="var(--text-dim)" fontSize={9} axisLine={false} tickLine={false} />
+                                    <YAxis stroke="var(--text-dim)" fontSize={9} axisLine={false} tickLine={false} />
+                                    <Tooltip
+                                        contentStyle={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '12px' }}
+                                        itemStyle={{ color: 'var(--text-primary)' }}
+                                        labelStyle={{ color: 'var(--text-muted)' }}
+                                        formatter={(v) => `$${v.toFixed(2)}`}
+                                    />
+                                    <Legend />
+                                    <Bar dataKey="income" name="Income" fill="#10b981" radius={[4, 4, 0, 0]} />
+                                    <Bar dataKey="expenses" name="Expenses" fill="#f43f5e" radius={[4, 4, 0, 0]} />
+                                    <Line type="monotone" dataKey="net" name="Net Flow" stroke="#3b82f6" strokeWidth={4} dot={{ fill: '#3b82f6', r: 4 }} />
+                                </ComposedChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
+                );
+            case "spendingByWeekday":
+                return (
+                    <div ref={chartRef}>
+                        <SectionCard
+                            title="Average Spending by Weekday"
+                            onDownload={() => downloadChart("Weekday-Spending")}
+                            onDownloadPdf={() => downloadPdf("Weekday-Spending")}
+                        >
+                            <ResponsiveContainer width="100%" height={400}>
+                                <BarChart data={spendingByWeekdayData}>
+                                    <XAxis dataKey="day" stroke="var(--text-dim)" fontSize={11} axisLine={false} tickLine={false} />
+                                    <YAxis stroke="var(--text-dim)" fontSize={11} axisLine={false} tickLine={false} />
+                                    <Tooltip
+                                        cursor={{ fill: 'var(--bg-tertiary)' }}
+                                        contentStyle={{ backgroundColor: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '12px' }}
+                                        itemStyle={{ color: 'var(--text-primary)' }}
+                                        labelStyle={{ color: 'var(--text-muted)' }}
+                                        formatter={(v) => `$${v.toFixed(2)}`}
+                                    />
+                                    <Bar dataKey="amount" fill="#3b82f6" radius={[6, 6, 0, 0]} />
                                 </BarChart>
                             </ResponsiveContainer>
                         </SectionCard>
@@ -533,7 +635,11 @@ export default function Dashboard() {
                                 <BarChart data={top10Data} layout="vertical" margin={{ left: 20, right: 40, top: 10, bottom: 10 }}>
                                     <XAxis type="number" hide />
                                     <YAxis dataKey="name" type="category" width={110} fontSize={9} stroke="#666" axisLine={false} tickLine={false} />
-                                    <Bar dataKey="amount" fill="#3b82f6" radius={[0, 4, 4, 0]} />
+                                    <Bar dataKey="amount" radius={[0, 4, 4, 0]}>
+                                        {top10Data.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                                        ))}
+                                    </Bar>
                                 </BarChart>
                             </ResponsiveContainer>
                         </SectionCard>
@@ -595,6 +701,30 @@ export default function Dashboard() {
                                     <Bar dataKey="value" radius={[6, 6, 6, 6]}>
                                         {sizeShareData.map((e, idx) => <Cell key={`c-${idx}`} fill={colors[idx % colors.length]} />)}
                                     </Bar>
+                                </BarChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
+                    <div className="report-chart">
+                        <SectionCard title="Monthly Net Cash Flow">
+                            <ResponsiveContainer width="100%" height={400}>
+                                <ComposedChart data={netCashFlowData}>
+                                    <XAxis dataKey="month" stroke="#666" fontSize={9} />
+                                    <YAxis stroke="#666" fontSize={9} />
+                                    <Bar dataKey="income" fill="#10b981" />
+                                    <Bar dataKey="expenses" fill="#f43f5e" />
+                                    <Line type="monotone" dataKey="net" stroke="#3b82f6" strokeWidth={2} />
+                                </ComposedChart>
+                            </ResponsiveContainer>
+                        </SectionCard>
+                    </div>
+                    <div className="report-chart">
+                        <SectionCard title="Average Spending by Weekday">
+                            <ResponsiveContainer width="100%" height={400}>
+                                <BarChart data={spendingByWeekdayData}>
+                                    <XAxis dataKey="day" stroke="#666" fontSize={9} />
+                                    <YAxis stroke="#666" fontSize={9} />
+                                    <Bar dataKey="amount" fill="#3b82f6" radius={[6, 6, 0, 0]} />
                                 </BarChart>
                             </ResponsiveContainer>
                         </SectionCard>

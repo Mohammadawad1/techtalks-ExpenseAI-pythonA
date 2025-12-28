@@ -21,8 +21,7 @@ export default function Login() {
         try {
             const res = await api.login(email, password);
             localStorage.setItem("expenseai_token", res.access_token);
-            // Wait a bit to show a smooth transition
-            setTimeout(() => navigate("/upload"), 500);
+            navigate("/upload");
         } catch (err) {
             setError(err.message || "Login failed. Check your credentials.");
         } finally {

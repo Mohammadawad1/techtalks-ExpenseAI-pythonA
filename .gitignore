@@ -25,3 +25,34 @@ __pycache__/
 *.njsproj
 *.sln
 *.sw?
+
+# Security & Secrets
+.env
+.env.local
+.env.*.local
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Python / ML Artifacts
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.pytest_cache/
+*.joblib
+machine_learning/artifacts/
