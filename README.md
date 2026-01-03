@@ -90,6 +90,3 @@ npm run dev
 3.  **Analyze**: Visit the **Dashboard** to see your financial health, spending trends, and net cash flow.
 4.  **Export**: Use the download buttons on charts or the "Download Full Report" button for a complete PDF summary.
 
-## 🔒 Security
-*   Environment variables are managed via `.env` (not committed).
-*   Database files are excluded from version control.
